@@ -1,0 +1,816 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		86D80818DF8A279A70AD7C50 /* Pods_beraber_beraberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */; };
+		9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */; };
+		C43078A5C2B3574458F8A3F5 /* Pods_beraberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */; };
+		EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CA27DE1AC400878629 /* beraberApp.swift */; };
+		EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CC27DE1AC400878629 /* ContentView.swift */; };
+		EE8434CF27DE1AC500878629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE8434CE27DE1AC500878629 /* Assets.xcassets */; };
+		EE8434D227DE1AC500878629 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE8434D127DE1AC500878629 /* Preview Assets.xcassets */; };
+		EE8434DC27DE1AC600878629 /* beraberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434DB27DE1AC600878629 /* beraberTests.swift */; };
+		EE8434E627DE1AC600878629 /* beraberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434E527DE1AC600878629 /* beraberUITests.swift */; };
+		EE8434E827DE1AC600878629 /* beraberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434E727DE1AC600878629 /* beraberUITestsLaunchTests.swift */; };
+		EE8434F827DE1E3500878629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE8434F727DE1E3500878629 /* GoogleService-Info.plist */; };
+		EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0A68E27DE294200F6F35B /* LoginView.swift */; };
+		EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0A69027DE2B0500F6F35B /* LoginViewModel.swift */; };
+		EEF7750927EBC8D400CB80B2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7750827EBC8D400CB80B2 /* RegisterView.swift */; };
+		EEF7750B27EBCAD300CB80B2 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7750A27EBCAD300CB80B2 /* RegisterViewModel.swift */; };
+		EEF7751027EBCC9B00CB80B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7750F27EBCC9B00CB80B2 /* Color+Extension.swift */; };
+		EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */; };
+		EEF7751427EBD97D00CB80B2 /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7751327EBD97D00CB80B2 /* UploadImage.swift */; };
+		EEF7751627EBDD0D00CB80B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7751527EBDD0D00CB80B2 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE8434D827DE1AC600878629 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE8434BF27DE1AC400878629 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE8434C627DE1AC400878629;
+			remoteInfo = beraber;
+		};
+		EE8434E227DE1AC600878629 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE8434BF27DE1AC400878629 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE8434C627DE1AC400878629;
+			remoteInfo = beraber;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B05491B7C62F3A019BC8E9C /* Pods-beraber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber.release.xcconfig"; path = "Target Support Files/Pods-beraber/Pods-beraber.release.xcconfig"; sourceTree = "<group>"; };
+		A30660B3D19DDFE3C1B03BB0 /* Pods-beraber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber.debug.xcconfig"; path = "Target Support Files/Pods-beraber/Pods-beraber.debug.xcconfig"; sourceTree = "<group>"; };
+		B2B9F17F03DD6AA14D3F8A9B /* Pods-beraber-beraberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber-beraberUITests.debug.xcconfig"; path = "Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraber_beraberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB205D6D8A2C2A408A6032E /* Pods-beraberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraberTests.release.xcconfig"; path = "Target Support Files/Pods-beraberTests/Pods-beraberTests.release.xcconfig"; sourceTree = "<group>"; };
+		E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber-beraberUITests.release.xcconfig"; path = "Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE013C1227EA873300144E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE8434C727DE1AC400878629 /* beraber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beraber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8434CA27DE1AC400878629 /* beraberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberApp.swift; sourceTree = "<group>"; };
+		EE8434CC27DE1AC400878629 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EE8434CE27DE1AC500878629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE8434D127DE1AC500878629 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EE8434D727DE1AC600878629 /* beraberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beraberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8434DB27DE1AC600878629 /* beraberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberTests.swift; sourceTree = "<group>"; };
+		EE8434E127DE1AC600878629 /* beraberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beraberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8434E527DE1AC600878629 /* beraberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberUITests.swift; sourceTree = "<group>"; };
+		EE8434E727DE1AC600878629 /* beraberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EE8434F727DE1E3500878629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EED0A68E27DE294200F6F35B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EED0A69027DE2B0500F6F35B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EEF7750827EBC8D400CB80B2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		EEF7750A27EBCAD300CB80B2 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		EEF7750F27EBCC9B00CB80B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EEF7751327EBD97D00CB80B2 /* UploadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
+		EEF7751527EBDD0D00CB80B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F1B57659D09F2F801FBBA6CE /* Pods-beraberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraberTests.debug.xcconfig"; path = "Target Support Files/Pods-beraberTests/Pods-beraberTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE8434C427DE1AC400878629 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434D427DE1AC600878629 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43078A5C2B3574458F8A3F5 /* Pods_beraberTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434DE27DE1AC600878629 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86D80818DF8A279A70AD7C50 /* Pods_beraber_beraberUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DF4BC517744C689DB19AEE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */,
+				C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */,
+				6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE093A7147964C924AD8B21D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A30660B3D19DDFE3C1B03BB0 /* Pods-beraber.debug.xcconfig */,
+				8B05491B7C62F3A019BC8E9C /* Pods-beraber.release.xcconfig */,
+				B2B9F17F03DD6AA14D3F8A9B /* Pods-beraber-beraberUITests.debug.xcconfig */,
+				E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */,
+				F1B57659D09F2F801FBBA6CE /* Pods-beraberTests.debug.xcconfig */,
+				CEB205D6D8A2C2A408A6032E /* Pods-beraberTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EE8434BE27DE1AC400878629 = {
+			isa = PBXGroup;
+			children = (
+				EE8434C927DE1AC400878629 /* beraber */,
+				EE8434DA27DE1AC600878629 /* beraberTests */,
+				EE8434E427DE1AC600878629 /* beraberUITests */,
+				EE8434C827DE1AC400878629 /* Products */,
+				BE093A7147964C924AD8B21D /* Pods */,
+				1DF4BC517744C689DB19AEE8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EE8434C827DE1AC400878629 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE8434C727DE1AC400878629 /* beraber.app */,
+				EE8434D727DE1AC600878629 /* beraberTests.xctest */,
+				EE8434E127DE1AC600878629 /* beraberUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE8434C927DE1AC400878629 /* beraber */ = {
+			isa = PBXGroup;
+			children = (
+				EEF7750C27EBCBDF00CB80B2 /* Utils */,
+				EE013C1227EA873300144E46 /* Info.plist */,
+				EED0A68D27DE291E00F6F35B /* ViewModel */,
+				EED0A68C27DE291900F6F35B /* Model */,
+				EED0A68B27DE291400F6F35B /* View */,
+				EE8434F727DE1E3500878629 /* GoogleService-Info.plist */,
+				EE8434CA27DE1AC400878629 /* beraberApp.swift */,
+				EE8434CC27DE1AC400878629 /* ContentView.swift */,
+				EE8434CE27DE1AC500878629 /* Assets.xcassets */,
+				EE8434D027DE1AC500878629 /* Preview Content */,
+			);
+			path = beraber;
+			sourceTree = "<group>";
+		};
+		EE8434D027DE1AC500878629 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EE8434D127DE1AC500878629 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EE8434DA27DE1AC600878629 /* beraberTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE8434DB27DE1AC600878629 /* beraberTests.swift */,
+			);
+			path = beraberTests;
+			sourceTree = "<group>";
+		};
+		EE8434E427DE1AC600878629 /* beraberUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE8434E527DE1AC600878629 /* beraberUITests.swift */,
+				EE8434E727DE1AC600878629 /* beraberUITestsLaunchTests.swift */,
+			);
+			path = beraberUITests;
+			sourceTree = "<group>";
+		};
+		EED0A68B27DE291400F6F35B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EED0A68E27DE294200F6F35B /* LoginView.swift */,
+				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
+				EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */,
+				EEF7751527EBDD0D00CB80B2 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EED0A68C27DE291900F6F35B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EEF7751327EBD97D00CB80B2 /* UploadImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EED0A68D27DE291E00F6F35B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EED0A69027DE2B0500F6F35B /* LoginViewModel.swift */,
+				EEF7750A27EBCAD300CB80B2 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EEF7750C27EBCBDF00CB80B2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EEF7750F27EBCC9B00CB80B2 /* Color+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE8434C627DE1AC400878629 /* beraber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8434EB27DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraber" */;
+			buildPhases = (
+				2A787389778FFC511182AA42 /* [CP] Check Pods Manifest.lock */,
+				EE8434C327DE1AC400878629 /* Sources */,
+				EE8434C427DE1AC400878629 /* Frameworks */,
+				EE8434C527DE1AC400878629 /* Resources */,
+				19E6AC2DCDD244DB5A442E67 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = beraber;
+			productName = beraber;
+			productReference = EE8434C727DE1AC400878629 /* beraber.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE8434D627DE1AC600878629 /* beraberTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8434EE27DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraberTests" */;
+			buildPhases = (
+				36A12E83FE9F0B09F7D74DDF /* [CP] Check Pods Manifest.lock */,
+				EE8434D327DE1AC600878629 /* Sources */,
+				EE8434D427DE1AC600878629 /* Frameworks */,
+				EE8434D527DE1AC600878629 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE8434D927DE1AC600878629 /* PBXTargetDependency */,
+			);
+			name = beraberTests;
+			productName = beraberTests;
+			productReference = EE8434D727DE1AC600878629 /* beraberTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE8434E027DE1AC600878629 /* beraberUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8434F127DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraberUITests" */;
+			buildPhases = (
+				3735F12952C5A91339D2E6CB /* [CP] Check Pods Manifest.lock */,
+				EE8434DD27DE1AC600878629 /* Sources */,
+				EE8434DE27DE1AC600878629 /* Frameworks */,
+				EE8434DF27DE1AC600878629 /* Resources */,
+				1FDE3A5167F7D19E0FC06620 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE8434E327DE1AC600878629 /* PBXTargetDependency */,
+			);
+			name = beraberUITests;
+			productName = beraberUITests;
+			productReference = EE8434E127DE1AC600878629 /* beraberUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE8434BF27DE1AC400878629 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					EE8434C627DE1AC400878629 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					EE8434D627DE1AC600878629 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = EE8434C627DE1AC400878629;
+					};
+					EE8434E027DE1AC600878629 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = EE8434C627DE1AC400878629;
+					};
+				};
+			};
+			buildConfigurationList = EE8434C227DE1AC400878629 /* Build configuration list for PBXProject "beraber" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE8434BE27DE1AC400878629;
+			productRefGroup = EE8434C827DE1AC400878629 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE8434C627DE1AC400878629 /* beraber */,
+				EE8434D627DE1AC600878629 /* beraberTests */,
+				EE8434E027DE1AC600878629 /* beraberUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE8434C527DE1AC400878629 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8434D227DE1AC500878629 /* Preview Assets.xcassets in Resources */,
+				EE8434CF27DE1AC500878629 /* Assets.xcassets in Resources */,
+				EE8434F827DE1E3500878629 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434D527DE1AC600878629 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434DF27DE1AC600878629 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19E6AC2DCDD244DB5A442E67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beraber/Pods-beraber-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beraber/Pods-beraber-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beraber/Pods-beraber-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FDE3A5167F7D19E0FC06620 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A787389778FFC511182AA42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beraber-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36A12E83FE9F0B09F7D74DDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beraberTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3735F12952C5A91339D2E6CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beraber-beraberUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE8434C327DE1AC400878629 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */,
+				EEF7751427EBD97D00CB80B2 /* UploadImage.swift in Sources */,
+				EEF7751027EBCC9B00CB80B2 /* Color+Extension.swift in Sources */,
+				EEF7751627EBDD0D00CB80B2 /* HomeView.swift in Sources */,
+				EEF7750B27EBCAD300CB80B2 /* RegisterViewModel.swift in Sources */,
+				EEF7750927EBC8D400CB80B2 /* RegisterView.swift in Sources */,
+				EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */,
+				EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */,
+				EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */,
+				EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434D327DE1AC600878629 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8434DC27DE1AC600878629 /* beraberTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8434DD27DE1AC600878629 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8434E827DE1AC600878629 /* beraberUITestsLaunchTests.swift in Sources */,
+				EE8434E627DE1AC600878629 /* beraberUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE8434D927DE1AC600878629 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE8434C627DE1AC400878629 /* beraber */;
+			targetProxy = EE8434D827DE1AC600878629 /* PBXContainerItemProxy */;
+		};
+		EE8434E327DE1AC600878629 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE8434C627DE1AC400878629 /* beraber */;
+			targetProxy = EE8434E227DE1AC600878629 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EE8434E927DE1AC600878629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EE8434EA27DE1AC600878629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE8434EC27DE1AC600878629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A30660B3D19DDFE3C1B03BB0 /* Pods-beraber.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"beraber/Preview Content\"";
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = beraber/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraber;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE8434ED27DE1AC600878629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B05491B7C62F3A019BC8E9C /* Pods-beraber.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"beraber/Preview Content\"";
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = beraber/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraber;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE8434EF27DE1AC600878629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1B57659D09F2F801FBBA6CE /* Pods-beraberTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraberTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beraber.app/beraber";
+			};
+			name = Debug;
+		};
+		EE8434F027DE1AC600878629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEB205D6D8A2C2A408A6032E /* Pods-beraberTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraberTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beraber.app/beraber";
+			};
+			name = Release;
+		};
+		EE8434F227DE1AC600878629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2B9F17F03DD6AA14D3F8A9B /* Pods-beraber-beraberUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraberUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = beraber;
+			};
+			name = Debug;
+		};
+		EE8434F327DE1AC600878629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ozdemirApps.beraberUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = beraber;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE8434C227DE1AC400878629 /* Build configuration list for PBXProject "beraber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8434E927DE1AC600878629 /* Debug */,
+				EE8434EA27DE1AC600878629 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8434EB27DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8434EC27DE1AC600878629 /* Debug */,
+				EE8434ED27DE1AC600878629 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8434EE27DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraberTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8434EF27DE1AC600878629 /* Debug */,
+				EE8434F027DE1AC600878629 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8434F127DE1AC600878629 /* Build configuration list for PBXNativeTarget "beraberUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8434F227DE1AC600878629 /* Debug */,
+				EE8434F327DE1AC600878629 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE8434BF27DE1AC400878629 /* Project object */;
+}
