@@ -10,6 +10,9 @@
 		86D80818DF8A279A70AD7C50 /* Pods_beraber_beraberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */; };
 		9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */; };
 		C43078A5C2B3574458F8A3F5 /* Pods_beraberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */; };
+		EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BD27EE38F300962F6F /* Onboarding.swift */; };
+		EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */; };
+		EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */; };
 		EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CA27DE1AC400878629 /* beraberApp.swift */; };
 		EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CC27DE1AC400878629 /* ContentView.swift */; };
 		EE8434CF27DE1AC500878629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE8434CE27DE1AC500878629 /* Assets.xcassets */; };
@@ -55,6 +58,9 @@
 		E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber-beraberUITests.release.xcconfig"; path = "Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE013C1227EA873300144E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE5BC0BD27EE38F300962F6F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
 		EE8434C727DE1AC400878629 /* beraber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beraber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8434CA27DE1AC400878629 /* beraberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberApp.swift; sourceTree = "<group>"; };
 		EE8434CC27DE1AC400878629 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +134,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EE5BC0C127EE3D4A00962F6F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */,
+				EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		EE8434BE27DE1AC400878629 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +210,7 @@
 		EED0A68B27DE291400F6F35B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE5BC0C127EE3D4A00962F6F /* Onboarding */,
 				EED0A68E27DE294200F6F35B /* LoginView.swift */,
 				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
 				EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */,
@@ -207,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF7751327EBD97D00CB80B2 /* UploadImage.swift */,
+				EE5BC0BD27EE38F300962F6F /* Onboarding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -472,9 +489,12 @@
 				EEF7751027EBCC9B00CB80B2 /* Color+Extension.swift in Sources */,
 				EEF7751627EBDD0D00CB80B2 /* HomeView.swift in Sources */,
 				EEF7750B27EBCAD300CB80B2 /* RegisterViewModel.swift in Sources */,
+				EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */,
 				EEF7750927EBC8D400CB80B2 /* RegisterView.swift in Sources */,
 				EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */,
 				EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */,
+				EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */,
+				EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */,
 				EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */,
 				EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */,
 			);

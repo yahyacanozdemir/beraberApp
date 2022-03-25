@@ -9,16 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("current_status") var status = false
+    @State var skipOnboarding = false
+
     var body: some View {
-        NavigationView {
-            VStack {
-                if status{HomeView()}
-                else{LoginView()}
-            }
-            RegisterView()
-                .preferredColorScheme(.dark)
-                .navigationBarHidden(true)
+        
+        if !skipOnboarding {
+            GeometryReader { proxy in
+                let size = proxy.size
+                OnboardingView(skipOnboarding: $skipOnboarding, screenSize: size)
+                    .preferredColorScheme(.dark)
+            } .animation(.easeInOut)
+        } else {
+            NavigationView {
+                VStack {
+                    if status{HomeView()}
+                    else{LoginView()}
+                }
+                RegisterView()
+                    .preferredColorScheme(.dark)
+                    .navigationBarHidden(true)
+            }.animation(.easeInOut)
         }
+        
+
+        
+//        GeometryReader { proxy in
+//            let size = proxy.size
+//            OnboardingView(screenSize: size)
+//                .preferredColorScheme(.dark)
+//        }
     }
 }
 
