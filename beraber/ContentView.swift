@@ -18,7 +18,7 @@ struct ContentView: View {
                 let size = proxy.size
                 OnboardingView(skipOnboarding: $skipOnboarding, screenSize: size)
                     .preferredColorScheme(.dark)
-            } .animation(.easeInOut)
+            }.animation(.easeInOut)
         } else {
             NavigationView {
                 VStack {

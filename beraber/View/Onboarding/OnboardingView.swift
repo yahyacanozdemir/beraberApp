@@ -17,15 +17,21 @@ struct OnboardingView: View {
             Button {
                 
             } label: {
-                Image("blue_logo")
-                    .resizable()
-                    .frame(width: 30, height: 30)
+                    Text("BERABER")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+
+                    
+//                Image("blue_logo")
+//                    .resizable()
+//                    .frame(width: 30, height: 30)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
             
             OffsetPageTabView(offset: $offset) {
-                HStack (spacing: 0) {
+                HStack (alignment: .center, spacing: 0) {
                     ForEach(pages){ page in
                         VStack (alignment: .center){
                             Image(page.image)
@@ -42,7 +48,7 @@ struct OnboardingView: View {
                                 
                             }
                             .foregroundStyle(.white)
-                            .padding(.top, 10)
+                            .padding(.top, 30)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             
                         }
@@ -110,8 +116,7 @@ struct OnboardingView: View {
     
     func getIndex()->Int{
         var progress = round(offset / screenSize.width)
-        //        return Int(progress)
-        
+        //return Int(progress)
         //Güvenli şekilde index döndürmek
         if progress < 0 {
             progress = 0

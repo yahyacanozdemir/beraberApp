@@ -10,6 +10,7 @@
 		86D80818DF8A279A70AD7C50 /* Pods_beraber_beraberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */; };
 		9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */; };
 		C43078A5C2B3574458F8A3F5 /* Pods_beraberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */; };
+		EE2CC1E827F5DC640086545F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */; };
 		EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BD27EE38F300962F6F /* Onboarding.swift */; };
 		EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */; };
 		EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */; };
@@ -58,6 +59,7 @@
 		E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber-beraberUITests.release.xcconfig"; path = "Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE013C1227EA873300144E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE5BC0BD27EE38F300962F6F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
 				EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */,
 				EEF7751527EBDD0D00CB80B2 /* HomeView.swift */,
+				EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8434D227DE1AC500878629 /* Preview Assets.xcassets in Resources */,
+				EE2CC1E827F5DC640086545F /* LaunchScreen.storyboard in Resources */,
 				EE8434CF27DE1AC500878629 /* Assets.xcassets in Resources */,
 				EE8434F827DE1E3500878629 /* GoogleService-Info.plist in Resources */,
 			);
@@ -658,13 +662,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"beraber/Preview Content\"";
-				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				DEVELOPMENT_TEAM = FCMRLFUFXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = beraber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -689,13 +693,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"beraber/Preview Content\"";
-				DEVELOPMENT_TEAM = LAV5QWLXZ3;
+				DEVELOPMENT_TEAM = FCMRLFUFXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = beraber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
