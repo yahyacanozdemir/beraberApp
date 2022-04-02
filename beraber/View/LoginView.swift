@@ -44,7 +44,12 @@ struct LoginView: View {
                             .background(.white.opacity(0.6))
                             .cornerRadius(15)
                             .keyboardType(.phonePad)
-                        TextField("5323272005", text: $loginData.number)
+                            .disabled(true)
+                            
+                        TextField("", text: $loginData.number)
+                            .placeholder(when: loginData.number.isEmpty) {
+                                Text("5323272005").foregroundColor(.black.opacity(0.6))
+                            }
                             .padding()
                             .background(.white.opacity(0.6))
                             .cornerRadius(15)
@@ -80,6 +85,8 @@ struct LoginView: View {
         .fullScreenCover(isPresented: $loginData.registerUser, content: {
           RegisterView()
         })
+        .onAppear{
+        }
     }
 }
 struct LoginView_Previews: PreviewProvider {

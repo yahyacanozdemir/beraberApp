@@ -82,7 +82,9 @@ struct OnboardingView: View {
                     let oldIndex = offset / screenSize.width
                     print("++",oldIndex)
                     if Int(oldIndex) == pages.count-1 {
+                        let defaults = UserDefaults.standard
                         self.skipOnboarding.toggle()
+                        defaults.set(true, forKey: "isPassedOnboarding")
                     } else {
                         let index = min(getIndex()+1, pages.count - 1)
                         offset = CGFloat(index) * screenSize.width

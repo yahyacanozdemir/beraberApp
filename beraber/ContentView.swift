@@ -10,12 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("current_status") var status = false
     @State var skipOnboarding = false
+    let defaults = UserDefaults.standard
 
     var body: some View {
-        
-        if !skipOnboarding {
+        var isPassed = defaults.bool(forKey: "isPassedOnboarding") ?? false
+//        isPassed = isPassed == nil ? false : true
+        if !skipOnboarding && !isPassed{
             GeometryReader { proxy in
                 let size = proxy.size
+                
                 OnboardingView(skipOnboarding: $skipOnboarding, screenSize: size)
                     .preferredColorScheme(.dark)
             }.animation(.easeInOut)

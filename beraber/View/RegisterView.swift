@@ -120,6 +120,8 @@ struct RegisterView: View {
         .sheet(isPresented: $registerData.picker, content: {
             ImagePicker(picker: $registerData.picker, img_data: $registerData.image_data)
         })
+        .onAppear{
+        }
     }
 }
 
