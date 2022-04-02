@@ -38,18 +38,23 @@ struct LoginView: View {
                     .padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20))
 
                     HStack{
-                        TextField("+90", text: $loginData.code)
+                        TextField("", text: $loginData.code)
+                            .placeholder(when: loginData.code.isEmpty) {
+                                Text("+90").foregroundColor(.black.opacity(0.4))
+                            }
+                            .foregroundColor(.black.opacity(0.7))
                             .padding()
                             .frame(width: 75)
                             .background(.white.opacity(0.6))
                             .cornerRadius(15)
                             .keyboardType(.phonePad)
-                            .disabled(true)
+//                            .disabled(true)
                             
                         TextField("", text: $loginData.number)
                             .placeholder(when: loginData.number.isEmpty) {
-                                Text("5323272005").foregroundColor(.black.opacity(0.6))
+                                Text("5323272005").foregroundColor(.black.opacity(0.4))
                             }
+                            .foregroundColor(.black.opacity(0.7))
                             .padding()
                             .background(.white.opacity(0.6))
                             .cornerRadius(15)

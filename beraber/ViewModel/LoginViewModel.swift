@@ -58,6 +58,7 @@ class LoginViewModel : ObservableObject {
         let alert = UIAlertController(title: "Doğrulama", message: "Kodu Giriniz", preferredStyle: .alert)
         alert.addTextField { (txt) in
             txt.placeholder = "123456"
+            txt.keyboardType = .numberPad
         }
         alert.addAction(UIAlertAction(title: "Vazgeç", style: .destructive, handler: { (_) in
             self.isLoading = false

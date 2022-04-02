@@ -29,7 +29,7 @@ class RegisterViewModel: ObservableObject {
                 "uid": uid,
                 "name": self.name,
                 "surname": self.surname,
-                "image_url": url,
+                "imageurl": url,
                 "location": self.location,
                 "created_date": Date()
 
