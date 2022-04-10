@@ -38,8 +38,8 @@ class LoginViewModel : ObservableObject {
                 return
             }
             // Hata Yok ise
-            self.alertView { (code) in
-                let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID!, verificationCode: code)
+            alertView(msg: "Doğrulama kodunu giriniz.") { Code in
+                let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID!, verificationCode: Code)
                 Auth.auth().signIn(with: credential) { res, err in
                     if err != nil  {
                         self.errorMsg = err!.localizedDescription
@@ -54,34 +54,11 @@ class LoginViewModel : ObservableObject {
         }
     }
     
-    func alertView(completion: @escaping (String) -> ()){
-        let alert = UIAlertController(title: "Doğrulama", message: "Kodu Giriniz", preferredStyle: .alert)
-        alert.addTextField { (txt) in
-            txt.placeholder = "123456"
-            txt.keyboardType = .numberPad
-        }
-        alert.addAction(UIAlertAction(title: "Vazgeç", style: .destructive, handler: { (_) in
-            self.isLoading = false
-        }))
-        alert.addAction(UIAlertAction(title: "Doğrula", style: .default, handler: { (_) in
-            let code = alert.textFields![0].text ?? ""
-            if code == "" {
-                //Repromoting
-                UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
-                return
-            }
-            self.isLoading = false
-            completion(code)
-        }))
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
-    }
-    
     func checkUser(){
         let ref = Firestore.firestore()
         let uid = Auth.auth().currentUser!.uid
         
-        ref.collection("Users").whereField("uid", arrayContains: uid).getDocuments {
-            (snap, err) in
+        ref.collection("Users").whereField("uid", isEqualTo: uid).getDocuments { (snap, err) in
             if err != nil {
                 // Documents Yok veya Kullanıcı Bulunamadı
                 self.registerUser.toggle()
@@ -89,7 +66,7 @@ class LoginViewModel : ObservableObject {
                 return
             }
             
-            if snap!.documents.isEmpty {
+            if snap!.documents.isEmpty {
                 self.registerUser.toggle()
                 self.isLoading = false
                 return

@@ -21,7 +21,8 @@ struct ContentView: View {
                 
                 OnboardingView(skipOnboarding: $skipOnboarding, screenSize: size)
                     .preferredColorScheme(.dark)
-            }.animation(.easeInOut)
+            }
+//            .animation(.easeInOut)
         } else {
             NavigationView {
                 VStack {
@@ -31,7 +32,8 @@ struct ContentView: View {
                 RegisterView()
                     .preferredColorScheme(.dark)
                     .navigationBarHidden(true)
-            }.animation(.easeInOut)
+            }
+//            .animation(.easeInOut)
         }
         
 

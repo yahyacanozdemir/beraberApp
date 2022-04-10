@@ -14,5 +14,6 @@ struct UserModel {
     var userLocation : String
 //    var userBiography : String
     var userProfilePic : String
+    var uid : String
 }
 

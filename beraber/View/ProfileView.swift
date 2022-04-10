@@ -15,12 +15,21 @@ struct ProfileView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Profil")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                
-                Spacer(minLength: 0)
+                VStack {
+                    Text("BERABER")
+                        .font(.caption)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.top, -30)
+                    HStack{
+                        Text("Profil")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                        
+                        Spacer(minLength: 0)
+                    }
+                }
             }
             .padding()
             .padding(.top, edges!.top)
@@ -40,6 +49,15 @@ struct ProfileView: View {
                         .clipShape(Circle())
                         .padding(.top, 20)
                         .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
+                    if profileData.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .padding(.top, 20)
+                    }
+
+                }
+                .onTapGesture {
+                    profileData.picker.toggle()
                 }
             }
             
@@ -51,8 +69,10 @@ struct ProfileView: View {
                         .foregroundColor(.white)
                     
                     
-                    Button(action:{}){
-                        Image(systemName: "square.and.pencil")
+                    Button(action:{
+                        profileData.updateUserDetails(field: "name")
+                    }){
+                        Image(systemName: "pencil.circle.fill")
                             .font(.system(size: 24))
                             .foregroundColor(.white)
                     }
@@ -65,7 +85,9 @@ struct ProfileView: View {
                     Text(profileData.userInfo.userLocation)
                         .foregroundColor(.white)
                     
-                    Button(action:{}){
+                    Button(action:{
+                        profileData.updateUserDetails(field: "location")
+                    }){
                         Image(systemName: "square.and.pencil")
                             .font(.system(size: 12))
                             .foregroundColor(.white)
@@ -90,6 +112,13 @@ struct ProfileView: View {
             
             Spacer(minLength: 0)
         }
+        .sheet(isPresented: $profileData.picker) {
+            ImagePicker(picker: $profileData.picker, img_data: $profileData.img_data)
+        }
+        .onChange(of: profileData.img_data) { newData in
+            profileData.updateImage()
+        }
+        .padding(18)
     }
 }
 

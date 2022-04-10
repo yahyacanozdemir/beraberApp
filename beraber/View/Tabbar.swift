@@ -11,7 +11,7 @@ struct Tabbar: View {
     @Binding var selectedTab : String
     var body: some View {
         HStack(spacing: 20){
-            TabButton(title: "Anasayfa", iconName: "circle", selectedTab: $selectedTab)
+            TabButton(title: "Anasayfa", iconName: "square.stack.3d.down.forward", selectedTab: $selectedTab)
             TabButton(title: "Mesajlar", iconName: "message", selectedTab: $selectedTab)
             TabButton(title: "Profil", iconName: "person", selectedTab: $selectedTab)
         }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @State var selectedTab = "Anasayfa"
+    @StateObject var postData = PostViewModel()
+
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             //Tabbar
@@ -16,13 +18,28 @@ struct HomeView: View {
             ZStack{
                 PostView()
                     .opacity(selectedTab == "Anasayfa" ? 1 : 0)
+                    .fullScreenCover(isPresented: $postData.newPost){
+                        NewPostView(updateId : $postData.updateId)
+                    }
                 MessagesView()
                     .opacity(selectedTab == "Mesajlar" ? 1 : 0)
                 ProfileView()
                     .opacity(selectedTab == "Profil" ? 1 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            Tabbar(selectedTab: $selectedTab)
+            
+            HStack {
+                Tabbar(selectedTab: $selectedTab)
+                if selectedTab == "Anasayfa" {
+                    Button {
+                        postData.newPost.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.white)
+                    }
+                }
+            }
         }
         .background(Color(hex: 0x465D8B))
         .ignoresSafeArea(.all, edges: .top)

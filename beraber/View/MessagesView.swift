@@ -12,17 +12,26 @@ struct MessagesView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Mesajlar")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                
-                Spacer(minLength: 0)
-                
-                Button(action:{}){
-                    Image(systemName: "square.and.pencil")
-                        .font(.title)
+                VStack {
+                    Text("BERABER")
+                        .font(.caption)
+                        .fontWeight(.heavy)
                         .foregroundColor(.white)
+                        .padding(.top, -30)
+                    HStack{
+                        Text("Mesajlar")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                        
+                        Spacer(minLength: 0)
+                        
+                        Button(action:{}){
+                            Image(systemName: "square.and.pencil")
+                                .font(.title)
+                                .foregroundColor(.white)
+                        }
+                    }
                 }
             }
             .padding()
@@ -32,5 +41,6 @@ struct MessagesView: View {
             
             Spacer(minLength: 0)
         }
+        .padding(18)
     }
 }
