@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MessagesView: View {
+    @Binding var tabSelection: String
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     var body: some View {
         VStack{
@@ -16,7 +17,7 @@ struct MessagesView: View {
                     Text("BERABER")
                         .font(.caption)
                         .fontWeight(.heavy)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(.top, -30)
                     HStack{
                         Text("Mesajlar")

@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct UserModel {
-    var userName : String
-    var userSurname : String
-//    var userAge : Int
-    var userLocation : String
-//    var userBiography : String
-    var userProfilePic : String
     var uid : String
+    var userProfilePic : String//    var userSurname : String
+    var userName : String
+    var userBiography : String
+    var userAge: Int
+    var userLocation : String
+    var userReasonForApp : String
+    var userCreationDate: Timestamp
 }
 

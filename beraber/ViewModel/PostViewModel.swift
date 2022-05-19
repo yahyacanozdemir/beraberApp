@@ -14,6 +14,9 @@ class PostViewModel : ObservableObject {
     @Published var newPost = false
     @Published var updateId = ""
     
+    @Published var selectedPostImageUrl = ""
+    @Published var selectedPostUserUid = ""
+    
     let ref = Firestore.firestore()
     
     init() {

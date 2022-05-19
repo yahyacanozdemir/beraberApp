@@ -6,10 +6,20 @@
 //
 
 import SwiftUI
+import ExytePopupView
+import SDWebImageSwiftUI
 
 struct PostView: View {
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
+    
+    @Binding var tabSelection: String
     @StateObject var postData = PostViewModel()
+    @State var openOtherUserProfile = false
+    @State var showPopup = false
+    @State var postUserUid = ""
+    @State var showPostImage: Bool = false
+    
+    var edges = UIApplication.shared.windows.first?.safeAreaInsets
+
     var body: some View {
         VStack{
             HStack{
@@ -17,7 +27,7 @@ struct PostView: View {
                     Text("BERABER")
                         .font(.caption)
                         .fontWeight(.heavy)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(.top, -30)
                     HStack{
                         Text("Anasayfa")
@@ -47,7 +57,7 @@ struct PostView: View {
                 ScrollView{
                     VStack(spacing: 15){
                         ForEach(postData.posts){ post in
-                            PostRow(post: post, postData: postData)
+                            PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
                         }
                     }
                     .padding()
@@ -55,15 +65,27 @@ struct PostView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $openOtherUserProfile, content: {
+            OtherProfileView(tabSelection: $tabSelection, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid)
+        })
         .fullScreenCover(isPresented: $postData.newPost){
             NewPostView(updateId : $postData.updateId)
+        }
+        .popup(isPresented: self.$showPostImage,type: .default, dragToDismiss: false, closeOnTapOutside: true, backgroundColor: .black.opacity(0.8)) {
+            VStack {
+                WebImage(url: URL(string: self.postData.selectedPostImageUrl))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: UIScreen.screenWidth-30, height: UIScreen.screenHeight/2)
+                    .cornerRadius(24)
+            }
         }
         .padding(18)
     }
 }
 
-struct PostView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostView()
-    }
-}
+//struct PostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostView()
+//    }
+//}

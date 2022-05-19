@@ -16,14 +16,14 @@ struct HomeView: View {
             //Tabbar
             
             ZStack{
-                PostView()
+                PostView(tabSelection: $selectedTab)
                     .opacity(selectedTab == "Anasayfa" ? 1 : 0)
                     .fullScreenCover(isPresented: $postData.newPost){
                         NewPostView(updateId : $postData.updateId)
                     }
-                MessagesView()
+                MessagesView(tabSelection: $selectedTab)
                     .opacity(selectedTab == "Mesajlar" ? 1 : 0)
-                ProfileView()
+                ProfileView(tabSelection: $selectedTab)
                     .opacity(selectedTab == "Profil" ? 1 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -8,6 +8,7 @@ target 'beraber' do
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
+pod 'ExytePopupView'
 
   # Pods for beraber
 

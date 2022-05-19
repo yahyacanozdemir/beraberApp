@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct LoginView: View {
     @State private var timeRemaining = 1
@@ -53,10 +54,7 @@ struct LoginView: View {
                     .padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20))
                     
                     HStack{
-                        TextField("", text: $loginData.code)
-                            .placeholder(when: loginData.code.isEmpty) {
-                                Text("+90").foregroundColor(.black.opacity(0.4))
-                            }
+                        TextField("+90", text: $loginData.code)
                             .foregroundColor(.black.opacity(0.7))
                             .padding()
                             .frame(width: 75)
@@ -64,18 +62,32 @@ struct LoginView: View {
                             .cornerRadius(15)
                             .keyboardType(.phonePad)
                             .focused($isFocused)
-                        //                            .disabled(true)
+                            .disabled(true)
                         
                         TextField("", text: $loginData.number)
                             .placeholder(when: loginData.number.isEmpty) {
                                 Text("5323272005").foregroundColor(.black.opacity(0.4))
                             }
+                            .lineLimit(1)
                             .foregroundColor(.black.opacity(0.7))
                             .padding()
                             .background(.white.opacity(0.6))
                             .cornerRadius(15)
                             .keyboardType(.numberPad)
                             .focused($isFocused)
+//                            .disabled(loginData.isLoading ? true : false)
+                            .onChange(of: loginData.number) {
+                                
+                                if $0 == "0" {
+                                    loginData.number.remove(at: loginData.number.startIndex)
+                                }
+                                
+                                if loginData.number.count == 11 {
+                                    loginData.number = String(loginData.number.prefix(10))
+                                }
+                                
+                                loginData.isVerificationCodeAreaShowing = false
+                            }
                             .toolbar {
                                 ToolbarItem(placement: .keyboard) {
                                     HStack {
@@ -88,7 +100,37 @@ struct LoginView: View {
                             }
                     }
                     .padding(EdgeInsets.init(top: 0, leading: 20, bottom: 10, trailing: 20))
+                    
+                    
+                    if loginData.isVerificationCodeAreaShowing {
+                        HStack {
+                            Text("Doğrulama Kodu")
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .foregroundColor(.white.opacity(0.6))
+                            Spacer(minLength: 0)
+                        }
+                        .padding(EdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        
+                        HStack{
+                            TextField("", text: $loginData.verificationCode)
+                                .placeholder(when: loginData.verificationCode.isEmpty) {
+                                    Text("123456").foregroundColor(.black.opacity(0.4))
+                                }
+                                .foregroundColor(.black.opacity(0.7))
+                                .padding()
+                                .background(.white.opacity(0.6))
+                                .cornerRadius(15)
+                                .keyboardType(.phonePad)
+                                .frame(width: 130)
+                                .focused($isFocused)
+//                                .disabled(loginData.isVerificationCodeAreaShowing ? true : false)
+                            Spacer(minLength: 0)
+                        }
+                        .padding(EdgeInsets.init(top: 0, leading: 20, bottom: 10, trailing: 20))
+                    }
                 }
+                
                 if loginData.isLoading {
                     ProgressView()
                         .frame(width: 50, height: 50, alignment: .center)
@@ -96,7 +138,7 @@ struct LoginView: View {
                 } else {
                     HStack {
                         Button(action: loginData.verifyUser) {
-                            Text("Giriş Yap")
+                            Text(loginData.isVerificationCodeAreaShowing ? "Giriş Yap" : "Devam et")
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                                 .padding(.vertical)
@@ -108,6 +150,7 @@ struct LoginView: View {
                         Spacer(minLength: 0)
                     }
                     .padding(.leading, 20)
+                    .padding(.bottom, loginData.isVerificationCodeAreaShowing ? 100 : 0)
                 }
                 Spacer(minLength: 0)
             }
@@ -122,6 +165,8 @@ struct LoginView: View {
         })
         .fullScreenCover(isPresented: $loginData.registerUser, content: {
             RegisterView()
+                .preferredColorScheme(.dark)
+                .navigationBarHidden(true)
         })
         .onReceive(timer) { time in
             if timeRemaining > 0 {

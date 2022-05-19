@@ -9,8 +9,9 @@ import SwiftUI
 import Firebase
 
 class LoginViewModel : ObservableObject {
-    @Published var code = ""
+    @Published var code = "+90"
     @Published var number = ""
+    
     
     //Error Handle
     @Published var errorMsg = ""
@@ -21,13 +22,16 @@ class LoginViewModel : ObservableObject {
     
     @Published var isLoading = false
     
+    @Published var isVerificationCodeAreaShowing = false
+    @Published var verificationCode = ""
+    
     func verifyUser(){
         
         self.isLoading = true
         //Test Aşaması için gerekli
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         
-        let phoneNumber = "+" + code + number
+        let phoneNumber = code + number
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { ID, err in
             
             // Hata var ise
@@ -38,8 +42,14 @@ class LoginViewModel : ObservableObject {
                 return
             }
             // Hata Yok ise
-            alertView(msg: "Doğrulama kodunu giriniz.") { Code in
-                let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID!, verificationCode: Code)
+            
+            self.isVerificationCodeAreaShowing = true
+            
+            if self.verificationCode == "" {
+                self.isLoading = false
+                return
+            } else {
+                let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID!, verificationCode: self.verificationCode)
                 Auth.auth().signIn(with: credential) { res, err in
                     if err != nil  {
                         self.errorMsg = err!.localizedDescription
@@ -51,6 +61,8 @@ class LoginViewModel : ObservableObject {
                     self.checkUser()
                 }
             }
+            
+
         }
     }
     
@@ -76,4 +88,16 @@ class LoginViewModel : ObservableObject {
             print("Kullanıcı Doğrulandı...")
         }
     }
+    
+//    func prepareNumberForTurkey() -> String {
+//        
+//        
+//        if self.number.first == "0" {
+//            number.remove(at: number.startIndex)
+//        }
+//        
+//        let phoneNumber = code + number
+//        
+//        return phoneNumber
+//    }
 }

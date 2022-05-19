@@ -6,7 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
 
+extension StringProtocol {
+    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { prefix(1).capitalized + dropFirst() }
+}
 
 extension Color {
     init(hex: Int, opacity: Double = 1.0) {
@@ -33,5 +38,13 @@ extension View {
             placeholder().opacity(shouldShow ? 1 : 0)
             self
         }
+    }
+}
+
+extension String {
+    func getCreationDateAsString(date: Date)-> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM y"
+        return formatter.string(from: date)
     }
 }

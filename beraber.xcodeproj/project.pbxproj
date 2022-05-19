@@ -10,6 +10,13 @@
 		86D80818DF8A279A70AD7C50 /* Pods_beraber_beraberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FFB0FD6662659CE3C0B414 /* Pods_beraber_beraberUITests.framework */; };
 		9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */; };
 		C43078A5C2B3574458F8A3F5 /* Pods_beraberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707F3B62CC433288741ABD8 /* Pods_beraberTests.framework */; };
+		EE04C653282422FB003F4F8B /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE04C652282422FB003F4F8B /* OtherProfileView.swift */; };
+		EE0B34D1282D863800E1CFFE /* OtherProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B34D0282D863700E1CFFE /* OtherProfileViewModel.swift */; };
+		EE1CB41F28030F2900F18C34 /* TurkeyCities.json in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB41E28030F2900F18C34 /* TurkeyCities.json */; };
+		EE1CB42128030F7600F18C34 /* CitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB42028030F7600F18C34 /* CitiesModel.swift */; };
+		EE1CB423280310A100F18C34 /* ReadCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB422280310A100F18C34 /* ReadCityData.swift */; };
+		EE1CB4262803983C00F18C34 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = EE1CB4252803983C00F18C34 /* PartialSheet */; };
+		EE1CB4272803A9F600F18C34 /* TurkeyCities.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1CB41E28030F2900F18C34 /* TurkeyCities.json */; };
 		EE2CC1E827F5DC640086545F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */; };
 		EE476D1127F8EF95007C7B54 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE476D1027F8EF95007C7B54 /* SDWebImageSwiftUI */; };
 		EE476D1327F8F00A007C7B54 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1227F8F00A007C7B54 /* PostView.swift */; };
@@ -33,7 +40,6 @@
 		EEB697582801C03200E97EB8 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB697572801C03200E97EB8 /* NewPostView.swift */; };
 		EEB6975A2801C14E00E97EB8 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */; };
 		EEB6975E2802779200E97EB8 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6975D2802779200E97EB8 /* KeyboardResponder.swift */; };
-		EEB697602802783800E97EB8 /* KeyboardDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6975F2802783800E97EB8 /* KeyboardDoneButton.swift */; };
 		EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0A68E27DE294200F6F35B /* LoginView.swift */; };
 		EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0A69027DE2B0500F6F35B /* LoginViewModel.swift */; };
 		EEE320402800F28F00324028 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3203F2800F28F00324028 /* PostViewModel.swift */; };
@@ -75,6 +81,11 @@
 		E5D7F77E6AFF69EE38D26C57 /* Pods-beraber-beraberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beraber-beraberUITests.release.xcconfig"; path = "Target Support Files/Pods-beraber-beraberUITests/Pods-beraber-beraberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E6F5E9DFC8C8E5342EEE730B /* Pods_beraber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beraber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE013C1227EA873300144E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE04C652282422FB003F4F8B /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
+		EE0B34D0282D863700E1CFFE /* OtherProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewModel.swift; sourceTree = "<group>"; };
+		EE1CB41E28030F2900F18C34 /* TurkeyCities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TurkeyCities.json; sourceTree = "<group>"; };
+		EE1CB42028030F7600F18C34 /* CitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesModel.swift; sourceTree = "<group>"; };
+		EE1CB422280310A100F18C34 /* ReadCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCityData.swift; sourceTree = "<group>"; };
 		EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE476D1227F8F00A007C7B54 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		EE476D1427F8F057007C7B54 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -100,7 +111,6 @@
 		EEB697572801C03200E97EB8 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
 		EEB6975D2802779200E97EB8 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
-		EEB6975F2802783800E97EB8 /* KeyboardDoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDoneButton.swift; sourceTree = "<group>"; };
 		EED0A68E27DE294200F6F35B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EED0A69027DE2B0500F6F35B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EEE3203F2800F28F00324028 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE1CB4262803983C00F18C34 /* PartialSheet in Frameworks */,
 				EE476D1127F8EF95007C7B54 /* SDWebImageSwiftUI in Frameworks */,
 				9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */,
 			);
@@ -168,6 +179,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EE1CB41D28030EFB00F18C34 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				EE1CB41E28030F2900F18C34 /* TurkeyCities.json */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		EE5BC0C127EE3D4A00962F6F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +221,7 @@
 		EE8434C927DE1AC400878629 /* beraber */ = {
 			isa = PBXGroup;
 			children = (
+				EE1CB41D28030EFB00F18C34 /* DB */,
 				EEF7750C27EBCBDF00CB80B2 /* Utils */,
 				EE013C1227EA873300144E46 /* Info.plist */,
 				EED0A68D27DE291E00F6F35B /* ViewModel */,
@@ -256,6 +276,7 @@
 				EE476D1827F8F2AB007C7B54 /* MessagesView.swift */,
 				EEE320452800F5EE00324028 /* PostRow.swift */,
 				EEB697572801C03200E97EB8 /* NewPostView.swift */,
+				EE04C652282422FB003F4F8B /* OtherProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +290,7 @@
 				EE80770027FCF69800E727F0 /* AlertView.swift */,
 				EEE320412800F2BB00324028 /* PostModel.swift */,
 				EEE320432800F45A00324028 /* FetchUser.swift */,
+				EE1CB42028030F7600F18C34 /* CitiesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +303,8 @@
 				EE476D1A27F8F999007C7B54 /* ProfileViewModel.swift */,
 				EEE3203F2800F28F00324028 /* PostViewModel.swift */,
 				EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */,
+				EE1CB422280310A100F18C34 /* ReadCityData.swift */,
+				EE0B34D0282D863700E1CFFE /* OtherProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,7 +314,6 @@
 			children = (
 				EEF7750F27EBCC9B00CB80B2 /* Color+Extension.swift */,
 				EEB6975D2802779200E97EB8 /* KeyboardResponder.swift */,
-				EEB6975F2802783800E97EB8 /* KeyboardDoneButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -315,6 +338,7 @@
 			name = beraber;
 			packageProductDependencies = (
 				EE476D1027F8EF95007C7B54 /* SDWebImageSwiftUI */,
+				EE1CB4252803983C00F18C34 /* PartialSheet */,
 			);
 			productName = beraber;
 			productReference = EE8434C727DE1AC400878629 /* beraber.app */;
@@ -393,6 +417,7 @@
 			mainGroup = EE8434BE27DE1AC400878629;
 			packageReferences = (
 				EE476D0F27F8EF95007C7B54 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				EE1CB4242803983C00F18C34 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = EE8434C827DE1AC400878629 /* Products */;
 			projectDirPath = "";
@@ -410,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE1CB4272803A9F600F18C34 /* TurkeyCities.json in Resources */,
 				EE8434D227DE1AC500878629 /* Preview Assets.xcassets in Resources */,
 				EE2CC1E827F5DC640086545F /* LaunchScreen.storyboard in Resources */,
 				EE8434CF27DE1AC500878629 /* Assets.xcassets in Resources */,
@@ -543,6 +569,7 @@
 			files = (
 				EE476D1527F8F057007C7B54 /* ProfileView.swift in Sources */,
 				EE476D1327F8F00A007C7B54 /* PostView.swift in Sources */,
+				EE1CB42128030F7600F18C34 /* CitiesModel.swift in Sources */,
 				EE476D1927F8F2AB007C7B54 /* MessagesView.swift in Sources */,
 				EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */,
 				EE476D1727F8F06B007C7B54 /* Tabbar.swift in Sources */,
@@ -557,17 +584,20 @@
 				EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */,
 				EE476D1B27F8F999007C7B54 /* ProfileViewModel.swift in Sources */,
 				EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */,
+				EE04C653282422FB003F4F8B /* OtherProfileView.swift in Sources */,
 				EEE320402800F28F00324028 /* PostViewModel.swift in Sources */,
 				EEB6975A2801C14E00E97EB8 /* NewPostViewModel.swift in Sources */,
 				EEE320442800F45A00324028 /* FetchUser.swift in Sources */,
+				EE0B34D1282D863800E1CFFE /* OtherProfileViewModel.swift in Sources */,
 				EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */,
 				EE476D1D27F8F9C3007C7B54 /* UserModel.swift in Sources */,
 				EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */,
+				EE1CB41F28030F2900F18C34 /* TurkeyCities.json in Sources */,
 				EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */,
 				EEB6975E2802779200E97EB8 /* KeyboardResponder.swift in Sources */,
+				EE1CB423280310A100F18C34 /* ReadCityData.swift in Sources */,
 				EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */,
 				EEE320462800F5EE00324028 /* PostRow.swift in Sources */,
-				EEB697602802783800E97EB8 /* KeyboardDoneButton.swift in Sources */,
 				EEE320422800F2BB00324028 /* PostModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -905,6 +935,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EE1CB4242803983C00F18C34 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		EE476D0F27F8EF95007C7B54 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -916,6 +954,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EE1CB4252803983C00F18C34 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE1CB4242803983C00F18C34 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
 		EE476D1027F8EF95007C7B54 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE476D0F27F8EF95007C7B54 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

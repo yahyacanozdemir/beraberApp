@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct ContentView: View {
     @AppStorage("current_status") var status = false
@@ -13,7 +14,7 @@ struct ContentView: View {
     let defaults = UserDefaults.standard
 
     var body: some View {
-        var isPassed = defaults.bool(forKey: "isPassedOnboarding") ?? false
+        let isPassed = defaults.bool(forKey: "isPassedOnboarding")
 //        isPassed = isPassed == nil ? false : true
         if !skipOnboarding && !isPassed{
             GeometryReader { proxy in
@@ -29,9 +30,6 @@ struct ContentView: View {
                     if status{HomeView()}
                     else{LoginView()}
                 }
-                RegisterView()
-                    .preferredColorScheme(.dark)
-                    .navigationBarHidden(true)
             }
 //            .animation(.easeInOut)
         }

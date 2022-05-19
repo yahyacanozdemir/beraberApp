@@ -13,7 +13,6 @@ struct NewPostView: View {
     @Environment(\.presentationMode) var present
     @FocusState private var isTextFieldFocused: Bool
     @Binding var updateId: String
-
     
     var body: some View {
         VStack{
@@ -64,6 +63,8 @@ struct NewPostView: View {
                         .background(.blue)
                         .clipShape(Capsule())
                 }
+                .opacity(newPostData.postText == "" ? 0.5 : 1)
+                .disabled(newPostData.postText == "" ? true : false)
                 
                 
             }
@@ -72,6 +73,10 @@ struct NewPostView: View {
             .disabled(newPostData.isPosting ? true : false)
             
             TextEditor(text: $newPostData.postText)
+                .placeholder(when: newPostData.postText == "", alignment: .topLeading, placeholder: {
+                    Text("Bir şeyler yaz...")
+                        .padding(9)
+                })
                 .cornerRadius(15)
                 .padding()
                 .focused($isTextFieldFocused)

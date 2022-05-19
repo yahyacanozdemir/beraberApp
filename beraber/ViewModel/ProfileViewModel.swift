@@ -10,13 +10,18 @@ import Firebase
 
 
 class ProfileViewModel : ObservableObject{
-    @Published var userInfo = UserModel(userName: "", userSurname: "", userLocation: "" , userProfilePic: "", uid: "")
+    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "", userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
     @AppStorage("current_status") var status = false
     
     @Published var picker = false
     @Published var img_data = Data(count: 0)
     
     @Published var isLoading = false
+    
+//    @StateObject var postData = PostViewModel()
+
+    
+//    let formatter = DateFormatter()
 
     
     let ref = Firestore.firestore()
@@ -27,6 +32,11 @@ class ProfileViewModel : ObservableObject{
             self.userInfo = user
         }
     }
+    
+//    func getCreationDateAsString(date: Date)-> String{
+//        formatter.dateFormat = "d MMM y"
+//        return formatter.string(from: date)
+//    }
     
     func updateImage(){
         self.isLoading = true
@@ -62,6 +72,15 @@ class ProfileViewModel : ObservableObject{
             }
         }
     }
+    
+//    func userHasAnyPost() -> Bool{
+//        for post in postData.posts {
+//            if post.user.uid == uid {
+//            return true
+//            }
+//        }
+//        return false
+//    }
     
     func logOut(){
         try! Auth.auth().signOut()
