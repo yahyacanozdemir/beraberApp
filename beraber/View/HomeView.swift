@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct HomeView: View {
     @State var selectedTab = "Anasayfa"
@@ -41,6 +42,8 @@ struct HomeView: View {
                 }
             }
         }
+        .attachPartialSheetToRoot()
+        .padding(.horizontal, -20)
         .background(Color(hex: 0x465D8B))
         .ignoresSafeArea(.all, edges: .top)
     }

@@ -80,6 +80,7 @@ class LoginViewModel : ObservableObject {
             
             if snap!.documents.isEmpty {
                 self.registerUser.toggle()
+                UserDefaults.standard.set(self.number, forKey: "phoneNumber")
                 self.isLoading = false
                 return
             }

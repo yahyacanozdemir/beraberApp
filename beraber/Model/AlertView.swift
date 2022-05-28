@@ -17,11 +17,11 @@ func alertView(msg: String, completion: @escaping (String) -> ()){
         let code = alert.textFields![0].text ?? ""
         if code == "" {
             //Repromoting
-            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+            UIWindow.key?.rootViewController?.present(alert, animated: true)
             return
         }
         completion(code)
     }))
     alert.addAction(UIAlertAction(title: "Vazgeç", style: .destructive))
-    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+    UIWindow.key?.rootViewController?.present(alert, animated: true)
 }

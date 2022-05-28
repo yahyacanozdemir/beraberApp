@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
-import SDWebImage
-import SDWebImageSwiftUI
+import ImageViewerRemote
 import ExytePopupView
+import SDWebImageSwiftUI
 
 struct OtherProfileView: View {
-    @State var showUserImage: Bool = false
-    @State var showPostImage: Bool = false
     @Binding var tabSelection: String
     @StateObject var profileData: OtherProfileViewModel
     @StateObject var postData = PostViewModel()
     @Binding var openOtherUserProfile: Bool
-    @Environment(\.presentationMode) var present
     @Binding var postUserUid: String
     
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
-    
+    var edges = UIWindow.key?.safeAreaInsets
     @State private var userHasAnyPost: Bool = false
     
     var body: some View {
@@ -32,7 +28,8 @@ struct OtherProfileView: View {
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .onTapGesture {
-                                    present.wrappedValue.dismiss()
+                                    openOtherUserProfile = false
+//                                    present.wrappedValue.dismiss()
                                 }
                         Spacer(minLength: 0)
                         if profileData.isLoading {
@@ -44,9 +41,14 @@ struct OtherProfileView: View {
                                 .foregroundColor(.white)
                         }
                         Spacer(minLength: 0)
-                        Image(systemName: "paperplane.fill")
-                            .font(.title3)
-                            .foregroundColor(.white)
+                        Button {
+                            print("Connection Infos Clicked")
+                            self.profileData.openUserConnectionInfos.toggle()
+                        } label: {
+                            Image(systemName: "rectangle.3.group.bubble.left.fill")
+                                .font(.title3)
+                                .foregroundColor(.white)
+                        }
                     }
                 }
             .padding()
@@ -78,7 +80,7 @@ struct OtherProfileView: View {
                                 }
                             }
                             .onTapGesture {
-                                self.showUserImage.toggle()
+                                self.profileData.showUserImage.toggle()
                             }
                         }
                         Spacer(minLength: 0)
@@ -87,6 +89,20 @@ struct OtherProfileView: View {
                     HStack {
                         Spacer(minLength: 0)
                         VStack (alignment: .center){
+                            
+                            if (profileData.userInfo.userAge != 0) && profileData.userInfo.showAgeInfos {
+                                HStack {
+                                    Text("Yaş: ")
+                                        .font(.custom("", size: 16))
+                                        .foregroundColor(.white.opacity(0.85))
+                                    Text("\(profileData.userInfo.userAge)")
+                                        .font(.custom("", size: 16))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white.opacity(0.85))
+                                }
+                                .padding(.bottom, 0.2)
+                            }
+                            
                             if profileData.userInfo.userCreationDate.dateValue() != Date(timeIntervalSince1970: 0) {
                                 HStack {
                                     Text("Kayıt tarihi: ")
@@ -100,12 +116,12 @@ struct OtherProfileView: View {
                                 .padding(.bottom, 0.2)
                             }
                             
-                            if profileData.userInfo.userReasonForApp != "" {
+                            if profileData.userInfo.userLocation != "" && profileData.userInfo.showLocationInfos{
                                 HStack {
-                                    Text("Beraberlikteki rolü: ")
+                                    Text("Lokasyon: ")
                                         .font(.custom("", size: 16))
                                         .foregroundColor(.white.opacity(0.85))
-                                    Text(profileData.userInfo.userReasonForApp)
+                                    Text(profileData.userInfo.userLocation)
                                         .font(.custom("", size: 16))
                                         .fontWeight(.bold)
                                         .foregroundColor(.white.opacity(0.85))
@@ -113,12 +129,12 @@ struct OtherProfileView: View {
                                 .padding(.bottom, 0.2)
                             }
                             
-                            if profileData.userInfo.userLocation != "" {
+                            if profileData.userInfo.userReasonForApp != "" {
                                 HStack {
-                                    Text("Lokasyon: ")
+                                    Text("Beraberlikteki rolü: ")
                                         .font(.custom("", size: 16))
                                         .foregroundColor(.white.opacity(0.85))
-                                    Text(profileData.userInfo.userLocation)
+                                    Text(profileData.userInfo.userReasonForApp)
                                         .font(.custom("", size: 16))
                                         .fontWeight(.bold)
                                         .foregroundColor(.white.opacity(0.85))
@@ -174,12 +190,12 @@ struct OtherProfileView: View {
                                     ForEach(postData.posts.filter({ post in
                                         post.user.uid == postUserUid
                                     })){ post in
-                                        PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
+                                        PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $profileData.showPostImage, post: post)
                                             .onAppear {
                                                 self.userHasAnyPost = true
                                             }
                                     }
-                                    if self.userHasAnyPost {
+                                    if self.userHasAnyPost && !profileData.isLoading {
                                         Text("Bu kullanıcıya ait tüm paylaşımları gördün.")
                                             .font(.custom("", size: 14))
                                             .foregroundColor(.white.opacity(0.5))
@@ -194,15 +210,11 @@ struct OtherProfileView: View {
                         Spacer(minLength: 0)
                 }
             }
-            
-
-            
             Spacer(minLength: 0)
         }
         .background(Color(hex: 0x465D8B))
         .ignoresSafeArea(.all, edges: .top)
         .onAppear(perform: {
-            print("+++++PostUserUid", self.postUserUid)
             if self.postUserUid != "" {
                 profileData.fetchOtherUser(uid: postUserUid)
             }
@@ -210,24 +222,27 @@ struct OtherProfileView: View {
         .onDisappear {
             openOtherUserProfile = false
         }
-        .popup(isPresented: self.$showUserImage,type: .default, dragToDismiss: false, closeOnTapOutside: true, backgroundColor: .black.opacity(0.8)) {
-            VStack {
-                WebImage(url: URL(string: profileData.userInfo.userProfilePic)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.screenWidth-60, height: UIScreen.screenHeight/2)
-                    .cornerRadius(24)
+        .highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
+                                .onEnded { value in
+            if !self.profileData.showUserImage || !self.profileData.showPostImage {
+                if abs(value.translation.height) < abs(value.translation.width) {
+                    if abs(value.translation.width) > 50.0 {
+                        if value.translation.width > 0 {
+                            self.swipeLeftToRight()
+                        }
+                    }
+                }
             }
         }
-        .popup(isPresented: self.$showPostImage,type: .default, dragToDismiss: false, closeOnTapOutside: true, backgroundColor: .black.opacity(0.8)) {
-            VStack {
-                WebImage(url: URL(string: postData.selectedPostImageUrl))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: UIScreen.screenWidth-30, height: UIScreen.screenHeight/2)
-                    .cornerRadius(24)
-            }
+        )
+        .overlay(ImageViewerRemote(imageURL: self.$profileData.userInfo.userProfilePic, viewerShown: self.$profileData.showUserImage))
+        .overlay(ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$profileData.showPostImage))
+        .popup(isPresented: $profileData.openUserConnectionInfos, type: .toast, position: .bottom ,closeOnTapOutside: true) {
+            ConnectionInfoModalView(profileData: self.profileData)
         }
-        
+    }
+    
+    func swipeLeftToRight() {
+        openOtherUserProfile = false
     }
 }

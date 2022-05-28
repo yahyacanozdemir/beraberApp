@@ -63,14 +63,43 @@ struct NewPostView: View {
                         .background(.blue)
                         .clipShape(Capsule())
                 }
-                .opacity(newPostData.postText == "" ? 0.5 : 1)
-                .disabled(newPostData.postText == "" ? true : false)
+                .opacity(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1)
+                .disabled(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? true : false)
                 
                 
             }
             .padding()
             .opacity(newPostData.isPosting ? 0.5 : 1)
             .disabled(newPostData.isPosting ? true : false)
+            
+            TextField("", text: $newPostData.postTitle)
+                .placeholder(when: newPostData.postTitle.isEmpty) {
+                    Text("Gönderi başlığı").foregroundColor(.white.opacity(0.4))
+                }
+                .padding()
+                .background(.white.opacity(0.6))
+                .cornerRadius(15)
+                .focused($isTextFieldFocused)
+                .keyboardType(.alphabet)
+                .disableAutocorrection(true)
+                .lineLimit(1)
+                .onChange(of: newPostData.postTitle) {
+                    if $0 == "0" {}
+                    if newPostData.postTitle.count == 40 {
+                        newPostData.postTitle = String(newPostData.postTitle.prefix(39))
+                    }
+                }.padding(.horizontal, 12)
+                .padding(.bottom, 10)
+//                .toolbar {
+//                    ToolbarItem(placement: .keyboard) {
+//                        HStack {
+//                            Button("Kapat") {
+//                                self.isTextFieldFocused = false
+//                            }
+//                            Spacer(minLength: 0)
+//                        }
+//                    }
+//                }
             
             TextEditor(text: $newPostData.postText)
                 .placeholder(when: newPostData.postText == "", alignment: .topLeading, placeholder: {
@@ -82,6 +111,7 @@ struct NewPostView: View {
                 .focused($isTextFieldFocused)
                 .background(Color.blue)
                 .opacity(newPostData.isPosting ? 0.2 : 0.5)
+                .foregroundColor(.white)
                 .disabled(newPostData.isPosting ? true : false)
             
             if(newPostData.img_data.count != 0) {

@@ -28,6 +28,10 @@
 		EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BD27EE38F300962F6F /* Onboarding.swift */; };
 		EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */; };
 		EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */; };
+		EE7696C128399DB100098B29 /* CheckboxField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C028399DB100098B29 /* CheckboxField.swift */; };
+		EE7696C3283A62BF00098B29 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C2283A62BF00098B29 /* SettingsView.swift */; };
+		EE7696C5283A62E900098B29 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C4283A62E900098B29 /* SettingsViewModel.swift */; };
+		EE7696C7283AE4ED00098B29 /* SubsettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C6283AE4ED00098B29 /* SubsettingsView.swift */; };
 		EE80770127FCF69800E727F0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80770027FCF69800E727F0 /* AlertView.swift */; };
 		EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CA27DE1AC400878629 /* beraberApp.swift */; };
 		EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434CC27DE1AC400878629 /* ContentView.swift */; };
@@ -37,6 +41,10 @@
 		EE8434E627DE1AC600878629 /* beraberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434E527DE1AC600878629 /* beraberUITests.swift */; };
 		EE8434E827DE1AC600878629 /* beraberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8434E727DE1AC600878629 /* beraberUITestsLaunchTests.swift */; };
 		EE8434F827DE1E3500878629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE8434F727DE1E3500878629 /* GoogleService-Info.plist */; };
+		EEB1B96B2840145300C28C8C /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1B96A2840145300C28C8C /* PullToRefreshView.swift */; };
+		EEB1B96F2840287500C28C8C /* BeraberNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1B96E2840287500C28C8C /* BeraberNavigationView.swift */; };
+		EEB1B97228416EA700C28C8C /* ImageViewerRemote in Frameworks */ = {isa = PBXBuildFile; productRef = EEB1B97128416EA700C28C8C /* ImageViewerRemote */; };
+		EEB1B9742841783000C28C8C /* ConnectionInfoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1B9732841783000C28C8C /* ConnectionInfoModalView.swift */; };
 		EEB697582801C03200E97EB8 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB697572801C03200E97EB8 /* NewPostView.swift */; };
 		EEB6975A2801C14E00E97EB8 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */; };
 		EEB6975E2802779200E97EB8 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6975D2802779200E97EB8 /* KeyboardResponder.swift */; };
@@ -96,6 +104,10 @@
 		EE5BC0BD27EE38F300962F6F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
+		EE7696C028399DB100098B29 /* CheckboxField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxField.swift; sourceTree = "<group>"; };
+		EE7696C2283A62BF00098B29 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EE7696C4283A62E900098B29 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		EE7696C6283AE4ED00098B29 /* SubsettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsettingsView.swift; sourceTree = "<group>"; };
 		EE80770027FCF69800E727F0 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		EE8434C727DE1AC400878629 /* beraber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beraber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8434CA27DE1AC400878629 /* beraberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberApp.swift; sourceTree = "<group>"; };
@@ -108,6 +120,9 @@
 		EE8434E527DE1AC600878629 /* beraberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberUITests.swift; sourceTree = "<group>"; };
 		EE8434E727DE1AC600878629 /* beraberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beraberUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EE8434F727DE1E3500878629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EEB1B96A2840145300C28C8C /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		EEB1B96E2840287500C28C8C /* BeraberNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeraberNavigationView.swift; sourceTree = "<group>"; };
+		EEB1B9732841783000C28C8C /* ConnectionInfoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfoModalView.swift; sourceTree = "<group>"; };
 		EEB697572801C03200E97EB8 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
 		EEB6975D2802779200E97EB8 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
@@ -133,6 +148,7 @@
 			files = (
 				EE1CB4262803983C00F18C34 /* PartialSheet in Frameworks */,
 				EE476D1127F8EF95007C7B54 /* SDWebImageSwiftUI in Frameworks */,
+				EEB1B97228416EA700C28C8C /* ImageViewerRemote in Frameworks */,
 				9448277134063E9930AAA42C /* Pods_beraber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +210,17 @@
 				EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		EE7696BF28399D9500098B29 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EE7696C028399DB100098B29 /* CheckboxField.swift */,
+				EEB1B96A2840145300C28C8C /* PullToRefreshView.swift */,
+				EEB1B96E2840287500C28C8C /* BeraberNavigationView.swift */,
+				EEB1B9732841783000C28C8C /* ConnectionInfoModalView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EE8434BE27DE1AC400878629 = {
@@ -264,6 +291,7 @@
 		EED0A68B27DE291400F6F35B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE7696BF28399D9500098B29 /* Components */,
 				EE5BC0C127EE3D4A00962F6F /* Onboarding */,
 				EED0A68E27DE294200F6F35B /* LoginView.swift */,
 				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
@@ -277,6 +305,8 @@
 				EEE320452800F5EE00324028 /* PostRow.swift */,
 				EEB697572801C03200E97EB8 /* NewPostView.swift */,
 				EE04C652282422FB003F4F8B /* OtherProfileView.swift */,
+				EE7696C2283A62BF00098B29 /* SettingsView.swift */,
+				EE7696C6283AE4ED00098B29 /* SubsettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,6 +335,7 @@
 				EEB697592801C14E00E97EB8 /* NewPostViewModel.swift */,
 				EE1CB422280310A100F18C34 /* ReadCityData.swift */,
 				EE0B34D0282D863700E1CFFE /* OtherProfileViewModel.swift */,
+				EE7696C4283A62E900098B29 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -339,6 +370,7 @@
 			packageProductDependencies = (
 				EE476D1027F8EF95007C7B54 /* SDWebImageSwiftUI */,
 				EE1CB4252803983C00F18C34 /* PartialSheet */,
+				EEB1B97128416EA700C28C8C /* ImageViewerRemote */,
 			);
 			productName = beraber;
 			productReference = EE8434C727DE1AC400878629 /* beraber.app */;
@@ -418,6 +450,7 @@
 			packageReferences = (
 				EE476D0F27F8EF95007C7B54 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				EE1CB4242803983C00F18C34 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				EEB1B97028416EA700C28C8C /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */,
 			);
 			productRefGroup = EE8434C827DE1AC400878629 /* Products */;
 			projectDirPath = "";
@@ -572,10 +605,15 @@
 				EE1CB42128030F7600F18C34 /* CitiesModel.swift in Sources */,
 				EE476D1927F8F2AB007C7B54 /* MessagesView.swift in Sources */,
 				EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */,
+				EE7696C3283A62BF00098B29 /* SettingsView.swift in Sources */,
 				EE476D1727F8F06B007C7B54 /* Tabbar.swift in Sources */,
 				EE80770127FCF69800E727F0 /* AlertView.swift in Sources */,
+				EEB1B96B2840145300C28C8C /* PullToRefreshView.swift in Sources */,
+				EEB1B9742841783000C28C8C /* ConnectionInfoModalView.swift in Sources */,
 				EEF7751427EBD97D00CB80B2 /* UploadImage.swift in Sources */,
+				EEB1B96F2840287500C28C8C /* BeraberNavigationView.swift in Sources */,
 				EEF7751027EBCC9B00CB80B2 /* Color+Extension.swift in Sources */,
+				EE7696C7283AE4ED00098B29 /* SubsettingsView.swift in Sources */,
 				EEF7751627EBDD0D00CB80B2 /* HomeView.swift in Sources */,
 				EEB697582801C03200E97EB8 /* NewPostView.swift in Sources */,
 				EEF7750B27EBCAD300CB80B2 /* RegisterViewModel.swift in Sources */,
@@ -586,6 +624,7 @@
 				EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */,
 				EE04C653282422FB003F4F8B /* OtherProfileView.swift in Sources */,
 				EEE320402800F28F00324028 /* PostViewModel.swift in Sources */,
+				EE7696C5283A62E900098B29 /* SettingsViewModel.swift in Sources */,
 				EEB6975A2801C14E00E97EB8 /* NewPostViewModel.swift in Sources */,
 				EEE320442800F45A00324028 /* FetchUser.swift in Sources */,
 				EE0B34D1282D863800E1CFFE /* OtherProfileViewModel.swift in Sources */,
@@ -594,6 +633,7 @@
 				EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */,
 				EE1CB41F28030F2900F18C34 /* TurkeyCities.json in Sources */,
 				EE8434CD27DE1AC400878629 /* ContentView.swift in Sources */,
+				EE7696C128399DB100098B29 /* CheckboxField.swift in Sources */,
 				EEB6975E2802779200E97EB8 /* KeyboardResponder.swift in Sources */,
 				EE1CB423280310A100F18C34 /* ReadCityData.swift in Sources */,
 				EE8434CB27DE1AC400878629 /* beraberApp.swift in Sources */,
@@ -951,6 +991,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		EEB1B97028416EA700C28C8C /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jake-Short/swiftui-image-viewer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -963,6 +1011,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE476D0F27F8EF95007C7B54 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		EEB1B97128416EA700C28C8C /* ImageViewerRemote */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB1B97028416EA700C28C8C /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */;
+			productName = ImageViewerRemote;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

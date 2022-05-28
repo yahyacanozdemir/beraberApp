@@ -34,17 +34,19 @@ class PostViewModel : ObservableObject {
                 self.noPosts = true
                 return
             }
+            self.posts = []
             docs.documentChanges.forEach { doc in
                 //Doc ekli mi kontrolü
                 if doc.type == .added {
                     let title = doc.document.data()["title"] as! String
+                    let description = doc.document.data()["description"] as! String
                     let time = doc.document.data()["time"] as! Timestamp
                     let pic = doc.document.data()["url"] as! String
                     let userRef = doc.document.data()["ref"] as! DocumentReference
                     
                     //user bilgilerini çekme
                     fetchUser(uid: userRef.documentID) { user in
-                        self.posts.append(PostModel(id: doc.document.documentID, title: title, pic: pic, time: time.dateValue(), user: user))
+                        self.posts.append(PostModel(id: doc.document.documentID, title: title,description: description, pic: pic, time: time.dateValue(), user: user))
                         
                         //Oluşturma tarihine göre sıralama
                         self.posts.sort{ (p1,p2) -> Bool in
@@ -61,25 +63,25 @@ class PostViewModel : ObservableObject {
                     }
                 }
                 
-                if doc.type == .modified {
-                    
-                    print("Güncelleme Başarılı")
-                    //Doc'u güncelleme
-                    
-                    let id = doc.document.documentID
-                    let title = doc.document.data()["title"] as! String
-                    
-                    let index = self.posts.firstIndex { post in
-                        return post.id == id
-                    } ?? -1
-                    
-                    //safe check
-                    if index != -1{
-                        self.posts[index].title = title
-                        self.updateId = ""
-                    }
-                    
-                }
+//                if doc.type == .modified {
+//
+//                    print("Güncelleme Başarılı")
+//                    //Doc'u güncelleme
+//
+//                    let id = doc.document.documentID
+//                    let title = doc.document.data()["title"] as! String
+//
+//                    let index = self.posts.firstIndex { post in
+//                        return post.id == id
+//                    } ?? -1
+//
+//                    //safe check
+//                    if index != -1{
+//                        self.posts[index].title = title
+//                        self.updateId = ""
+//                    }
+//
+//                }
             }
         }
     }
@@ -87,12 +89,22 @@ class PostViewModel : ObservableObject {
     func deletePost(id: String){
         
         ref.collection("Posts").document(id).delete() { error in
-            
             if error != nil {
                 print(error?.localizedDescription)
                 return
             }
+        }
+        
+        ref.collection("Posts").addSnapshotListener { snap, err in
+            guard let docs = snap else {
+                self.noPosts = true
+                return
+            }
             
+            if docs.documentChanges.isEmpty {
+                self.noPosts = true
+                return
+            }
         }
         
     }

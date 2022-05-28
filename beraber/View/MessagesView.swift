@@ -9,37 +9,10 @@ import SwiftUI
 
 struct MessagesView: View {
     @Binding var tabSelection: String
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
+    var edges = UIWindow.key?.safeAreaInsets
     var body: some View {
         VStack{
-            HStack{
-                VStack {
-                    Text("BERABER")
-                        .font(.caption)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                        .padding(.top, -30)
-                    HStack{
-                        Text("Mesajlar")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                        
-                        Spacer(minLength: 0)
-                        
-                        Button(action:{}){
-                            Image(systemName: "square.and.pencil")
-                                .font(.title)
-                                .foregroundColor(.white)
-                        }
-                    }
-                }
-            }
-            .padding()
-            .padding(.top, edges!.top)
-            .background(Color(hex: 0x465D8B))
-            .shadow(color: .white.opacity(0.06), radius: 5, x: 0, y: 5)
-            
+            BeraberNavigationView(title: "Mesajlar", withTrailingIcon: true, trailingIconName: "square.and.pencil") { _ in }
             Spacer(minLength: 0)
         }
         .padding(18)

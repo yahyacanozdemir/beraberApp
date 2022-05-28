@@ -6,45 +6,20 @@
 //
 
 import SwiftUI
-import ExytePopupView
-import SDWebImageSwiftUI
+import ImageViewerRemote
 
 struct PostView: View {
     
     @Binding var tabSelection: String
     @StateObject var postData = PostViewModel()
     @State var openOtherUserProfile = false
-    @State var showPopup = false
     @State var postUserUid = ""
     @State var showPostImage: Bool = false
     
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
 
     var body: some View {
         VStack{
-            HStack{
-                VStack {
-                    Text("BERABER")
-                        .font(.caption)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                        .padding(.top, -30)
-                    HStack{
-                        Text("Anasayfa")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white)
-                        
-                        Spacer(minLength: 0)
-
-                    }
-                }
-            }
-            .padding()
-            .padding(.top, edges!.top)
-            .background(Color(hex: 0x465D8B))
-            .shadow(color: .white.opacity(0.06), radius: 5, x: 0, y: 5)
-            
+            BeraberNavigationView(title: "Anasayfa", withTrailingIcon: false) { _ in }
             if postData.posts.isEmpty {
                 Spacer(minLength: 0)
                 if postData.noPosts{
@@ -55,14 +30,18 @@ struct PostView: View {
                 Spacer(minLength: 0)
             } else {
                 ScrollView{
+                    PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        postData.getAllPosts()
+                    }
                     VStack(spacing: 15){
                         ForEach(postData.posts){ post in
                             PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
+                                .transition(.move(edge: .bottom))
                         }
                     }
                     .padding()
                     .padding(.bottom, 55)
-                }
+                }.coordinateSpace(name: "pullToRefresh")
             }
         }
         .fullScreenCover(isPresented: $openOtherUserProfile, content: {
@@ -71,21 +50,10 @@ struct PostView: View {
         .fullScreenCover(isPresented: $postData.newPost){
             NewPostView(updateId : $postData.updateId)
         }
-        .popup(isPresented: self.$showPostImage,type: .default, dragToDismiss: false, closeOnTapOutside: true, backgroundColor: .black.opacity(0.8)) {
-            VStack {
-                WebImage(url: URL(string: self.postData.selectedPostImageUrl))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: UIScreen.screenWidth-30, height: UIScreen.screenHeight/2)
-                    .cornerRadius(24)
-            }
+        .fullScreenCover(isPresented: self.$showPostImage){
+            ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$showPostImage)
+                .background(Color(red: 0.12, green: 0.12, blue: 0.12, opacity: (1.0)))
         }
         .padding(18)
     }
 }
-
-//struct PostView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostView()
-//    }
-//}

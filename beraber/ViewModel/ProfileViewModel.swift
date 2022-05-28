@@ -10,11 +10,17 @@ import Firebase
 
 
 class ProfileViewModel : ObservableObject{
-    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "", userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
+    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false,showAgeInfos: false,showLocationInfos: false, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
     @AppStorage("current_status") var status = false
     
     @Published var picker = false
     @Published var img_data = Data(count: 0)
+    
+    @Published var openOtherUserProfile = false
+    @Published var showPostImage: Bool = false
+    @Published var postUserUid = ""
+    
+    @Published var openSettings = false
     
     @Published var isLoading = false
     

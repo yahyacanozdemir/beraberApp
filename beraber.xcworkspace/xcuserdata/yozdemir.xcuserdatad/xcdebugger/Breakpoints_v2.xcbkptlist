@@ -23,15 +23,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BD149509-97B4-4846-AE21-019332A5FA79"
+            uuid = "90C3B68F-941B-4E54-8E33-15A0054E3189"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "beraber/View/RegisterView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -39,17 +39,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "42B7E987-BC08-44BD-8098-1B7180363309"
+            uuid = "654CAE77-9C33-4995-9289-EB8FE8515427"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "beraber/View/PostView.swift"
+            filePath = "beraber/ViewModel/OtherProfileViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "phoneNumberParser(number:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -48,3 +48,17 @@ extension String {
         return formatter.string(from: date)
     }
 }
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        UIApplication.shared.connectedScenes
+            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+            .first { $0.isKeyWindow }
+    }
+}

@@ -16,6 +16,12 @@ struct UserModel {
     var userAge: Int
     var userLocation : String
     var userReasonForApp : String
+    var phoneNumber: String
+    var emailAddress: String
+    var possibleDaysOfWeek: [String]
+    var showConnectionInfos: Bool
+    var showAgeInfos: Bool
+    var showLocationInfos: Bool
     var userCreationDate: Timestamp
 }
 

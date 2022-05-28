@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 class NewPostViewModel : ObservableObject {
+    @Published var postTitle = ""
     @Published var postText = ""
     @Published var picker = false
     @Published var img_data = Data(count: 0)
@@ -21,27 +22,28 @@ class NewPostViewModel : ObservableObject {
         
         isPosting = true
         
-        if updateId != "" {
-            ref.collection("Posts").document(updateId).updateData([
-            
-                "title": postText
-            ]) { error in
-                
-                self.isPosting = false
-                if error != nil {
-                    self.isPosting = false
-                    print(error?.localizedDescription)
-                    return
-                }
-                present.wrappedValue.dismiss()
-            }
-            return
-        }
+//        if updateId != "" {
+//            ref.collection("Posts").document(updateId).updateData([
+//
+//                "title": postText
+//            ]) { error in
+//
+//                self.isPosting = false
+//                if error != nil {
+//                    self.isPosting = false
+//                    print(error?.localizedDescription)
+//                    return
+//                }
+//                present.wrappedValue.dismiss()
+//            }
+//            return
+//        }
         
         if img_data.count == 0 {
             ref.collection("Posts").document().setData([
             
-                "title" : self.postText,
+                "title" : self.postTitle,
+                "description" : self.postText,
                 "url" : "",
                 "ref" : ref.collection("Users").document(self.uid),
                 "time" : Date()
@@ -59,7 +61,8 @@ class NewPostViewModel : ObservableObject {
                         , path:"post_pics") { URL in
                 ref.collection("Posts").document().setData([
                 
-                    "title" : self.postText,
+                    "title" : self.postTitle,
+                    "description" : self.postText,
                     "url" : URL,
                     "ref" : ref.collection("Users").document(self.uid),
                     "time" : Date()

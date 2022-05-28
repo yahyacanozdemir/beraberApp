@@ -20,13 +20,45 @@ struct PostRow: View {
     @Binding var showPostImage: Bool
     
     
+    @State private var showDeletePostAlert: Bool = false
+    
+    
     var post: PostModel
     let currentUserUid = Auth.auth().currentUser?.uid
     
     var body: some View {
         VStack(spacing: 15){
+            HStack{
+                Spacer(minLength: 0)
+                if post.user.uid == currentUserUid{
+                    Button(action: {
+                        self.showDeletePostAlert.toggle()
+                    }, label: {
+                        Image(systemName: "trash.circle")
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                    }).alert("Paylaşımını silmek istediğine emin misin?", isPresented: $showDeletePostAlert) {
+                        Button("Sil") {postData.deletePost(id: post.id)}
+                        Button("Vazgeç") {self.showDeletePostAlert = false}
+                    }
+                } else {
+                    Button(action: {
+                        self.showDeletePostAlert.toggle()
+                    }, label: {
+                        Image(systemName: "paperplane.fill")
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                    }).alert("Gönderiye ait mesaj odasına gidiyorsun", isPresented: $showDeletePostAlert) {
+                        Button("Beni oraya götür") {print("ok")}
+                        Button("Vazgeç") {self.showDeletePostAlert = false}
+                    }
+                }
+            }
             HStack(spacing: 10){
-                
                 if openOtherUserProfile || tabSelection == "Profil" {
                     WebImage(url: URL(string: post.user.userProfilePic)!)
                         .resizable()
@@ -46,7 +78,7 @@ struct PostRow: View {
                     }
                 } else {
                     Button {
-                        if Auth.auth().currentUser?.uid == post.user.uid {
+                        if currentUserUid == post.user.uid {
                             self.tabSelection = "Profil"
                         } else {
                             openOtherUserProfile = true
@@ -75,23 +107,21 @@ struct PostRow: View {
                 
                 Spacer(minLength: 0)
                 
-                if post.user.uid == currentUserUid{
-                    Menu(content: {
-                        Button {
-                            postData.deletePost(id: post.id)
-                        } label: {
-                            Text("Paylaşımı Sil")
-                        }
-                    }, label: {
-                        Image(systemName: "equal.circle")
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.white)
-                    })
-                }
-                
-            }.padding(.bottom, 40)
+            }
+            .padding(15)
+            .padding(.top, -50)
+            
+            HStack{
+                Text(post.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                Spacer(minLength: 0)
+            }
+            .padding(.leading, 5)
+            
+                Divider()
+                    .background(.white)
+                    .padding(.vertical, 5)
             
             if post.pic != "" {
                 Button {
@@ -107,12 +137,13 @@ struct PostRow: View {
             }
             
             HStack{
-                Text(post.title)
-                    .fontWeight(.bold)
+                Text(post.description)
+                    .fontWeight(.thin)
                     .foregroundColor(.white)
                 Spacer(minLength: 0)
             }
             .padding(.top,5)
+            .padding(.leading, 5)
             
             HStack{
                 Spacer(minLength: 0)
