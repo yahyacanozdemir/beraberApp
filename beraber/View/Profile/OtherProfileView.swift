@@ -42,7 +42,6 @@ struct OtherProfileView: View {
                         }
                         Spacer(minLength: 0)
                         Button {
-                            print("Connection Infos Clicked")
                             self.profileData.openUserConnectionInfos.toggle()
                         } label: {
                             Image(systemName: "rectangle.3.group.bubble.left.fill")
@@ -91,54 +90,22 @@ struct OtherProfileView: View {
                         VStack (alignment: .center){
                             
                             if (profileData.userInfo.userAge != 0) && profileData.userInfo.showAgeInfos {
-                                HStack {
-                                    Text("Yaş: ")
-                                        .font(.custom("", size: 16))
-                                        .foregroundColor(.white.opacity(0.85))
-                                    Text("\(profileData.userInfo.userAge)")
-                                        .font(.custom("", size: 16))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white.opacity(0.85))
-                                }
-                                .padding(.bottom, 0.2)
+                                OtherProfileInfoCell(title: "Yaş", info: "\(profileData.userInfo.userAge)")
+                                    .padding(.bottom, 0.2)
                             }
                             
                             if profileData.userInfo.userCreationDate.dateValue() != Date(timeIntervalSince1970: 0) {
-                                HStack {
-                                    Text("Kayıt tarihi: ")
-                                        .font(.custom("", size: 16))
-                                        .foregroundColor(.white.opacity(0.85))
-                                    Text("".getCreationDateAsString(date: profileData.userInfo.userCreationDate.dateValue()))
-                                        .font(.custom("", size: 16))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white.opacity(0.85))
-                                }
-                                .padding(.bottom, 0.2)
+                                OtherProfileInfoCell(title: "Kayıt tarihi", info: "".getCreationDateAsString(date: profileData.userInfo.userCreationDate.dateValue()))
+                                    .padding(.bottom, 0.2)
                             }
                             
                             if profileData.userInfo.userLocation != "" && profileData.userInfo.showLocationInfos{
-                                HStack {
-                                    Text("Lokasyon: ")
-                                        .font(.custom("", size: 16))
-                                        .foregroundColor(.white.opacity(0.85))
-                                    Text(profileData.userInfo.userLocation)
-                                        .font(.custom("", size: 16))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white.opacity(0.85))
-                                }
-                                .padding(.bottom, 0.2)
+                                OtherProfileInfoCell(title: "Lokasyon", info: profileData.userInfo.userLocation)
+                                    .padding(.bottom, 0.2)
                             }
                             
                             if profileData.userInfo.userReasonForApp != "" {
-                                HStack {
-                                    Text("Beraberlikteki rolü: ")
-                                        .font(.custom("", size: 16))
-                                        .foregroundColor(.white.opacity(0.85))
-                                    Text(profileData.userInfo.userReasonForApp)
-                                        .font(.custom("", size: 16))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white.opacity(0.85))
-                                }
+                                OtherProfileInfoCell(title: "Beraberlikteki rolü", info: profileData.userInfo.userReasonForApp)
                             }
                         }
                         Spacer(minLength: 0)
@@ -244,5 +211,21 @@ struct OtherProfileView: View {
     
     func swipeLeftToRight() {
         openOtherUserProfile = false
+    }
+}
+
+struct OtherProfileInfoCell: View {
+    var title: String
+    var info: String
+    var body: some View {
+        HStack {
+            Text("\(title): ")
+                .font(.custom("", size: 16))
+                .foregroundColor(.white.opacity(0.85))
+            Text("\(info)")
+                .font(.custom("", size: 16))
+                .fontWeight(.bold)
+                .foregroundColor(.white.opacity(0.85))
+        }
     }
 }

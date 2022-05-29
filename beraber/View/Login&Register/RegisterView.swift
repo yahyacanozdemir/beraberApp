@@ -94,7 +94,7 @@ struct RegisterView: View {
                             ToolbarItem(placement: .keyboard) {
                                 HStack {
                                     Button("Kapat") {
-                                        self.isFocused = false
+                                        UIApplication.shared.endEditing()
                                     }
                                     Spacer(minLength: 0)
                                 }
@@ -287,7 +287,7 @@ struct RegisterView: View {
                             ToolbarItem(placement: .keyboard) {
                                 HStack {
                                     Button("Kapat") {
-                                        isFocused = false
+                                        UIApplication.shared.endEditing()
                                     }
                                     Spacer(minLength: 0)
                                 }

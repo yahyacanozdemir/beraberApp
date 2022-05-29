@@ -28,6 +28,7 @@
 		EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BD27EE38F300962F6F /* Onboarding.swift */; };
 		EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */; };
 		EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */; };
+		EE6E5BCC2842F9C900BCBC39 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E5BCB2842F9C900BCBC39 /* MailView.swift */; };
 		EE7696C128399DB100098B29 /* CheckboxField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C028399DB100098B29 /* CheckboxField.swift */; };
 		EE7696C3283A62BF00098B29 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C2283A62BF00098B29 /* SettingsView.swift */; };
 		EE7696C5283A62E900098B29 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7696C4283A62E900098B29 /* SettingsViewModel.swift */; };
@@ -104,6 +105,7 @@
 		EE5BC0BD27EE38F300962F6F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		EE5BC0BF27EE3A6D00962F6F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EE5BC0C227EE3D6400962F6F /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
+		EE6E5BCB2842F9C900BCBC39 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		EE7696C028399DB100098B29 /* CheckboxField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxField.swift; sourceTree = "<group>"; };
 		EE7696C2283A62BF00098B29 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EE7696C4283A62E900098B29 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -212,13 +214,69 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		EE5F224028438F2E009469C6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EE7696C2283A62BF00098B29 /* SettingsView.swift */,
+				EE7696C6283AE4ED00098B29 /* SubsettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		EE5F224128438F45009469C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EE476D1427F8F057007C7B54 /* ProfileView.swift */,
+				EE04C652282422FB003F4F8B /* OtherProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EE5F224228438F66009469C6 /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				EED0A68E27DE294200F6F35B /* LoginView.swift */,
+				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
+			);
+			path = "Login&Register";
+			sourceTree = "<group>";
+		};
+		EE5F224328438FC0009469C6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EE8434CC27DE1AC400878629 /* ContentView.swift */,
+				EE476D1627F8F06B007C7B54 /* Tabbar.swift */,
+				EEF7751527EBDD0D00CB80B2 /* HomeView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EE5F224428438FD0009469C6 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				EEB697572801C03200E97EB8 /* NewPostView.swift */,
+				EEE320452800F5EE00324028 /* PostRow.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		EE5F224528438FE0009469C6 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		EE7696BF28399D9500098B29 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */,
 				EE7696C028399DB100098B29 /* CheckboxField.swift */,
 				EEB1B96A2840145300C28C8C /* PullToRefreshView.swift */,
 				EEB1B96E2840287500C28C8C /* BeraberNavigationView.swift */,
 				EEB1B9732841783000C28C8C /* ConnectionInfoModalView.swift */,
+				EE6E5BCB2842F9C900BCBC39 /* MailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -256,7 +314,6 @@
 				EED0A68B27DE291400F6F35B /* View */,
 				EE8434F727DE1E3500878629 /* GoogleService-Info.plist */,
 				EE8434CA27DE1AC400878629 /* beraberApp.swift */,
-				EE8434CC27DE1AC400878629 /* ContentView.swift */,
 				EE8434CE27DE1AC500878629 /* Assets.xcassets */,
 				EE8434D027DE1AC500878629 /* Preview Content */,
 			);
@@ -291,22 +348,16 @@
 		EED0A68B27DE291400F6F35B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE5F224528438FE0009469C6 /* Launch */,
+				EE5F224428438FD0009469C6 /* Post */,
+				EE5F224328438FC0009469C6 /* Main */,
+				EE5F224228438F66009469C6 /* Login&Register */,
+				EE5F224128438F45009469C6 /* Profile */,
+				EE5F224028438F2E009469C6 /* Settings */,
 				EE7696BF28399D9500098B29 /* Components */,
 				EE5BC0C127EE3D4A00962F6F /* Onboarding */,
-				EED0A68E27DE294200F6F35B /* LoginView.swift */,
-				EEF7750827EBC8D400CB80B2 /* RegisterView.swift */,
-				EEF7751127EBCF7B00CB80B2 /* ImagePicker.swift */,
-				EEF7751527EBDD0D00CB80B2 /* HomeView.swift */,
-				EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */,
 				EE476D1227F8F00A007C7B54 /* PostView.swift */,
-				EE476D1427F8F057007C7B54 /* ProfileView.swift */,
-				EE476D1627F8F06B007C7B54 /* Tabbar.swift */,
 				EE476D1827F8F2AB007C7B54 /* MessagesView.swift */,
-				EEE320452800F5EE00324028 /* PostRow.swift */,
-				EEB697572801C03200E97EB8 /* NewPostView.swift */,
-				EE04C652282422FB003F4F8B /* OtherProfileView.swift */,
-				EE7696C2283A62BF00098B29 /* SettingsView.swift */,
-				EE7696C6283AE4ED00098B29 /* SubsettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -629,6 +680,7 @@
 				EEE320442800F45A00324028 /* FetchUser.swift in Sources */,
 				EE0B34D1282D863800E1CFFE /* OtherProfileViewModel.swift in Sources */,
 				EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */,
+				EE6E5BCC2842F9C900BCBC39 /* MailView.swift in Sources */,
 				EE476D1D27F8F9C3007C7B54 /* UserModel.swift in Sources */,
 				EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */,
 				EE1CB41F28030F2900F18C34 /* TurkeyCities.json in Sources */,

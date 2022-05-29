@@ -109,14 +109,28 @@ struct ProfileView: View {
                 
                 VStack(alignment: .leading) {
                     if profileData.userInfo.userBiography != "" {
-                        Text("Hakkında")
-                            .frame(alignment: .center)
-                            .font(.title)
-                            .foregroundColor(.white.opacity(0.85))
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
-                            .padding(.top, 10)
-                            .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
+                        HStack {
+                            Text("Hakkında")
+                                .frame(alignment: .center)
+                                .font(.title)
+                                .foregroundColor(.white.opacity(0.85))
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .padding(.top, 10)
+                                .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
+                            Spacer(minLength: 0)
+                            Button {
+                                profileData.openSettings = true
+                                profileData.openBiographyEdit = true
+                            } label: {
+                                Image(systemName: "pencil.circle")
+                                    .font(.title2)
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 20)
+                                    .padding(.top, 10)
+                            }
+                        }
+
                         
                         Text(profileData.userInfo.userBiography)
                             .font(.custom("", size: 16))
@@ -127,7 +141,6 @@ struct ProfileView: View {
                             .padding(.top, 10)
                         
                     }
-                    
                         Divider()
                             .background(.white)
                             .padding(.top, 20)
@@ -222,7 +235,7 @@ struct ProfileView: View {
             ImagePicker(picker: $profileData.picker, img_data: $profileData.img_data)
         }
         .fullScreenCover(isPresented: $profileData.openSettings,content: {
-            SettingsView(openSettings: self.$profileData.openSettings, isUpdatedProfile: self.$isUpdatedProfile)
+            SettingsView(openBiography: $profileData.openBiographyEdit, openSettings: self.$profileData.openSettings, isUpdatedProfile: self.$isUpdatedProfile)
         })
         .overlay(ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$profileData.showPostImage))
         .onChange(of: profileData.img_data) { newData in

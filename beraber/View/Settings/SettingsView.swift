@@ -12,6 +12,7 @@ import PartialSheet
 struct SettingsView: View {
     @StateObject var settingsData = SettingsViewModel()
     
+    @Binding var openBiography: Bool
     @Binding var openSettings: Bool
     @Binding var isUpdatedProfile: Bool
     @State var openSubSettingsView = false
@@ -30,42 +31,42 @@ struct SettingsView: View {
                         //Hesap
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .account
+                            settingsData.subSetting = .account
                         } label: {
                             SettingsCell(iconName: "person.circle", iconTitle: SettingsViewModel.SubSettings.account.rawValue)
                         }
                         //Hakkında
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .biography
+                            settingsData.subSetting = .biography
                         } label: {
                             SettingsCell(iconName: "text.book.closed", iconTitle: SettingsViewModel.SubSettings.biography.rawValue)
                         }
                         //Gizlilik
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .privacy
+                            settingsData.subSetting = .privacy
                         } label: {
                             SettingsCell(iconName: "lock.shield", iconTitle: SettingsViewModel.SubSettings.privacy.rawValue)
                         }
                         //Güvenlik
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .security
+                            settingsData.subSetting = .security
                         } label: {
                             SettingsCell(iconName: "checkmark.shield", iconTitle: SettingsViewModel.SubSettings.security.rawValue)
                         }
                         //Yardım
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .help
+                            settingsData.subSetting = .help
                         } label: {
                             SettingsCell(iconName: "questionmark.circle", iconTitle: SettingsViewModel.SubSettings.help.rawValue)
                         }
                         //Uygulama Bilgileri
                         Button {
                             openSubSettingsView.toggle()
-                            settingsData.subString = .app
+                            settingsData.subSetting = .app
                         } label: {
                             SettingsCell(iconName: "info.circle", iconTitle: SettingsViewModel.SubSettings.app.rawValue)
                         }
@@ -90,8 +91,13 @@ struct SettingsView: View {
                 }
             }
         }
-        .overlay(openSubSettingsView ? SubsettingsView(showSubSettings: $openSubSettingsView, showSetings: self.$openSettings, subSetting: $settingsData.subString, isUpdatedProfile: self.$isUpdatedProfile).onDisappear(perform: {
-            settingsData.subString = .none
+        .onAppear(perform: {
+            settingsData.subSetting = openBiography ? .biography : .none
+            openSubSettingsView = openBiography
+            openBiography = false
+        })
+        .overlay(openSubSettingsView ? SubsettingsView(showSubSettings: $openSubSettingsView, showSetings: self.$openSettings, subSetting: $settingsData.subSetting, isUpdatedProfile: self.$isUpdatedProfile).onDisappear(perform: {
+            settingsData.subSetting = .none
         }) : nil)
         .highPriorityGesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
                     .onEnded { value in
@@ -108,8 +114,8 @@ struct SettingsView: View {
         .attachPartialSheetToRoot()
     }
     func swipeLeftToRight() {
-        openSettings = settingsData.subString == .none ?  false : true
-        openSubSettingsView = settingsData.subString == .none ?  true : false
+        openSettings = settingsData.subSetting == .none ?  false : true
+        openSubSettingsView = settingsData.subSetting == .none ?  true : false
     }
 }
 

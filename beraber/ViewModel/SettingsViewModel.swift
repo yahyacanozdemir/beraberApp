@@ -23,7 +23,19 @@ class SettingsViewModel: ObservableObject {
         case app = "Uygulama Bilgileri"
         case none = ""
     }
-    @Published var subString: SubSettings = .none
+    @Published var subSetting: SubSettings = .none
+    
+    enum HelpMailTitleContents: String, CaseIterable, Identifiable{
+        var id: String { return self.rawValue }
+        case ReportUser = "Kullanıcı Bildirimi"
+        case ReportBug = "Hata Bildirimi"
+        case AdviceForApp = "Özellik Önerisi"
+        case other = "Diğer"
+    }
+    @Published var helpMailTitleContent: HelpMailTitleContents = .ReportUser
+    @Published var helpMailDescContent: String = ""
+    @Published var isReadyForSendEmail: Bool = true
+
     
     @Published var picker = false
     @Published var img_data = Data(count: 0)
@@ -36,9 +48,11 @@ class SettingsViewModel: ObservableObject {
     
     @Published var useCase = RegisterViewModel.AppUseCases.Hepsi
     @Published var succesPopupTitle = ""
+    @Published var succesPopupColor = Color(hex: 0x608786)
 
     @Published var isEmailValidated = true
     
+
     let ref = Firestore.firestore()
     let uid = Auth.auth().currentUser!.uid
     
@@ -64,14 +78,6 @@ class SettingsViewModel: ObservableObject {
                 fetchUser(uid: self.uid) { user in
                     self.userInfo = user
                 }
-            }
-        }
-    }
-    
-    func updateUserDetails(field: String){
-        alertView(msg: "Aşağıdaki kutucuğa yeni bilgilerini girebilirsin.") { txt in
-            if txt != "" {
-                self.updateUserDetailsFirebase(id: field == "name" ? "name" : "location" , value: txt)
             }
         }
     }
@@ -122,14 +128,17 @@ class SettingsViewModel: ObservableObject {
         return emailPredicate.evaluate(with: string)
     }
     
-//    func userHasAnyPost() -> Bool{
-//        for post in postData.posts {
-//            if post.user.uid == uid {
-//            return true
-//            }
-//        }
-//        return false
-//    }
+    func prepareMailContent() -> [String : String]{
+        let mailDict = ["Subject" : "\"Beraber\" " + self.helpMailTitleContent.rawValue,
+                        
+                        "Content" : "\(self.helpMailDescContent)"
+                        + "\n\n\(self.userInfo.userName)"
+                        + "\n(0)\(self.userInfo.phoneNumber)",
+                        
+                        "Recipients" : "yahyacanozdemir@gmail.com",
+                        "PreferredSendingEmail" : self.userInfo.emailAddress]
+        return mailDict
+    }
     
     func logOut(){
         try! Auth.auth().signOut()

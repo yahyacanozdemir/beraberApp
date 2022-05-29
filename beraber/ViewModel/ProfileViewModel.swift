@@ -21,6 +21,7 @@ class ProfileViewModel : ObservableObject{
     @Published var postUserUid = ""
     
     @Published var openSettings = false
+    @Published var openBiographyEdit = false
     
     @Published var isLoading = false
     
