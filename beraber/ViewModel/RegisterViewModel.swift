@@ -10,7 +10,7 @@ import Firebase
 
 class RegisterViewModel: ObservableObject {
     
-    var shared = RegisterViewModel()
+//    var shared = RegisterViewModel()
     
     @Published var name = ""
     @Published var biography = ""

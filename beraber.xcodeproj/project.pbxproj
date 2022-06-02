@@ -18,11 +18,20 @@
 		EE1CB4262803983C00F18C34 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = EE1CB4252803983C00F18C34 /* PartialSheet */; };
 		EE1CB4272803A9F600F18C34 /* TurkeyCities.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1CB41E28030F2900F18C34 /* TurkeyCities.json */; };
 		EE2CC1E827F5DC640086545F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */; };
+		EE4657EA28440376002E3F6A /* ChatroomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657E928440376002E3F6A /* ChatroomsViewModel.swift */; };
+		EE4657EC2844043F002E3F6A /* ChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657EB2844043F002E3F6A /* ChatroomModel.swift */; };
+		EE4657EE28440FD1002E3F6A /* JoinChatroomModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657ED28440FD1002E3F6A /* JoinChatroomModal.swift */; };
+		EE4657F028441179002E3F6A /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657EF28441179002E3F6A /* MessagesViewModel.swift */; };
+		EE4657F2284411A4002E3F6A /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657F1284411A4002E3F6A /* MessageModel.swift */; };
+		EE4657F428441207002E3F6A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657F328441207002E3F6A /* MessageView.swift */; };
+		EE4657F6284425E4002E3F6A /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657F5284425E4002E3F6A /* ChatRoomView.swift */; };
+		EE4657F828442960002E3F6A /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657F728442960002E3F6A /* MessageRow.swift */; };
+		EE4657FA28442F77002E3F6A /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4657F928442F77002E3F6A /* ChatBubble.swift */; };
 		EE476D1127F8EF95007C7B54 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE476D1027F8EF95007C7B54 /* SDWebImageSwiftUI */; };
 		EE476D1327F8F00A007C7B54 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1227F8F00A007C7B54 /* PostView.swift */; };
 		EE476D1527F8F057007C7B54 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1427F8F057007C7B54 /* ProfileView.swift */; };
 		EE476D1727F8F06B007C7B54 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1627F8F06B007C7B54 /* Tabbar.swift */; };
-		EE476D1927F8F2AB007C7B54 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1827F8F2AB007C7B54 /* MessagesView.swift */; };
+		EE476D1927F8F2AB007C7B54 /* MessagesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1827F8F2AB007C7B54 /* MessagesPageView.swift */; };
 		EE476D1B27F8F999007C7B54 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1A27F8F999007C7B54 /* ProfileViewModel.swift */; };
 		EE476D1D27F8F9C3007C7B54 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE476D1C27F8F9C3007C7B54 /* UserModel.swift */; };
 		EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5BC0BD27EE38F300962F6F /* Onboarding.swift */; };
@@ -96,10 +105,19 @@
 		EE1CB42028030F7600F18C34 /* CitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesModel.swift; sourceTree = "<group>"; };
 		EE1CB422280310A100F18C34 /* ReadCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCityData.swift; sourceTree = "<group>"; };
 		EE2CC1E727F5DC640086545F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE4657E928440376002E3F6A /* ChatroomsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsViewModel.swift; sourceTree = "<group>"; };
+		EE4657EB2844043F002E3F6A /* ChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomModel.swift; sourceTree = "<group>"; };
+		EE4657ED28440FD1002E3F6A /* JoinChatroomModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatroomModal.swift; sourceTree = "<group>"; };
+		EE4657EF28441179002E3F6A /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
+		EE4657F1284411A4002E3F6A /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		EE4657F328441207002E3F6A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		EE4657F5284425E4002E3F6A /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
+		EE4657F728442960002E3F6A /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		EE4657F928442F77002E3F6A /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		EE476D1227F8F00A007C7B54 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		EE476D1427F8F057007C7B54 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		EE476D1627F8F06B007C7B54 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
-		EE476D1827F8F2AB007C7B54 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		EE476D1827F8F2AB007C7B54 /* MessagesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPageView.swift; sourceTree = "<group>"; };
 		EE476D1A27F8F999007C7B54 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		EE476D1C27F8F9C3007C7B54 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EE5BC0BD27EE38F300962F6F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -348,6 +366,7 @@
 		EED0A68B27DE291400F6F35B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EEF521D42845212F00613947 /* trash */,
 				EE5F224528438FE0009469C6 /* Launch */,
 				EE5F224428438FD0009469C6 /* Post */,
 				EE5F224328438FC0009469C6 /* Main */,
@@ -357,7 +376,11 @@
 				EE7696BF28399D9500098B29 /* Components */,
 				EE5BC0C127EE3D4A00962F6F /* Onboarding */,
 				EE476D1227F8F00A007C7B54 /* PostView.swift */,
-				EE476D1827F8F2AB007C7B54 /* MessagesView.swift */,
+				EE476D1827F8F2AB007C7B54 /* MessagesPageView.swift */,
+				EE4657ED28440FD1002E3F6A /* JoinChatroomModal.swift */,
+				EE4657F5284425E4002E3F6A /* ChatRoomView.swift */,
+				EE4657F728442960002E3F6A /* MessageRow.swift */,
+				EE4657F928442F77002E3F6A /* ChatBubble.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +395,8 @@
 				EEE320412800F2BB00324028 /* PostModel.swift */,
 				EEE320432800F45A00324028 /* FetchUser.swift */,
 				EE1CB42028030F7600F18C34 /* CitiesModel.swift */,
+				EE4657EB2844043F002E3F6A /* ChatroomModel.swift */,
+				EE4657F1284411A4002E3F6A /* MessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,8 +412,18 @@
 				EE1CB422280310A100F18C34 /* ReadCityData.swift */,
 				EE0B34D0282D863700E1CFFE /* OtherProfileViewModel.swift */,
 				EE7696C4283A62E900098B29 /* SettingsViewModel.swift */,
+				EE4657E928440376002E3F6A /* ChatroomsViewModel.swift */,
+				EE4657EF28441179002E3F6A /* MessagesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EEF521D42845212F00613947 /* trash */ = {
+			isa = PBXGroup;
+			children = (
+				EE4657F328441207002E3F6A /* MessageView.swift */,
+			);
+			path = trash;
 			sourceTree = "<group>";
 		};
 		EEF7750C27EBCBDF00CB80B2 /* Utils */ = {
@@ -654,13 +689,16 @@
 				EE476D1527F8F057007C7B54 /* ProfileView.swift in Sources */,
 				EE476D1327F8F00A007C7B54 /* PostView.swift in Sources */,
 				EE1CB42128030F7600F18C34 /* CitiesModel.swift in Sources */,
-				EE476D1927F8F2AB007C7B54 /* MessagesView.swift in Sources */,
+				EE476D1927F8F2AB007C7B54 /* MessagesPageView.swift in Sources */,
+				EE4657EC2844043F002E3F6A /* ChatroomModel.swift in Sources */,
 				EED0A69127DE2B0500F6F35B /* LoginViewModel.swift in Sources */,
 				EE7696C3283A62BF00098B29 /* SettingsView.swift in Sources */,
 				EE476D1727F8F06B007C7B54 /* Tabbar.swift in Sources */,
+				EE4657F828442960002E3F6A /* MessageRow.swift in Sources */,
 				EE80770127FCF69800E727F0 /* AlertView.swift in Sources */,
 				EEB1B96B2840145300C28C8C /* PullToRefreshView.swift in Sources */,
 				EEB1B9742841783000C28C8C /* ConnectionInfoModalView.swift in Sources */,
+				EE4657EA28440376002E3F6A /* ChatroomsViewModel.swift in Sources */,
 				EEF7751427EBD97D00CB80B2 /* UploadImage.swift in Sources */,
 				EEB1B96F2840287500C28C8C /* BeraberNavigationView.swift in Sources */,
 				EEF7751027EBCC9B00CB80B2 /* Color+Extension.swift in Sources */,
@@ -669,10 +707,14 @@
 				EEB697582801C03200E97EB8 /* NewPostView.swift in Sources */,
 				EEF7750B27EBCAD300CB80B2 /* RegisterViewModel.swift in Sources */,
 				EE5BC0BE27EE38F300962F6F /* Onboarding.swift in Sources */,
+				EE4657F428441207002E3F6A /* MessageView.swift in Sources */,
 				EEF7750927EBC8D400CB80B2 /* RegisterView.swift in Sources */,
 				EED0A68F27DE294200F6F35B /* LoginView.swift in Sources */,
+				EE4657F028441179002E3F6A /* MessagesViewModel.swift in Sources */,
 				EE476D1B27F8F999007C7B54 /* ProfileViewModel.swift in Sources */,
 				EEF7751227EBCF7B00CB80B2 /* ImagePicker.swift in Sources */,
+				EE4657FA28442F77002E3F6A /* ChatBubble.swift in Sources */,
+				EE4657F2284411A4002E3F6A /* MessageModel.swift in Sources */,
 				EE04C653282422FB003F4F8B /* OtherProfileView.swift in Sources */,
 				EEE320402800F28F00324028 /* PostViewModel.swift in Sources */,
 				EE7696C5283A62E900098B29 /* SettingsViewModel.swift in Sources */,
@@ -681,6 +723,8 @@
 				EE0B34D1282D863800E1CFFE /* OtherProfileViewModel.swift in Sources */,
 				EE5BC0C327EE3D6400962F6F /* OffsetPageTabView.swift in Sources */,
 				EE6E5BCC2842F9C900BCBC39 /* MailView.swift in Sources */,
+				EE4657F6284425E4002E3F6A /* ChatRoomView.swift in Sources */,
+				EE4657EE28440FD1002E3F6A /* JoinChatroomModal.swift in Sources */,
 				EE476D1D27F8F9C3007C7B54 /* UserModel.swift in Sources */,
 				EE5BC0C027EE3A6D00962F6F /* OnboardingView.swift in Sources */,
 				EE1CB41F28030F2900F18C34 /* TurkeyCities.json in Sources */,

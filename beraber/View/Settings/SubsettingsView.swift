@@ -36,7 +36,7 @@ struct SubsettingsView: View {
                 showSubSettings = !value
             }, isForSettings: true, isForSubsettings: true)
             
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 VStack(alignment: .leading) {
                     
                     //Hesap

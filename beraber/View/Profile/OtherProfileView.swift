@@ -55,7 +55,7 @@ struct OtherProfileView: View {
             .background(Color(hex: 0x465D8B))
             .shadow(color: .white.opacity(0.06), radius: 5, x: 0, y: 5)
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     HStack (alignment: .center) {
                         Spacer(minLength: 0)

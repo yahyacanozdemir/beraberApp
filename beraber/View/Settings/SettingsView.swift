@@ -25,7 +25,7 @@ struct SettingsView: View {
                 BeraberNavigationView(title: "Ayarlar", withTrailingIcon: false, trailingIconName: "", trailingIconCompletion: { value in
                     openSettings = !value
                 }, isForSettings: true, isForSubsettings: false)
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack(alignment: .leading) {
                         
                         //Hesap

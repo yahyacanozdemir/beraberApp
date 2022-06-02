@@ -26,7 +26,7 @@ struct ProfileView: View {
                     self.profileData.openSettings.toggle()
                 }
             }
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                     profileData.isLoading = true
                     postData.getAllPosts()
@@ -192,6 +192,10 @@ struct ProfileView: View {
                         HStack {
                             Spacer(minLength: 0)
                             VStack {
+                                Image("noPostVector")
+                                    .resizable()
+                                    .frame(width: 171, height: 114, alignment: .center)
+                                    .padding()
                                 Text("Henüz hiçbir paylaşım yapmadın. Hemen bir gönderi yayınla, iyilik akımına dahil ol.")
                                     .font(.custom("", size: 14))
                                     .multilineTextAlignment(.center)
@@ -208,6 +212,7 @@ struct ProfileView: View {
                             .padding(.vertical, 10)
                             Spacer(minLength: 0)
                         }
+                        .padding(.bottom,60)
                     }
                     
                 }

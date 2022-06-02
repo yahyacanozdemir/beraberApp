@@ -45,6 +45,7 @@ extension String {
     func getCreationDateAsString(date: Date)-> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMM y"
+        formatter.locale = Locale(identifier: "tr")
         return formatter.string(from: date)
     }
 }
@@ -60,5 +61,22 @@ extension UIWindow {
         UIApplication.shared.connectedScenes
             .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
             .first { $0.isKeyWindow }
+    }
+}
+
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+           red:   .random(),
+           green: .random(),
+           blue:  .random(),
+           alpha: 1.0
+        )
     }
 }

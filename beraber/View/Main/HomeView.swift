@@ -22,7 +22,7 @@ struct HomeView: View {
                     .fullScreenCover(isPresented: $postData.newPost){
                         NewPostView(updateId : $postData.updateId)
                     }
-                MessagesView(tabSelection: $selectedTab)
+                MessagesPagesView(tabSelection: $selectedTab)
                     .opacity(selectedTab == "Mesajlar" ? 1 : 0)
                 ProfileView(tabSelection: $selectedTab)
                     .opacity(selectedTab == "Profil" ? 1 : 0)

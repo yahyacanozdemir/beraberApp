@@ -23,13 +23,38 @@ struct PostView: View {
             if postData.posts.isEmpty {
                 Spacer(minLength: 0)
                 if postData.noPosts{
-                    Text("Henüz hiçbir paylaşım yapılmamıştır.")
-                } else {
+                    HStack {
+                        Spacer(minLength: 0)
+                        VStack {
+                            Image("noPostMainPage")
+                                .resizable()
+                                .frame(width: 192, height: 152, alignment: .center)
+                                .padding()
+                            Text("Görünüşe göre yakınlarda hiçbir paylaşım yapılmadı. Hemen bir gönderi yayınlayarak, iyilik akımını başlatabilirsin.")
+                                .font(.custom("", size: 14))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white.opacity(0.5))
+                                .padding(.horizontal, 60)
+                            Button {
+                                postData.newPost.toggle()
+                            } label: {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.system(size: 60))
+                                    .foregroundColor(.white)
+                            }.padding(.top, 10)
+                        }
+                        .padding(.vertical, 10)
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.vertical,60)
+                    Spacer(minLength: 0)
+                }
+                else {
                     ProgressView()
                 }
                 Spacer(minLength: 0)
             } else {
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                         postData.getAllPosts()
                     }
