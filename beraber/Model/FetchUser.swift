@@ -27,6 +27,7 @@ func fetchUser(uid: String, completion: @escaping (UserModel)->()){
         let possibleDaysOfWeek = user.data()?["possibleDaysOfWeek"] as! [String]
         let showAgeInfos = user.data()?["showAgeInfos"] as! Bool
         let showConnectionInfos = user.data()?["showConnectionInfos"] as! Bool
+        let showPossibleDaysInfos = user.data()?["showPossibleDaysInfos"] as! Bool
         let showLocationInfos = user.data()?["showLocationInfos"] as! Bool
         let userCreationDate = user.data()?["created_date"] as! Timestamp
         
@@ -42,6 +43,7 @@ func fetchUser(uid: String, completion: @escaping (UserModel)->()){
                                  emailAddress: emailAddress,
                                  possibleDaysOfWeek: possibleDaysOfWeek,
                                  showConnectionInfos: showConnectionInfos,
+                                 showPossibleDaysInfos: showPossibleDaysInfos,
                                  showAgeInfos: showAgeInfos,
                                  showLocationInfos: showLocationInfos,
                                  userCreationDate: userCreationDate))

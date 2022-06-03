@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 class SettingsViewModel: ObservableObject {
-    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false,showAgeInfos: false,showLocationInfos: false, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
+    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false, showPossibleDaysInfos: false,showAgeInfos: false,showLocationInfos: false, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
     @AppStorage("current_status") var status = false
     
     enum SubSettings: String, CaseIterable, Identifiable{
@@ -47,6 +47,9 @@ class SettingsViewModel: ObservableObject {
     
     
     @Published var useCase = RegisterViewModel.AppUseCases.Hepsi
+    @Published var possibleDaysArray : [String] = []
+
+    
     @Published var succesPopupTitle = ""
     @Published var succesPopupColor = Color(hex: 0x608786)
 
@@ -88,6 +91,7 @@ class SettingsViewModel: ObservableObject {
         self.updateUserDetailsFirebase(id: "location", value: self.newCountie+","+self.newCity)
         self.updateUserDetailsFirebase(id: "reasonForApp", value: "\(self.useCase.rawValue)")
         self.updateUserDetailsFirebase(id: "age", value: (self.userInfo.userAge))
+        self.updateUserDetailsFirebase(id: "possibleDaysOfWeek", value: (self.possibleDaysArray))
     }
     
     func updateBiography(){
@@ -98,6 +102,7 @@ class SettingsViewModel: ObservableObject {
     func updatePrivacy(){
         self.succesPopupTitle = "Ayarlar Güncellendi"
         self.updateUserDetailsFirebase(id: "showConnectionInfos", value: self.userInfo.showConnectionInfos)
+        self.updateUserDetailsFirebase(id: "showPossibleDaysInfos", value: self.userInfo.showPossibleDaysInfos)
         self.updateUserDetailsFirebase(id: "showAgeInfos", value: self.userInfo.showAgeInfos)
         self.updateUserDetailsFirebase(id: "showLocationInfos", value: self.userInfo.showLocationInfos)
     }
@@ -138,6 +143,21 @@ class SettingsViewModel: ObservableObject {
                         "Recipients" : "yahyacanozdemir@gmail.com",
                         "PreferredSendingEmail" : self.userInfo.emailAddress]
         return mailDict
+    }
+    
+    
+    func checkboxSelected(id: String, isMarked: Bool) {
+        print("\(id) is marked: \(isMarked)")
+        if isMarked {
+            self.possibleDaysArray.append(id)
+        } else {
+            removeDayFromArray(element: id)
+        }
+        print("++++", self.possibleDaysArray)
+    }
+    
+    func removeDayFromArray(element: String) {
+        self.possibleDaysArray = self.possibleDaysArray.filter { $0 != element }
     }
     
     func logOut(){

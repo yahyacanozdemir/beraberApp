@@ -20,6 +20,7 @@ struct UserModel {
     var emailAddress: String
     var possibleDaysOfWeek: [String]
     var showConnectionInfos: Bool
+    var showPossibleDaysInfos: Bool
     var showAgeInfos: Bool
     var showLocationInfos: Bool
     var userCreationDate: Timestamp

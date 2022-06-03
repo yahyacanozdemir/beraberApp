@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImage
 import SDWebImageSwiftUI
 import ImageViewerRemote
+import PartialSheet
 
 struct ProfileView: View {
     @Binding var tabSelection: String
@@ -58,7 +59,7 @@ struct ProfileView: View {
                             
                         }.padding(.leading, 20)
                             .onTapGesture {
-                                profileData.picker.toggle()
+                                profileData.showPPSelectionModal = true
                             }
                     }
                     
@@ -235,6 +236,46 @@ struct ProfileView: View {
                     .padding(.horizontal, 20)
             }
 
+        }
+        .partialSheet(isPresented: $profileData.showPPSelectionModal, content: {
+            VStack {
+                Button {
+                    profileData.showPPSelectionModal = false
+                    profileData.showUserImage = true
+                } label: {
+                    Text("Profil fotoğrafını görüntüle")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .padding(.horizontal)
+                        .frame(width: UIScreen.main.bounds.width-100)
+                        .background(Color(hex: 0x55ABA5))
+                        .clipShape(Capsule())
+                }
+                .padding()
+                
+                Button {
+                    profileData.showPPSelectionModal = false
+                    profileData.picker = true
+                } label: {
+                    Text("Profil fotoğrafını değiştir")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .padding(.horizontal)
+                        .frame(width: UIScreen.main.bounds.width-100)
+                        .background(Color(hex: 0x465D8B))
+                        .clipShape(Capsule())
+                }
+                .padding()
+                .padding(.bottom, UIWindow.key?.safeAreaInsets.bottom ?? 35 + 20)
+            }.padding(.vertical, 20)
+        })
+        .fullScreenCover(isPresented: self.$profileData.showUserImage){
+            ImageViewerRemote(imageURL: self.$profileData.userInfo.userProfilePic, viewerShown: self.$profileData.showUserImage)
+                        .background(Color(red: 0.12, green: 0.12, blue: 0.12, opacity: (1.0)))
         }
         .sheet(isPresented: $profileData.picker) {
             ImagePicker(picker: $profileData.picker, img_data: $profileData.img_data)

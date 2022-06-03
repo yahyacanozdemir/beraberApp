@@ -57,7 +57,7 @@ struct ConnectionInfoModalView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .frame(alignment: .leading)
-                            Text("(0) 5xx xxx xx xx")
+                            Text("(0) 5** *** ** **")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                         }
@@ -72,26 +72,46 @@ struct ConnectionInfoModalView: View {
                             .padding(.top, 10)
                             .font(.caption)
                             .foregroundColor(.white)
-                        Text(profileData.userInfo.emailAddress)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
+                        if profileData.userInfo.showConnectionInfos {
+                            Text(profileData.userInfo.emailAddress)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        } else {
+                            Text("(Kullanıcı tarafından gizlenmiştir)")
+                                .font(.custom("", size: 8))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(alignment: .leading)
+                            Text("\(profileData.userInfo.emailAddress.prefix(2).uppercased()) *******@*****.com")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        }
                         Divider()
                             .frame(width: UIScreen.screenWidth/2, alignment: .center)
                     }
-                    
                     Text("Beraberlik Akımı İçin Müsait Olduğu Günler")
                         .padding(.bottom, 5)
                         .padding(.top, 10)
                         .font(.caption)
                         .foregroundColor(.white)
-                    HStack (spacing: 5) {
-                        ForEach(profileData.userInfo.possibleDaysOfWeek, id: \.self){ day in
-                            Text(day)
-                                .font(.caption2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                    }.padding(.bottom,15)
+                    if profileData.userInfo.showPossibleDaysInfos {
+                        HStack (spacing: 5) {
+                            ForEach(profileData.userInfo.possibleDaysOfWeek, id: \.self){ day in
+                                Text(day)
+                                    .font(.caption2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                        }.padding(.bottom,15)
+                    } else {
+                        Text("(Kullanıcı tarafından gizlenmiştir)")
+                            .font(.custom("", size: 8))
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(alignment: .leading)
+                        Text("***********")
+                    }
+
                 }.padding(.vertical)
             }
         }

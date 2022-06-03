@@ -38,7 +38,6 @@ struct SubsettingsView: View {
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading) {
-                    
                     //Hesap
                     if subSetting == .account {
                         //Telefon Numarası
@@ -181,6 +180,33 @@ struct SubsettingsView: View {
                         }
                         .padding(.horizontal,20)
                         .padding(.top, 20)
+                        
+                        //PossibleDays
+                        VStack(alignment: .leading){
+                            Text("Müsait Olduğun Günler")
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                            Text("Bu bilgilerin diğer kullanıcılarla paylaşımını gizlilik ayarlarından kontrol edebilirsin. ")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 0.5)
+                                .frame(alignment: .center)
+                            
+                            VStack(alignment: .trailing){
+                                ForEach(RegisterViewModel.daysOfWeek.allCases, id: \.rawValue){ day in
+                                    CheckboxField(
+                                        id: day.rawValue,
+                                        label: settingsData.userInfo.possibleDaysOfWeek.contains(day.rawValue) ? "\(day.rawValue) (Seçili)" : day.rawValue,
+                                        size: 14,
+                                        textSize: 14,
+                                        callback: settingsData.checkboxSelected
+                                    )
+                                }
+                            }
+                            .padding(.vertical, 10)
+                        }
+                        .padding(.horizontal,20)
+                        .padding(.top, 20)
                     }
                     
                     //Hakkında
@@ -215,11 +241,24 @@ struct SubsettingsView: View {
                         //Connection Info
                         VStack {
                             HStack {
-                                Text("İletişim Bilgilerimi Diğer Kullanıcılar İle Paylaş")
+                                Text("İletişim Bilgilerimi Diğer Kullanıcılar İle Paylaş (Telefon Numarası ve E-Mail)")
                                     .foregroundColor(.white)
                                     .fontWeight(.bold)
                                 Spacer(minLength: 0)
                                 Toggle("", isOn: $settingsData.userInfo.showConnectionInfos)
+                            }
+                            .padding(.horizontal, 30)
+                        }.padding(.top, 20)
+                        Divider()
+                            .background(.white)
+                            .padding(.top, 10)
+                        VStack {
+                            HStack {
+                                Text("Müsait Olduğum Günleri Diğer Kullanıcılar İle Paylaş")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                Spacer(minLength: 0)
+                                Toggle("", isOn: $settingsData.userInfo.showPossibleDaysInfos)
                             }
                             .padding(.horizontal, 30)
                         }.padding(.top, 20)
