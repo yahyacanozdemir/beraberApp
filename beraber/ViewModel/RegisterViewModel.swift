@@ -112,6 +112,7 @@ class RegisterViewModel: ObservableObject {
                 "showConnectionInfos": self.showMyConnectionInfos,
                 "showLocationInfos": true,
                 "showAgeInfos": false,
+                "numberOfRooms": 0,
                 "created_date": Date()
 
                 

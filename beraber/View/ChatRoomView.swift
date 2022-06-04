@@ -87,7 +87,7 @@ struct ChatRoomView: View {
                         .padding()
                     LazyVStack(alignment: .center, spacing: 15) {
                         ForEach(viewModel.messages) { message in
-                            MessageRow(tabSelection: $tabSelection, selectedMessageUsrUid: $selectedMessageUserUid, openOtherUserProfile: $openOtherUserProfile, message: message, isFromCurrentUser: message.senderId == Auth.auth().currentUser?.uid)
+                            MessageRow(tabSelection: $tabSelection, selectedMessageUserUid: $selectedMessageUserUid, openOtherUserProfile: $openOtherUserProfile, message: message, isFromCurrentUser: message.senderId == Auth.auth().currentUser?.uid)
                         }
                     }
                     .padding()
@@ -99,6 +99,14 @@ struct ChatRoomView: View {
                         reader.scrollTo("MSG_VIEW", anchor: .bottom)
                     }
                 })
+//                .onChange(of: viewModel.messages.count, perform: { newValue in
+//                    let isLastMessageCurrentUser = viewModel.messages.filter{$0.senderId == currentUserUid }.last
+//                    if isLastMessageCurrentUser != nil {
+//                        withAnimation {
+//                            reader.scrollTo("MSG_VIEW", anchor: .bottom)
+//                        }
+//                    }
+//                })
             }
             .onAppear(perform: {
                 viewModel.fetchData(docId: chatroom.id)

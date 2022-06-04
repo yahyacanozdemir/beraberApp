@@ -29,6 +29,7 @@ func fetchUser(uid: String, completion: @escaping (UserModel)->()){
         let showConnectionInfos = user.data()?["showConnectionInfos"] as! Bool
         let showPossibleDaysInfos = user.data()?["showPossibleDaysInfos"] as! Bool
         let showLocationInfos = user.data()?["showLocationInfos"] as! Bool
+        let numberOfRooms = user.data()?["numberOfRooms"] as! Int
         let userCreationDate = user.data()?["created_date"] as! Timestamp
         
         DispatchQueue.main.async {
@@ -46,6 +47,7 @@ func fetchUser(uid: String, completion: @escaping (UserModel)->()){
                                  showPossibleDaysInfos: showPossibleDaysInfos,
                                  showAgeInfos: showAgeInfos,
                                  showLocationInfos: showLocationInfos,
+                                 numberOfRooms: numberOfRooms,
                                  userCreationDate: userCreationDate))
         }
     }

@@ -35,10 +35,17 @@ struct JoinChatroomModal: View {
                             .cornerRadius(15)
                             .keyboardType(.numberPad)
                             .padding(.horizontal)
+                            .overlay(RoundedRectangle(cornerRadius: 15)
+                                        .strokeBorder(viewModel.isJoinCodeValidated ? Color.black : Color.red, style: StrokeStyle(lineWidth: 1))
+                                        .padding(.horizontal))
                             .onChange(of: joinCode) {
                                 if $0 == "0" {}
+                                viewModel.isJoinCodeValidated = false
                                 if joinCode.count == 6 {
                                     joinCode = String(joinCode.prefix(5))
+                                }
+                                if joinCode.count == 5 {
+                                    viewModel.isJoinCodeValidated = true
                                 }
                             }
                         Button(action: {
@@ -54,7 +61,10 @@ struct JoinChatroomModal: View {
                                 .foregroundColor(.white)
                                 .background(Color(hex: 0x608786))
                                 .clipShape(Circle())
-                        }).padding(.trailing, 10)
+                        })
+                            .padding(.trailing, 10)
+                            .disabled(viewModel.createOrJoinProcessLoading)
+                            .opacity(viewModel.createOrJoinProcessLoading ? 0.5 : 1 )
                     }
                     .padding(.horizontal,5)
                 }
@@ -80,10 +90,17 @@ struct JoinChatroomModal: View {
                             .cornerRadius(15)
                             .keyboardType(.alphabet)
                             .padding(.horizontal)
-                            .onChange(of: joinCode) {
+                            .overlay(RoundedRectangle(cornerRadius: 15)
+                                        .strokeBorder(viewModel.isRoomTitleValidated ? Color.black : Color.red, style: StrokeStyle(lineWidth: 1))
+                                        .padding(.horizontal))
+                            .onChange(of: newTitle) {
                                 if $0 == "0" {}
+                                viewModel.isRoomTitleValidated = false
                                 if newTitle.count == 31 {
                                     newTitle = String(newTitle.prefix(30))
+                                }
+                                if newTitle.count >= 5 && newTitle.count <= 30 {
+                                    viewModel.isRoomTitleValidated = true
                                 }
                             }
                         Button(action: {
@@ -100,6 +117,8 @@ struct JoinChatroomModal: View {
                                 .background(Color(hex: 0x608786))
                                 .clipShape(Circle())
                         }).padding(.trailing, 10)
+                            .disabled(viewModel.createOrJoinProcessLoading)
+                            .opacity(viewModel.createOrJoinProcessLoading ? 0.5 : 1 )
                     }
                     .padding(.horizontal,5)
                     .padding(.bottom)

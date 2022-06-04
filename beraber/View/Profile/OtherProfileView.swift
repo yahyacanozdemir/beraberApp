@@ -105,7 +105,12 @@ struct OtherProfileView: View {
                             }
                             
                             if profileData.userInfo.userReasonForApp != "" {
-                                OtherProfileInfoCell(title: "Beraberlikteki rolü", info: profileData.userInfo.userReasonForApp)
+                                OtherProfileInfoCell(title: "Beraberlikteki rolü", info: profileData.userInfo.userReasonForApp == "İkisi de" ? "Duyurucu & Bağışçı" : profileData.userInfo.userReasonForApp)
+                                    .padding(.bottom, 0.2)
+                            }
+                            
+                            if profileData.userInfo.userReasonForApp != "" {
+                                OtherProfileInfoCell(title: "Bulunduğu oda sayısı", info: String(profileData.userInfo.numberOfRooms))
                             }
                         }
                         Spacer(minLength: 0)
@@ -170,8 +175,27 @@ struct OtherProfileView: View {
                                 }
                                 .padding()
                                 .padding(.bottom, 10)
+                                
+                                if !userHasAnyPost {
+                                    HStack {
+                                        Spacer(minLength: 0)
+                                        VStack {
+                                            Image("noPostVector")
+                                                .resizable()
+                                                .frame(width: 171, height: 114, alignment: .center)
+                                                .padding()
+                                            Text("Bu kullanıcı henüz hiçbir paylaşımda bulunmadı.")
+                                                .font(.custom("", size: 14))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(.white.opacity(0.5))
+                                                .padding(.horizontal, 60)
+                                        }
+                                        Spacer(minLength: 0)
+                                    }
+                                    .padding(.top, -50)
+                                    .padding(.bottom,10)
+                                }
                             }
-                            
                         }
                         
                         Spacer(minLength: 0)

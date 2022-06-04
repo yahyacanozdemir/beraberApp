@@ -29,6 +29,7 @@ struct ConnectionInfoModalView: View {
                 }
                 
                 VStack {
+                    Spacer(minLength: 0)
                     HStack(alignment: .bottom) {
                         Divider()
                             .frame(height: 30, alignment: .center)
@@ -110,10 +111,13 @@ struct ConnectionInfoModalView: View {
                             .foregroundColor(.white)
                             .frame(alignment: .leading)
                         Text("***********")
+                            .foregroundColor(.white)
                     }
-
-                }.padding(.vertical)
+                    Spacer(minLength: 0)
+                }
             }
+            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/2, alignment: .top)
+            .background(Color(hex: 0x1B1B1B))
         }
         .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/2, alignment: .top)
         .background(Color(hex: 0x1B1B1B))

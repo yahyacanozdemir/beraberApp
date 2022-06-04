@@ -19,6 +19,9 @@ class ChatroomsViewModel: ObservableObject {
     
     @Published var noChatroom = true
     @Published var isLoading = true
+    @Published var createOrJoinProcessLoading = false
+    @Published var isJoinCodeValidated = true
+    @Published var isRoomTitleValidated = true
     
     init() {
         fetchData()
@@ -57,6 +60,7 @@ class ChatroomsViewModel: ObservableObject {
     func createChatroom(title: String, handler: @escaping () -> Void){
         
         if user != nil && title != "" && title.count >= 5 && title.count < 30{
+            self.createOrJoinProcessLoading = true
             fetchUser(uid: user!.uid) { currentUser in
                 self.db.collection("chatrooms").addDocument(data: [
                     "title" : title,
@@ -68,8 +72,10 @@ class ChatroomsViewModel: ObservableObject {
                     "users": [self.user!.uid]]) { error in
                         if error != nil {
                             print("Chatroom Eklenirken Hata")
+                            self.createOrJoinProcessLoading = false
                         } else {
                             handler()
+                            self.createOrJoinProcessLoading = false
                         }
                     }
             }
@@ -78,14 +84,23 @@ class ChatroomsViewModel: ObservableObject {
     
     func joinChatroom(code: String, handler: @escaping () -> Void){
         if user != nil {
-            db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(code) ?? -1).getDocuments { snapShot, error in
-                if error != nil {
-                    print("Odaya katılma esnasında hata meydana geldi hata: ", error?.localizedDescription ?? "")
-                } else {
-                    for document in snapShot!.documents {
-                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" :FieldValue.arrayUnion([self.user!.uid])])
-//                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" :FieldValue.arrayUnion(["\(self.user!.uid)" + " +ODADA+"])])
-                        handler()
+            self.createOrJoinProcessLoading = true
+            fetchUser(uid: user!.uid) { currentUser in
+                self.db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(code) ?? -1).getDocuments { snapShot, error in
+                    if snapShot?.documents.count == 0 {
+                        self.isJoinCodeValidated = false
+                        self.createOrJoinProcessLoading = false
+                    }
+                    if error != nil {
+                        self.createOrJoinProcessLoading = false
+                        print("Odaya katılma esnasında hata meydana geldi hata: ", error?.localizedDescription ?? "")
+                    } else {
+                        for document in snapShot!.documents {
+                            self.db.collection("chatrooms").document(document.documentID).updateData(["users" :FieldValue.arrayUnion([self.user!.uid])])
+    //                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" :FieldValue.arrayUnion(["\(self.user!.uid)" + " +ODADA+"])])
+                            handler()
+                            self.createOrJoinProcessLoading = false
+                        }
                     }
                 }
             }
@@ -94,15 +109,20 @@ class ChatroomsViewModel: ObservableObject {
     
     func leaveChatRoom(code: String, handler: @escaping () -> Void){
         if user != nil {
-            db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(code) ?? -1).getDocuments { snapShot, error in
-                if error != nil {
-                    print(error?.localizedDescription ?? "")
-                } else {
-                    for document in snapShot!.documents {
-                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" : FieldValue.arrayRemove([self.user!.uid])])
-//                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" : FieldValue.arrayUnion(["\(self.user!.uid)" + " -AYRILDI-"])])
-                        handler()
+            isLoading = true
+            fetchUser(uid: user!.uid) { currentUser in
+                self.db.collection("chatrooms").whereField("joinCode", isEqualTo: Int(code) ?? -1).getDocuments { snapShot, error in
+                    if error != nil {
+                        print(error?.localizedDescription ?? "")
+                    } else {
+                        for document in snapShot!.documents {
+                            self.db.collection("chatrooms").document(document.documentID).updateData(["users" : FieldValue.arrayRemove([self.user!.uid])])
+    //                        self.db.collection("chatrooms").document(document.documentID).updateData(["users" : FieldValue.arrayUnion(["\(self.user!.uid)" + " -AYRILDI-"])])
+                            handler()
+                            self.isLoading = false
+                        }
                     }
+                    self.isLoading = false
                 }
             }
         }

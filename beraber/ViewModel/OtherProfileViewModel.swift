@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 class OtherProfileViewModel: ObservableObject {
-    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false, showPossibleDaysInfos: false, showAgeInfos: false,showLocationInfos: false, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
+    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false, showPossibleDaysInfos: false, showAgeInfos: false,showLocationInfos: false, numberOfRooms: 0, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
 
     @Published var isLoading = false
     @Published var openUserConnectionInfos = false

@@ -14,6 +14,7 @@ struct MessagesPagesView: View {
     @Binding var tabSelection: String
     @ObservedObject var chatroomsData = ChatroomsViewModel()
     @ObservedObject var viewModel = MessagesViewModel()
+    @ObservedObject var settingsData = SettingsViewModel()
     var edges = UIWindow.key?.safeAreaInsets
     
     @State private var joinModal = false
@@ -22,6 +23,7 @@ struct MessagesPagesView: View {
     @State private var showComplainChatroomAlert: Bool = false
     @State private var showFeedbackPopup: Bool = false
     @State private var feedbackPopupTitle: String = ""
+    @State private var numberOfChatRoom = 0
 
 
     
@@ -69,6 +71,8 @@ struct MessagesPagesView: View {
                             }
                             .padding(.vertical, 10)
                             Spacer(minLength: 0)
+                        }.onAppear {
+                            self.numberOfChatRoom = 0
                         }
                     } else {
                         ForEach(chatroomsData.chatrooms){ room in
@@ -92,18 +96,27 @@ struct MessagesPagesView: View {
                                             .font(.title2)
                                             .multilineTextAlignment(.leading)
                                         Spacer(minLength: 0)
+                                    }.onAppear {
+                                        numberOfChatRoom += 1
                                     }
                                 }
                                 .contextMenu{
-                                    Button {
-                                        self.showLeaveChatroomAlert = true
-                                    } label: {
-                                        Text("Mesaj odasından ayrıl")
-                                    }
-                                    Button {
-                                        self.showComplainChatroomAlert = true
-                                    } label: {
-                                        Text("Mesaj odasını şkayet et")
+                                    VStack {
+                                        Button {
+                                            self.showLeaveChatroomAlert = true
+                                        } label: {
+                                            Text("Mesaj odasından ayrıl")
+                                        }
+                                        .onAppear {
+                                            viewModel.fetchData(docId: self.selectedChatRoom.id)
+                                        }
+                                        Button {
+                                            self.showComplainChatroomAlert = true
+                                        } label: {
+                                            Text("Mesaj odasını şkayet et")
+                                        }
+                                    }.onAppear {
+                                        self.selectedChatRoom = room
                                     }
                                 }.alert("Odadan ayrılmak istediğine emin misin?", isPresented: $showLeaveChatroomAlert) {
                                     Button("Ayrıl") {
@@ -125,8 +138,10 @@ struct MessagesPagesView: View {
                                     .padding(.vertical, 5)
                                     .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
                             }
+                        }.onAppear {
+                            settingsData.updateNumberOfChatRooms(roomNumber: self.numberOfChatRoom)
+                            self.numberOfChatRoom = 0
                         }
-
                     }
                 }
                 .padding()

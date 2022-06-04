@@ -23,6 +23,7 @@ struct UserModel {
     var showPossibleDaysInfos: Bool
     var showAgeInfos: Bool
     var showLocationInfos: Bool
+    var numberOfRooms: Int
     var userCreationDate: Timestamp
 }
 

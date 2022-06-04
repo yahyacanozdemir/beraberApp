@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct MessageRow: View {
     @Binding var tabSelection: String
-    @Binding var selectedMessageUsrUid: String
+    @Binding var selectedMessageUserUid: String
     @Binding var openOtherUserProfile: Bool
     @State var dummyTabSelection = ""
     @Environment(\.presentationMode) var present
@@ -30,15 +30,37 @@ struct MessageRow: View {
                     UserView(message: message, isFromCurrentUser: isFromCurrentUser)
                         .offset(y: 10)
                         .onTapGesture {
-                            selectedMessageUsrUid = message.senderId ?? ""
+                            selectedMessageUserUid = message.senderId ?? ""
                             openOtherUserProfile = true
                         }
                 }
             
                 VStack(alignment: isFromCurrentUser ? .trailing : .leading, spacing: 6) {
-                    Text(message.content)
-                    Text(message.createdTime.dateValue(), style: .time)
-                        .font(.caption)
+                    if !isFromCurrentUser && message.senderName != "" {
+                        VStack(alignment: .leading) {
+                            Text(message.senderName)
+                                .font(.caption2)
+                                .padding(.top, -10)
+                            Divider()
+                                .padding(.top, -3)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    HStack {
+                        Text(message.content)
+                        if isFromCurrentUser {
+                            Spacer(minLength: 0)
+                        }
+                    }
+                    HStack {
+                        if !isFromCurrentUser{
+                            Spacer(minLength: 0)
+                        }
+                        Text("".getCreationDateAsString(date: message.createdTime.dateValue()))
+                            .font(.caption2)
+                        Text(message.createdTime.dateValue(), style: .time)
+                            .font(.caption2)
+                    }
                 }
                 .padding([.horizontal, .top])
                 .padding(.bottom, 8)
@@ -68,6 +90,7 @@ struct MessageRow: View {
 struct UserView: View {
     var message: Message
     var isFromCurrentUser: Bool
+    @State var userRole = ""
     
     var body: some View {
         if message.senderProfilePic == "" {
@@ -82,7 +105,11 @@ struct UserView: View {
                 )
                 .contextMenu {
                     Text(message.senderName)
-                    Text("Durum: offline")
+                    Text(userRole == "İkisi de" ? "Duyurucu & Bağışçı" : "\(userRole)")
+                }.onAppear {
+                    fetchUser(uid: message.senderId ?? "") { User in
+                        userRole = User.userReasonForApp
+                    }
                 }
         } else {
             Circle()
@@ -97,7 +124,11 @@ struct UserView: View {
                 )
                 .contextMenu {
                     Text(message.senderName)
-                    Text("Durum: offline")
+                    Text(userRole == "İkisi de" ? "Duyurucu & Bağışçı" : "\(userRole)")
+                }.onAppear {
+                    fetchUser(uid: message.senderId ?? "") { User in
+                        userRole = User.userReasonForApp
+                    }
                 }
         }
     }

@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 class SettingsViewModel: ObservableObject {
-    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false, showPossibleDaysInfos: false,showAgeInfos: false,showLocationInfos: false, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
+    @Published var userInfo = UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "",phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [], showConnectionInfos: false, showPossibleDaysInfos: false,showAgeInfos: false,showLocationInfos: false, numberOfRooms: 0, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0)))
     @AppStorage("current_status") var status = false
     
     enum SubSettings: String, CaseIterable, Identifiable{
@@ -110,6 +110,10 @@ class SettingsViewModel: ObservableObject {
     func updateSecurity(){
         self.succesPopupTitle = "E-Mail Güncellendi"
         self.updateUserDetailsFirebase(id: "emailAddress", value: self.userInfo.emailAddress)
+    }
+    
+    func updateNumberOfChatRooms(roomNumber: Int){
+        self.updateUserDetailsFirebase(id: "numberOfRooms", value: roomNumber)
     }
     
     func updateUserDetailsFirebase(id : String, value : Any){
