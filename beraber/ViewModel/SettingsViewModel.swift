@@ -60,12 +60,14 @@ class SettingsViewModel: ObservableObject {
     let uid = Auth.auth().currentUser!.uid
     
     init(){
+        self.isLoading = true
         fetchUser(uid: uid) { user in
             self.userInfo = user
             self.newCity = user.userLocation.components(separatedBy: ",").last ?? ""
             self.newCountie = user.userLocation.components(separatedBy: ",").first ?? ""
             let rawValue = user.userReasonForApp.components(separatedBy: ".").last?.components(separatedBy: ")").first ?? ""
             self.useCase = RegisterViewModel.AppUseCases(rawValue: rawValue) ?? .Hepsi
+            self.isLoading = false
         }
     }
     

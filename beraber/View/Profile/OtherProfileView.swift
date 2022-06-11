@@ -12,6 +12,7 @@ import SDWebImageSwiftUI
 
 struct OtherProfileView: View {
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
     @StateObject var profileData: OtherProfileViewModel
     @StateObject var postData = PostViewModel()
     @Binding var openOtherUserProfile: Bool
@@ -162,7 +163,7 @@ struct OtherProfileView: View {
                                     ForEach(postData.posts.filter({ post in
                                         post.user.uid == postUserUid
                                     })){ post in
-                                        PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $profileData.showPostImage, post: post)
+                                        PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $profileData.showPostImage, post: post)
                                             .onAppear {
                                                 self.userHasAnyPost = true
                                             }
@@ -208,6 +209,7 @@ struct OtherProfileView: View {
         .onAppear(perform: {
             if self.postUserUid != "" {
                 profileData.fetchOtherUser(uid: postUserUid)
+                postData.getAllPosts()
             }
         })
         .onDisappear {

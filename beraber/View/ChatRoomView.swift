@@ -10,6 +10,8 @@ import Firebase
 
 struct ChatRoomView: View {
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
+
     @ObservedObject var viewModel = MessagesViewModel()
     @State var messageField = ""
     @State var openOtherUserProfile = false
@@ -23,8 +25,9 @@ struct ChatRoomView: View {
     @Environment(\.presentationMode) var present
 
     
-    init(chatroom: Chatroom, selectedTab: Binding<String>) {
+    init(chatroom: Chatroom, selectedTab: Binding<String>, openMessageJoinModal: Binding<Bool>) {
         self._tabSelection = selectedTab
+        self._openMessageJoinModal = openMessageJoinModal
         self.chatroom = chatroom
         if counter == 0 {
             viewModel.fetchData(docId: chatroom.id)
@@ -149,7 +152,7 @@ struct ChatRoomView: View {
                     }
                 )
         .fullScreenCover(isPresented: $openOtherUserProfile, content: {
-            OtherProfileView(tabSelection: $tabSelection, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $selectedMessageUserUid)
+            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal ,profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $selectedMessageUserUid)
         })
     }
 }

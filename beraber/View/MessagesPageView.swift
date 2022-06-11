@@ -12,12 +12,14 @@ import Firebase
 
 struct MessagesPagesView: View {
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
+    @State var openMessageJoinModalFromThisPage = false
+
     @ObservedObject var chatroomsData = ChatroomsViewModel()
     @ObservedObject var viewModel = MessagesViewModel()
     @ObservedObject var settingsData = SettingsViewModel()
     var edges = UIWindow.key?.safeAreaInsets
     
-    @State private var joinModal = false
     @State private var openChatPage = false
     @State private var showLeaveChatroomAlert: Bool = false
     @State private var showComplainChatroomAlert: Bool = false
@@ -33,7 +35,7 @@ struct MessagesPagesView: View {
     var body: some View {
         VStack{
             BeraberNavigationView(title: "Mesajlar", withTrailingIcon: true, trailingIconName: "square.and.pencil") { iconTapped in
-                joinModal = iconTapped
+                openMessageJoinModalFromThisPage = iconTapped
             }
             ScrollView (showsIndicators: false){
                 PullToRefresh(coordinateSpaceName: "pullToRefresh") {
@@ -62,7 +64,7 @@ struct MessagesPagesView: View {
                                     .foregroundColor(.white.opacity(0.5))
                                     .padding(.horizontal, 60)
                                 Button {
-                                    joinModal = true
+                                    openMessageJoinModalFromThisPage = true
                                 } label: {
                                     Image(systemName: "square.and.pencil")
                                         .font(.system(size: 30))
@@ -149,11 +151,14 @@ struct MessagesPagesView: View {
             }.coordinateSpace(name: "pullToRefresh")
         }
         .padding(18)
-        .partialSheet(isPresented: $joinModal, content: {
-            JoinChatroomModal(isOpen: self.$joinModal)
+        .partialSheet(isPresented: $openMessageJoinModal, content: {
+            JoinChatroomModal(isOpen: self.$openMessageJoinModal, isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage)
+        })
+        .partialSheet(isPresented: $openMessageJoinModalFromThisPage, content: {
+            JoinChatroomModal(isOpen: self.$openMessageJoinModalFromThisPage,isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage)
         })
         .fullScreenCover(isPresented: $openChatPage) {
-            ChatRoomView(chatroom: self.selectedChatRoom, selectedTab: $tabSelection)
+            ChatRoomView(chatroom: self.selectedChatRoom, selectedTab: $tabSelection,openMessageJoinModal: $openMessageJoinModal)
                 .onAppear {
                     viewModel.fetchData(docId: self.selectedChatRoom.id)
                 }

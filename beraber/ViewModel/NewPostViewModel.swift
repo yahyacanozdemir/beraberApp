@@ -11,50 +11,39 @@ import Firebase
 class NewPostViewModel : ObservableObject {
     @Published var postTitle = ""
     @Published var postText = ""
+    @Published var hasChatRoom = true
     @Published var picker = false
     @Published var img_data = Data(count: 0)
+    
+    @State var chatroomViewModel = ChatroomsViewModel()
     
    @Published var isPosting = false
     
     let uid = Auth.auth().currentUser!.uid
     
-    func post(updateId: String, present: Binding<PresentationMode>){
+    func post(present: Binding<PresentationMode>){
         
         isPosting = true
         
-//        if updateId != "" {
-//            ref.collection("Posts").document(updateId).updateData([
-//
-//                "title": postText
-//            ]) { error in
-//
-//                self.isPosting = false
-//                if error != nil {
-//                    self.isPosting = false
-//                    print(error?.localizedDescription)
-//                    return
-//                }
-//                present.wrappedValue.dismiss()
-//            }
-//            return
-//        }
-        
         if img_data.count == 0 {
             ref.collection("Posts").document().setData([
-            
                 "title" : self.postTitle,
                 "description" : self.postText,
                 "url" : "",
                 "ref" : ref.collection("Users").document(self.uid),
+                "hasChatRoom": self.hasChatRoom,
+                "chatRoomTitle": self.postTitle,
                 "time" : Date()
                 
             ]) { error in
                 if error != nil {
                     self.isPosting = false
+                    print("Resimsiz Post Paylaşmada Hata: ", error?.localizedDescription ?? "")
                     return
+                } else {
+                    self.isPosting = false
+                    present.wrappedValue.dismiss()
                 }
-                self.isPosting = false
-                present.wrappedValue.dismiss()
             }
         } else {
             UploadImage(imageData: img_data
@@ -65,21 +54,21 @@ class NewPostViewModel : ObservableObject {
                     "description" : self.postText,
                     "url" : URL,
                     "ref" : ref.collection("Users").document(self.uid),
+                    "hasChatRoom": self.hasChatRoom,
+                    "chatRoomTitle": self.postTitle,
                     "time" : Date()
                     
                 ]) { error in
                     if error != nil {
                         self.isPosting = false
                         return
+                    } else {
+                        self.isPosting = false
+                        present.wrappedValue.dismiss()
                     }
-                    self.isPosting = false
-                    present.wrappedValue.dismiss()
                 }
             }
         }
-        
-
-        
     }
 }
 

@@ -17,24 +17,30 @@ class PostViewModel : ObservableObject {
     @Published var selectedPostImageUrl = ""
     @Published var selectedPostUserUid = ""
     
+    @Published var isLoading = false
+    
     let ref = Firestore.firestore()
     
-    init() {
-        getAllPosts()
-    }
+//    init() {
+//        if self.posts.count == 0 {
+//            getAllPosts()
+//        }
+//    }
     
     func getAllPosts(){
+        self.posts = []
+        isLoading = true
         ref.collection("Posts").addSnapshotListener { snap, err in
             guard let docs = snap else {
                 self.noPosts = true
+                self.isLoading = false
                 return
             }
-            
             if docs.documentChanges.isEmpty {
                 self.noPosts = true
+                self.isLoading = false
                 return
             }
-            self.posts = []
             docs.documentChanges.forEach { doc in
                 //Doc ekli mi kontrolü
                 if doc.type == .added {
@@ -42,59 +48,43 @@ class PostViewModel : ObservableObject {
                     let description = doc.document.data()["description"] as! String
                     let time = doc.document.data()["time"] as! Timestamp
                     let pic = doc.document.data()["url"] as! String
+                    let hasChatRoom = doc.document.data()["hasChatRoom"] as! Bool
+                    let chatRoomTitle = doc.document.data()["chatRoomTitle"] as! String
                     let userRef = doc.document.data()["ref"] as! DocumentReference
                     
                     //user bilgilerini çekme
                     fetchUser(uid: userRef.documentID) { user in
-                        self.posts.append(PostModel(id: doc.document.documentID, title: title,description: description, pic: pic, time: time.dateValue(), user: user))
-                        
+                        if self.posts.count < docs.count {
+                            self.posts.append(PostModel(id: doc.document.documentID, title: title,description: description, pic: pic, time: time.dateValue(),hasChatroom: hasChatRoom,chatRoomTitle: chatRoomTitle, user: user))
+//                            print("Post Count : ", self.posts.count, " Docs Count: ", docs.count)
+                        }
                         //Oluşturma tarihine göre sıralama
                         self.posts.sort{ (p1,p2) -> Bool in
                             return p1.time > p2.time
                         }
+                        self.isLoading = false
                     }
                 }
             
                 if doc.type == .removed {
                     let id = doc.document.documentID
-                    
                     self.posts.removeAll() { post -> Bool in
                         return post.id == id
                     }
+//                    Profilim sekmesinde kaldırılan posttan sonra loading gözükmesi için yoruma alındı
+//                    self.isLoading = false
                 }
-                
-//                if doc.type == .modified {
-//
-//                    print("Güncelleme Başarılı")
-//                    //Doc'u güncelleme
-//
-//                    let id = doc.document.documentID
-//                    let title = doc.document.data()["title"] as! String
-//
-//                    let index = self.posts.firstIndex { post in
-//                        return post.id == id
-//                    } ?? -1
-//
-//                    //safe check
-//                    if index != -1{
-//                        self.posts[index].title = title
-//                        self.updateId = ""
-//                    }
-//
-//                }
             }
         }
     }
     
     func deletePost(id: String){
-        
         ref.collection("Posts").document(id).delete() { error in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
                 return
             }
         }
-        
         ref.collection("Posts").addSnapshotListener { snap, err in
             guard let docs = snap else {
                 self.noPosts = true
@@ -106,13 +96,6 @@ class PostViewModel : ObservableObject {
                 return
             }
         }
-        
+        self.getAllPosts()        
     }
-    
-    func editPost(id: String){
-        updateId = id
-        //Düzenleme ekranını gösterme
-        newPost.toggle()
-    }
-    
 }

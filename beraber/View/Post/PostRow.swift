@@ -14,12 +14,14 @@ import Firebase
 struct PostRow: View {
     
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
+
     @ObservedObject var postData = PostViewModel()
     @Binding var openOtherUserProfile: Bool
     @Binding var postUserUid: String
     @Binding var showPostImage: Bool
     
-    
+    @Environment(\.presentationMode) var present
     @State private var showDeletePostAlert: Bool = false
     
     
@@ -53,7 +55,13 @@ struct PostRow: View {
                             .frame(width: 25, height: 25)
                             .foregroundColor(.white)
                     }).alert("Gönderiye ait mesaj odasına gidiyorsun", isPresented: $showDeletePostAlert) {
-                        Button("Beni oraya götür") {print("ok")}
+                        Button("Beni oraya götür") {
+                            present.wrappedValue.dismiss()
+                            tabSelection = "Mesajlar"
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                openMessageJoinModal.toggle()
+                            }
+                        }
                         Button("Vazgeç") {self.showDeletePostAlert = false}
                     }
                 }
@@ -145,11 +153,13 @@ struct PostRow: View {
             .padding(.top,5)
             .padding(.leading, 5)
             
-            HStack{
+            HStack {
                 Spacer(minLength: 0)
+                Text("".getCreationDateAsString(date: post.time))
+                    .font(.caption2)
+                    .foregroundColor(.white)
                 Text(post.time, style: .time)
-                    .font(.caption)
-                    .fontWeight(.bold)
+                    .font(.caption2)
                     .foregroundColor(.white)
             }
         }

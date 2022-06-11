@@ -13,11 +13,14 @@ import PartialSheet
 
 struct ProfileView: View {
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
+
     @StateObject var postData = PostViewModel()
     @StateObject var profileData = ProfileViewModel()
     
     @State var isUpdatedProfile = false
     @State private var userHasAnyPost: Bool = false
+    @State private var showMyPosts = false
     
     var edges = UIWindow.key?.safeAreaInsets
     var body: some View {
@@ -147,15 +150,29 @@ struct ProfileView: View {
                             .padding(.top, 20)
                             .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
                         
-                        
+                    HStack() {
                         Text("Paylaşımlar")
                             .font(.title)
                             .foregroundColor(.white.opacity(0.85))
                             .padding(.leading, 20)
                             .padding(.top, 10)
                             .shadow(color: .white.opacity(0.3), radius: 10, x: 0, y: 5)
+                        Spacer(minLength: 0)
+                        Button {
+                            postData.getAllPosts()
+                            showMyPosts.toggle()
+                        } label: {
+                            Text(showMyPosts ? "Gizle ⬆️" :  "Göster ⬇️")
+                                .font(.caption)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.white)
+                                .padding(.top, 15)
+                                .padding(.trailing, 20)
+                        }
+                    }
+
                     
-                    if !(postData.posts.filter({$0.user.uid == profileData.uid}).isEmpty) {
+                    if !(postData.posts.filter({$0.user.uid == profileData.uid}).isEmpty) && showMyPosts {
                         VStack(){
                             if profileData.isLoading {
                                 HStack{
@@ -167,7 +184,7 @@ struct ProfileView: View {
                             } else {
                                 ForEach(postData.posts){ post in
                                     if post.user.uid == profileData.uid {
-                                        PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $profileData.openOtherUserProfile, postUserUid: $profileData.postUserUid,showPostImage: $profileData.showPostImage, post: post)
+                                        PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, postData: postData, openOtherUserProfile: $profileData.openOtherUserProfile, postUserUid: $profileData.postUserUid,showPostImage: $profileData.showPostImage, post: post)
                                             .onAppear {
                                                 self.userHasAnyPost = true
                                             }
@@ -182,14 +199,14 @@ struct ProfileView: View {
                         }
                         .padding()
                         .padding(.bottom, 10)
-                    } else if profileData.isLoading {
+                    } else if postData.isLoading {
                         HStack{
                             Spacer(minLength: 0)
                             ProgressView()
                                 .frame(width: 50, height: 50, alignment: .center)
                             Spacer(minLength: 0)
                         }
-                    } else {
+                    } else if showMyPosts{
                         HStack {
                             Spacer(minLength: 0)
                             VStack {
@@ -219,9 +236,12 @@ struct ProfileView: View {
                 }
             }.coordinateSpace(name: "pullToRefresh")
         }
+//        .onAppear(perform: {
+//            postData.getAllPosts()
+//        })
         .navigationBarTitleDisplayMode(.inline)
         .fullScreenCover(isPresented: $postData.newPost){
-            NewPostView(updateId : $postData.updateId)
+            NewPostView()
         }
         .popup(isPresented: $isUpdatedProfile, type: .toast , position: .top , closeOnTapOutside: true, dismissCallback: {
             self.isUpdatedProfile = false
@@ -283,7 +303,10 @@ struct ProfileView: View {
         .fullScreenCover(isPresented: $profileData.openSettings,content: {
             SettingsView(openBiography: $profileData.openBiographyEdit, openSettings: self.$profileData.openSettings, isUpdatedProfile: self.$isUpdatedProfile)
         })
-        .overlay(ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$profileData.showPostImage))
+        .fullScreenCover(isPresented: self.$profileData.showPostImage){
+            ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$profileData.showPostImage)
+                        .background(Color(red: 0.12, green: 0.12, blue: 0.12, opacity: (1.0)))
+        }
         .onChange(of: profileData.img_data) { newData in
             profileData.updateImage()
         }.padding(18)

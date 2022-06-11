@@ -12,7 +12,6 @@ struct NewPostView: View {
     @StateObject var newPostData = NewPostViewModel()
     @Environment(\.presentationMode) var present
     @FocusState private var isTextFieldFocused: Bool
-    @Binding var updateId: String
     
     var body: some View {
         VStack{
@@ -26,7 +25,6 @@ struct NewPostView: View {
                         }
                     } else {
                         Button(action: {
-                            self.updateId = ""
                             present.wrappedValue.dismiss()
                         }) {
                             Text("Vazgeç")
@@ -35,27 +33,21 @@ struct NewPostView: View {
                         }
                     }
                 }
-
-                
                 Spacer(minLength: 0)
                 
                 //Yeni paylaşımlar
-                if updateId == "" {
-                    Button(action: {
-                        newPostData.picker.toggle()
-                    }) {
-                        Image(systemName: "photo.fill")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                    }
-                } else {
-                    
+                Button(action: {
+                    newPostData.picker.toggle()
+                }) {
+                    Image(systemName: "photo.fill")
+                        .font(.title)
+                        .foregroundColor(.blue)
                 }
                 
                 Button(action: {
-                    newPostData.post(updateId: updateId, present: present)
+                    newPostData.post(present: present)
                 }) {
-                    Text(updateId == "" ? "Paylaş" : "Güncelle")
+                    Text("Paylaş")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding(.vertical,10)
@@ -89,17 +81,21 @@ struct NewPostView: View {
                         newPostData.postTitle = String(newPostData.postTitle.prefix(39))
                     }
                 }.padding(.horizontal, 12)
-                .padding(.bottom, 10)
-//                .toolbar {
-//                    ToolbarItem(placement: .keyboard) {
-//                        HStack {
-//                            Button("Kapat") {
-//                                self.isTextFieldFocused = false
-//                            }
-//                            Spacer(minLength: 0)
-//                        }
-//                    }
-//                }
+                .padding(.bottom, 5)
+
+            VStack{
+                HStack {
+                    Text("Gönderiye ait mesaj odası oluştur")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        Spacer(minLength: 0)
+                    Toggle("", isOn: $newPostData.hasChatRoom)
+                        .labelsHidden()
+                }
+                .padding(.horizontal, 20)
+            }
+            .padding(.bottom, 5)
             
             TextEditor(text: $newPostData.postText)
                 .placeholder(when: newPostData.postText == "", alignment: .topLeading, placeholder: {

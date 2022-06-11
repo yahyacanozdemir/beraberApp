@@ -10,6 +10,7 @@ import SwiftUI
 struct JoinChatroomModal: View {
     
     @Binding var isOpen: Bool
+    @Binding var isOpenFromMessagesPage: Bool
     @State var joinCode = ""
     @State var newTitle = ""
     @ObservedObject var viewModel = ChatroomsViewModel()
@@ -67,6 +68,14 @@ struct JoinChatroomModal: View {
                             .opacity(viewModel.createOrJoinProcessLoading ? 0.5 : 1 )
                     }
                     .padding(.horizontal,5)
+                    
+                    if !isOpenFromMessagesPage {
+                        Text("Sağ taraftaki buton ile gönderiye ait mesaj odasına hemen dahil olabilirsin.")
+    //                        .foregroundColor(.white)
+                            .font(.caption2)
+                            .padding(.leading,30)
+                            .padding(.trailing,10)
+                    }
                 }
                 .padding(.bottom)
                 
@@ -121,7 +130,15 @@ struct JoinChatroomModal: View {
                             .opacity(viewModel.createOrJoinProcessLoading ? 0.5 : 1 )
                     }
                     .padding(.horizontal,5)
-                    .padding(.bottom)
+                    .padding(.bottom, isOpenFromMessagesPage ? 10 : 0)
+                    if !isOpenFromMessagesPage {
+                        Text("Gönderiye ait mesaj odası bulunamadı. Yandaki buton ile bu gönderiye ait yeni bir oda oluşturabilirsin.")
+    //                        .foregroundColor(.white)
+                            .font(.caption2)
+                            .padding(.leading,30)
+                            .padding(.trailing,10)
+                            .padding(.bottom)
+                    }
                 }
                 .padding(.top)
                 .padding(.bottom)

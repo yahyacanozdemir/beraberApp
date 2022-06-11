@@ -13,5 +13,7 @@ struct  PostModel : Identifiable {
     var description: String
     var pic: String
     var time: Date
+    var hasChatroom: Bool
+    var chatRoomTitle: String
     var user: UserModel
 }

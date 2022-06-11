@@ -10,21 +10,19 @@ import PartialSheet
 
 struct HomeView: View {
     @State var selectedTab = "Anasayfa"
+    @State var openMessageJoinModal = false
+    @State var openNewPostView = false
     @StateObject var postData = PostViewModel()
 
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             //Tabbar
-            
             ZStack{
-                PostView(tabSelection: $selectedTab)
+                PostView(tabSelection: $selectedTab,openMessageJoinModal: $openMessageJoinModal, openNewPostView: $openNewPostView)
                     .opacity(selectedTab == "Anasayfa" ? 1 : 0)
-                    .fullScreenCover(isPresented: $postData.newPost){
-                        NewPostView(updateId : $postData.updateId)
-                    }
-                MessagesPagesView(tabSelection: $selectedTab)
+                MessagesPagesView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal)
                     .opacity(selectedTab == "Mesajlar" ? 1 : 0)
-                ProfileView(tabSelection: $selectedTab)
+                ProfileView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal)
                     .opacity(selectedTab == "Profil" ? 1 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -33,7 +31,7 @@ struct HomeView: View {
                 Tabbar(selectedTab: $selectedTab)
                 if selectedTab == "Anasayfa" {
                     Button {
-                        postData.newPost.toggle()
+                        self.openNewPostView = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 40))

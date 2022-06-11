@@ -7,21 +7,29 @@
 
 import SwiftUI
 import ImageViewerRemote
+import Firebase
 
 struct PostView: View {
     
     @Binding var tabSelection: String
+    @Binding var openMessageJoinModal: Bool
     @StateObject var postData = PostViewModel()
     @State var openOtherUserProfile = false
     @State var postUserUid = ""
     @State var showPostImage: Bool = false
+    @Binding var openNewPostView: Bool
+    @State var previousPost: PostModel = PostModel(id: "", title: "", description: "", pic: "", time: Date(), hasChatroom: false, chatRoomTitle: "", user: UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "", phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [""], showConnectionInfos: false, showPossibleDaysInfos: false, showAgeInfos: false, showLocationInfos: false, numberOfRooms: 0, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0))))
+    
     
 
     var body: some View {
         VStack{
             BeraberNavigationView(title: "Anasayfa", withTrailingIcon: false) { _ in }
-            if postData.posts.isEmpty {
+            if postData.isLoading {
                 Spacer(minLength: 0)
+                ProgressView()
+                Spacer(minLength: 0)
+            } else {
                 if postData.noPosts{
                     HStack {
                         Spacer(minLength: 0)
@@ -48,33 +56,38 @@ struct PostView: View {
                     }
                     .padding(.vertical,60)
                     Spacer(minLength: 0)
-                }
-                else {
-                    ProgressView()
-                }
-                Spacer(minLength: 0)
-            } else {
-                ScrollView(showsIndicators: false){
-                    PullToRefresh(coordinateSpaceName: "pullToRefresh") {
-                        postData.getAllPosts()
-                    }
-                    VStack(spacing: 15){
-                        ForEach(postData.posts){ post in
-                            PostRow(tabSelection: $tabSelection, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
-                                .transition(.move(edge: .bottom))
+                } else {
+                    ScrollView(showsIndicators: false){
+                        PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                            postData.getAllPosts()
                         }
-                    }
-                    .padding()
-                    .padding(.bottom, 55)
-                }.coordinateSpace(name: "pullToRefresh")
+                        VStack(spacing: 15){
+                            ForEach(postData.posts){ post in
+//                                if previousPost.id != post.id {
+                                PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
+//                                        .onAppear {
+//                                        print("**********")
+//                                        print("Onceki Post id : ",previousPost.id, " Şimdiki Post id: ", post.id)
+//                                        previousPost = post
+//                                    }
+//                                }
+                            }
+                        }
+                        .padding()
+                        .padding(.bottom, 55)
+                    }.coordinateSpace(name: "pullToRefresh")
+                }
             }
         }
-        .fullScreenCover(isPresented: $openOtherUserProfile, content: {
-            OtherProfileView(tabSelection: $tabSelection, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid)
-        })
-        .fullScreenCover(isPresented: $postData.newPost){
-            NewPostView(updateId : $postData.updateId)
+        .fullScreenCover(isPresented: $openNewPostView){
+            NewPostView()
         }
+        .onAppear(perform: {
+                postData.getAllPosts()
+        })
+        .fullScreenCover(isPresented: $openOtherUserProfile, content: {
+            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid)
+        })
         .fullScreenCover(isPresented: self.$showPostImage){
             ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$showPostImage)
                 .background(Color(red: 0.12, green: 0.12, blue: 0.12, opacity: (1.0)))
