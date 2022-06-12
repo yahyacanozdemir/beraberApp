@@ -11,6 +11,10 @@ import Firebase
 struct ChatRoomView: View {
     @Binding var tabSelection: String
     @Binding var openMessageJoinModal: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
 
     @ObservedObject var viewModel = MessagesViewModel()
     @State var messageField = ""
@@ -25,9 +29,14 @@ struct ChatRoomView: View {
     @Environment(\.presentationMode) var present
 
     
-    init(chatroom: Chatroom, selectedTab: Binding<String>, openMessageJoinModal: Binding<Bool>) {
+    init(chatroom: Chatroom, selectedTab: Binding<String>, openMessageJoinModal: Binding<Bool>,redirectingPostId: Binding<String>, redirectingPosOwnerId: Binding<String>, redirectingJoinCode: Binding<String>, redirectingNewRoomTitle: Binding<String>) {
         self._tabSelection = selectedTab
         self._openMessageJoinModal = openMessageJoinModal
+        self._redirectingPostId = redirectingPostId
+        self._redirectingPosOwnerId = redirectingPosOwnerId
+        self._redirectingJoinCode = redirectingJoinCode
+        self._redirectingNewRoomTitle = redirectingNewRoomTitle
+
         self.chatroom = chatroom
         if counter == 0 {
             viewModel.fetchData(docId: chatroom.id)
@@ -152,7 +161,7 @@ struct ChatRoomView: View {
                     }
                 )
         .fullScreenCover(isPresented: $openOtherUserProfile, content: {
-            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal ,profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $selectedMessageUserUid)
+            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId, redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode,  redirectingNewRoomTitle: $redirectingNewRoomTitle, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $selectedMessageUserUid)
         })
     }
 }

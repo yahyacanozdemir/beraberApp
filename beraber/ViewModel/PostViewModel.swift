@@ -50,12 +50,13 @@ class PostViewModel : ObservableObject {
                     let pic = doc.document.data()["url"] as! String
                     let hasChatRoom = doc.document.data()["hasChatRoom"] as! Bool
                     let chatRoomTitle = doc.document.data()["chatRoomTitle"] as! String
+                    let chatRoomCode = doc.document.data()["chatRoomCode"] as! String
                     let userRef = doc.document.data()["ref"] as! DocumentReference
                     
                     //user bilgilerini çekme
                     fetchUser(uid: userRef.documentID) { user in
                         if self.posts.count < docs.count {
-                            self.posts.append(PostModel(id: doc.document.documentID, title: title,description: description, pic: pic, time: time.dateValue(),hasChatroom: hasChatRoom,chatRoomTitle: chatRoomTitle, user: user))
+                            self.posts.append(PostModel(id: doc.document.documentID, title: title,description: description, pic: pic, time: time.dateValue(),hasChatroom: hasChatRoom, chatRoomCode: chatRoomCode,chatRoomTitle: chatRoomTitle, user: user))
 //                            print("Post Count : ", self.posts.count, " Docs Count: ", docs.count)
                         }
                         //Oluşturma tarihine göre sıralama
@@ -74,6 +75,15 @@ class PostViewModel : ObservableObject {
 //                    Profilim sekmesinde kaldırılan posttan sonra loading gözükmesi için yoruma alındı
 //                    self.isLoading = false
                 }
+            }
+        }
+    }
+    
+    func updatePost(id: String){
+        ref.collection("Posts").document(id).updateData(["hasChatRoom" : true]) { error in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+                return
             }
         }
     }

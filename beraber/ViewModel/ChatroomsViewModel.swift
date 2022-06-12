@@ -57,19 +57,19 @@ class ChatroomsViewModel: ObservableObject {
         }
     }
     
-    func createChatroom(title: String, handler: @escaping () -> Void){
+    func createChatroom(title: String, joinCode: Int = 0, postOwnerId: String = "", handler: @escaping () -> Void){
         
         if user != nil && title != "" && title.count >= 5 && title.count < 30{
             self.createOrJoinProcessLoading = true
             fetchUser(uid: user!.uid) { currentUser in
                 self.db.collection("chatrooms").addDocument(data: [
                     "title" : title,
-                    "joinCode": Int.random(in: 10000..<99999),
+                    "joinCode": joinCode == 0 ? Int.random(in: 10000..<99999) : joinCode,
     //                "users": ["\(user!.uid) +ODADA+"]]) { error in
                     "creatorUid" : self.user!.uid,
                     "creatorName" : currentUser.userName,
                     "createdAt" : Date(),
-                    "users": [self.user!.uid]]) { error in
+                    "users": postOwnerId == "" ? [self.user!.uid] : [self.user!.uid, postOwnerId]]) { error in
                         if error != nil {
                             print("Chatroom Eklenirken Hata")
                             self.createOrJoinProcessLoading = false
@@ -81,6 +81,7 @@ class ChatroomsViewModel: ObservableObject {
             }
         }
     }
+    
     
     func joinChatroom(code: String, handler: @escaping () -> Void){
         if user != nil {

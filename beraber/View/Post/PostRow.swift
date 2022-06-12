@@ -15,6 +15,10 @@ struct PostRow: View {
     
     @Binding var tabSelection: String
     @Binding var openMessageJoinModal: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
 
     @ObservedObject var postData = PostViewModel()
     @Binding var openOtherUserProfile: Bool
@@ -58,6 +62,14 @@ struct PostRow: View {
                         Button("Beni oraya götür") {
                             present.wrappedValue.dismiss()
                             tabSelection = "Mesajlar"
+                            if post.hasChatroom{
+                                redirectingJoinCode = post.chatRoomCode
+                            } else {
+                                redirectingPostId = post.id
+                                redirectingPosOwnerId = post.user.uid
+                                redirectingJoinCode = post.chatRoomCode
+                                redirectingNewRoomTitle = post.title
+                            }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                                 openMessageJoinModal.toggle()
                             }

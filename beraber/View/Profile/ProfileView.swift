@@ -14,6 +14,10 @@ import PartialSheet
 struct ProfileView: View {
     @Binding var tabSelection: String
     @Binding var openMessageJoinModal: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
 
     @StateObject var postData = PostViewModel()
     @StateObject var profileData = ProfileViewModel()
@@ -184,7 +188,7 @@ struct ProfileView: View {
                             } else {
                                 ForEach(postData.posts){ post in
                                     if post.user.uid == profileData.uid {
-                                        PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, postData: postData, openOtherUserProfile: $profileData.openOtherUserProfile, postUserUid: $profileData.postUserUid,showPostImage: $profileData.showPostImage, post: post)
+                                        PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle, postData: postData, openOtherUserProfile: $profileData.openOtherUserProfile, postUserUid: $profileData.postUserUid,showPostImage: $profileData.showPostImage, post: post)
                                             .onAppear {
                                                 self.userHasAnyPost = true
                                             }

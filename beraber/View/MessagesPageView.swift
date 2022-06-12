@@ -13,6 +13,10 @@ import Firebase
 struct MessagesPagesView: View {
     @Binding var tabSelection: String
     @Binding var openMessageJoinModal: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
     @State var openMessageJoinModalFromThisPage = false
 
     @ObservedObject var chatroomsData = ChatroomsViewModel()
@@ -152,13 +156,13 @@ struct MessagesPagesView: View {
         }
         .padding(18)
         .partialSheet(isPresented: $openMessageJoinModal, content: {
-            JoinChatroomModal(isOpen: self.$openMessageJoinModal, isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage)
+            JoinChatroomModal(isOpen: self.$openMessageJoinModal, isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: self.$redirectingJoinCode, redirectingNewRoomTitle: self.$redirectingNewRoomTitle)
         })
         .partialSheet(isPresented: $openMessageJoinModalFromThisPage, content: {
-            JoinChatroomModal(isOpen: self.$openMessageJoinModalFromThisPage,isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage)
+            JoinChatroomModal(isOpen: self.$openMessageJoinModalFromThisPage,isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: self.$redirectingJoinCode, redirectingNewRoomTitle: self.$redirectingNewRoomTitle)
         })
         .fullScreenCover(isPresented: $openChatPage) {
-            ChatRoomView(chatroom: self.selectedChatRoom, selectedTab: $tabSelection,openMessageJoinModal: $openMessageJoinModal)
+            ChatRoomView(chatroom: self.selectedChatRoom, selectedTab: $tabSelection,openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
                 .onAppear {
                     viewModel.fetchData(docId: self.selectedChatRoom.id)
                 }

@@ -13,12 +13,16 @@ struct PostView: View {
     
     @Binding var tabSelection: String
     @Binding var openMessageJoinModal: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
     @StateObject var postData = PostViewModel()
     @State var openOtherUserProfile = false
     @State var postUserUid = ""
     @State var showPostImage: Bool = false
     @Binding var openNewPostView: Bool
-    @State var previousPost: PostModel = PostModel(id: "", title: "", description: "", pic: "", time: Date(), hasChatroom: false, chatRoomTitle: "", user: UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "", phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [""], showConnectionInfos: false, showPossibleDaysInfos: false, showAgeInfos: false, showLocationInfos: false, numberOfRooms: 0, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0))))
+    @State var previousPost: PostModel = PostModel(id: "", title: "", description: "", pic: "", time: Date(), hasChatroom: false, chatRoomCode: "0", chatRoomTitle: "", user: UserModel(uid: "", userProfilePic: "", userName: "", userBiography: "", userAge: 0, userLocation: "", userReasonForApp: "", phoneNumber: "", emailAddress: "", possibleDaysOfWeek: [""], showConnectionInfos: false, showPossibleDaysInfos: false, showAgeInfos: false, showLocationInfos: false, numberOfRooms: 0, userCreationDate: Timestamp(date: Date(timeIntervalSince1970: 0))))
     
     
 
@@ -64,7 +68,7 @@ struct PostView: View {
                         VStack(spacing: 15){
                             ForEach(postData.posts){ post in
 //                                if previousPost.id != post.id {
-                                PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
+                                PostRow(tabSelection: $tabSelection, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId,redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle, postData: postData, openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid,showPostImage: $showPostImage, post: post)
 //                                        .onAppear {
 //                                        print("**********")
 //                                        print("Onceki Post id : ",previousPost.id, " Şimdiki Post id: ", post.id)
@@ -86,7 +90,7 @@ struct PostView: View {
                 postData.getAllPosts()
         })
         .fullScreenCover(isPresented: $openOtherUserProfile, content: {
-            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid)
+            OtherProfileView(tabSelection: $tabSelection,openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle, profileData: OtherProfileViewModel(), openOtherUserProfile: $openOtherUserProfile, postUserUid: $postUserUid)
         })
         .fullScreenCover(isPresented: self.$showPostImage){
             ImageViewerRemote(imageURL: self.$postData.selectedPostImageUrl, viewerShown: self.$showPostImage)

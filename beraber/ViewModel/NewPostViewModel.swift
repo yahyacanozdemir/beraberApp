@@ -12,11 +12,11 @@ class NewPostViewModel : ObservableObject {
     @Published var postTitle = ""
     @Published var postText = ""
     @Published var hasChatRoom = true
+    @Published var chatRoomCode = ""
     @Published var picker = false
     @Published var img_data = Data(count: 0)
-    
-    @State var chatroomViewModel = ChatroomsViewModel()
-    
+    @ObservedObject var chatRoomViewModel = ChatroomsViewModel()
+        
    @Published var isPosting = false
     
     let uid = Auth.auth().currentUser!.uid
@@ -26,6 +26,7 @@ class NewPostViewModel : ObservableObject {
         isPosting = true
         
         if img_data.count == 0 {
+            self.chatRoomCode = String(Int.random(in: 10000..<99999))
             ref.collection("Posts").document().setData([
                 "title" : self.postTitle,
                 "description" : self.postText,
@@ -33,6 +34,7 @@ class NewPostViewModel : ObservableObject {
                 "ref" : ref.collection("Users").document(self.uid),
                 "hasChatRoom": self.hasChatRoom,
                 "chatRoomTitle": self.postTitle,
+                "chatRoomCode": self.chatRoomCode,
                 "time" : Date()
                 
             ]) { error in
@@ -56,6 +58,7 @@ class NewPostViewModel : ObservableObject {
                     "ref" : ref.collection("Users").document(self.uid),
                     "hasChatRoom": self.hasChatRoom,
                     "chatRoomTitle": self.postTitle,
+                    "chatRoomCode": self.chatRoomCode,
                     "time" : Date()
                     
                 ]) { error in
@@ -68,6 +71,9 @@ class NewPostViewModel : ObservableObject {
                     }
                 }
             }
+        }
+        if hasChatRoom {
+            chatRoomViewModel.createChatroom(title: postTitle,joinCode: Int(chatRoomCode) ?? 0) {}
         }
     }
 }

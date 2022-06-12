@@ -11,9 +11,14 @@ struct JoinChatroomModal: View {
     
     @Binding var isOpen: Bool
     @Binding var isOpenFromMessagesPage: Bool
+    @Binding var redirectingPostId: String
+    @Binding var redirectingPosOwnerId: String
+    @Binding var redirectingJoinCode: String
+    @Binding var redirectingNewRoomTitle: String
     @State var joinCode = ""
     @State var newTitle = ""
     @ObservedObject var viewModel = ChatroomsViewModel()
+    @ObservedObject var postsViewModel = PostViewModel()
     
     var body: some View {
             VStack {
@@ -69,12 +74,13 @@ struct JoinChatroomModal: View {
                     }
                     .padding(.horizontal,5)
                     
-                    if !isOpenFromMessagesPage {
+                    if !isOpenFromMessagesPage && (redirectingNewRoomTitle == "") {
                         Text("Sağ taraftaki buton ile gönderiye ait mesaj odasına hemen dahil olabilirsin.")
     //                        .foregroundColor(.white)
                             .font(.caption2)
-                            .padding(.leading,30)
-                            .padding(.trailing,10)
+                            .opacity(0.5)
+                            .padding(.horizontal,30)
+
                     }
                 }
                 .padding(.bottom)
@@ -115,9 +121,16 @@ struct JoinChatroomModal: View {
                         Button(action: {
                             UIApplication.shared.endEditing()
                             if newTitle.count >= 5 && newTitle.count <= 30 {
-                                viewModel.createChatroom(title: newTitle, handler: {
-                                    self.isOpen = false
-                                })
+                                if redirectingNewRoomTitle != "" {
+                                    viewModel.createChatroom(title: newTitle, joinCode: Int(redirectingJoinCode) ?? 0, postOwnerId: redirectingPosOwnerId, handler: {
+                                        self.isOpen = false
+                                        postsViewModel.updatePost(id: redirectingPostId)
+                                    })
+                                } else {
+                                    viewModel.createChatroom(title: newTitle, handler: {
+                                        self.isOpen = false
+                                    })
+                                }
                             }
                         }, label: {
                             Image(systemName: "plus.circle")
@@ -131,18 +144,30 @@ struct JoinChatroomModal: View {
                     }
                     .padding(.horizontal,5)
                     .padding(.bottom, isOpenFromMessagesPage ? 10 : 0)
-                    if !isOpenFromMessagesPage {
+                    if !isOpenFromMessagesPage && (redirectingNewRoomTitle != "" || redirectingJoinCode == "") {
                         Text("Gönderiye ait mesaj odası bulunamadı. Yandaki buton ile bu gönderiye ait yeni bir oda oluşturabilirsin.")
     //                        .foregroundColor(.white)
                             .font(.caption2)
-                            .padding(.leading,30)
-                            .padding(.trailing,10)
+                            .opacity(0.5)
+                            .padding(.horizontal,30)
                             .padding(.bottom)
                     }
                 }
-                .padding(.top)
                 .padding(.bottom)
             }
+            .onAppear(perform: {
+                if redirectingNewRoomTitle == "" {
+                    joinCode = redirectingJoinCode.filter { $0 != "\"" }
+                } else {
+                    newTitle = redirectingNewRoomTitle.filter { $0 != "\"" }
+                }
+            })
+            .onDisappear(perform: {
+                redirectingJoinCode = ""
+                redirectingNewRoomTitle = ""
+                redirectingPostId = ""
+                redirectingPosOwnerId = ""
+            })
             .padding(.bottom, UIWindow.key?.safeAreaInsets.bottom ?? 25 + 10)
             .onTapGesture {
                 // Hide Keyboard

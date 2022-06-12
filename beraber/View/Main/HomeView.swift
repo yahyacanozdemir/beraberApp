@@ -11,6 +11,10 @@ import PartialSheet
 struct HomeView: View {
     @State var selectedTab = "Anasayfa"
     @State var openMessageJoinModal = false
+    @State var redirectingPostId = ""
+    @State var redirectingPosOwnerId = ""
+    @State var redirectingJoinCode = ""
+    @State var redirectingNewRoomTitle = ""
     @State var openNewPostView = false
     @StateObject var postData = PostViewModel()
 
@@ -18,11 +22,11 @@ struct HomeView: View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             //Tabbar
             ZStack{
-                PostView(tabSelection: $selectedTab,openMessageJoinModal: $openMessageJoinModal, openNewPostView: $openNewPostView)
+                PostView(tabSelection: $selectedTab,openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle, openNewPostView: $openNewPostView)
                     .opacity(selectedTab == "Anasayfa" ? 1 : 0)
-                MessagesPagesView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal)
+                MessagesPagesView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
                     .opacity(selectedTab == "Mesajlar" ? 1 : 0)
-                ProfileView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal)
+                ProfileView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
                     .opacity(selectedTab == "Profil" ? 1 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,8 +51,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}
