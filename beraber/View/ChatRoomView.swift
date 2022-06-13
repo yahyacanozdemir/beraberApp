@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct ChatRoomView: View {
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var openMessageJoinModal: Bool
     @Binding var redirectingPostId: String
     @Binding var redirectingPosOwnerId: String
@@ -29,7 +29,7 @@ struct ChatRoomView: View {
     @Environment(\.presentationMode) var present
 
     
-    init(chatroom: Chatroom, selectedTab: Binding<String>, openMessageJoinModal: Binding<Bool>,redirectingPostId: Binding<String>, redirectingPosOwnerId: Binding<String>, redirectingJoinCode: Binding<String>, redirectingNewRoomTitle: Binding<String>) {
+    init(chatroom: Chatroom, selectedTab: Binding<HomeView.MainTabs>, openMessageJoinModal: Binding<Bool>,redirectingPostId: Binding<String>, redirectingPosOwnerId: Binding<String>, redirectingJoinCode: Binding<String>, redirectingNewRoomTitle: Binding<String>) {
         self._tabSelection = selectedTab
         self._openMessageJoinModal = openMessageJoinModal
         self._redirectingPostId = redirectingPostId

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Tabbar: View {
-    @Binding var selectedTab : String
+    @Binding var selectedTab : HomeView.MainTabs
     var body: some View {
         HStack(spacing: 20){
             TabButton(title: "Anasayfa", iconName: "square.stack.3d.down.forward", selectedTab: $selectedTab)
@@ -25,19 +25,19 @@ struct Tabbar: View {
 struct TabButton: View {
     var title: String
     var iconName : String
-    @Binding var selectedTab: String
+    @Binding var selectedTab: HomeView.MainTabs
     
     var body: some View {
-        Button(action: {selectedTab = title}){
+        Button(action: {selectedTab = title == "Anasayfa" ? .Anasayfa : title == "Mesajlar" ? .Mesajlar : .Profil}){
             VStack(spacing: 5){
                 Image(systemName: iconName)
                     .renderingMode(.template)
-                    .foregroundColor(selectedTab == title ? .blue : .gray)
+                    .foregroundColor(selectedTab.rawValue == title ? .blue : .gray)
                 Text(title)
                     .font(.caption)
                     .fontWeight(.bold)
             }
-            .foregroundColor(selectedTab == title ? .blue : .gray)
+            .foregroundColor(selectedTab.rawValue == title ? .blue : .gray)
             .padding(.horizontal)
             .padding(.vertical, 10)
         }

@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct MessageRow: View {
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var selectedMessageUserUid: String
     @Binding var openOtherUserProfile: Bool
     @State var dummyTabSelection = ""
@@ -74,7 +74,7 @@ struct MessageRow: View {
                         .offset(y: 10)
                         .onTapGesture {
                             present.wrappedValue.dismiss()
-                            self.tabSelection = "Profil"
+                            self.tabSelection = .Profil
                         }
                 }
             }

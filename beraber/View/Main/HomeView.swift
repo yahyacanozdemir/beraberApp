@@ -9,7 +9,12 @@ import SwiftUI
 import PartialSheet
 
 struct HomeView: View {
-    @State var selectedTab = "Anasayfa"
+    enum MainTabs:String {
+        case Anasayfa
+        case Mesajlar
+        case Profil
+    }
+    @State var selectedTab: MainTabs = .Anasayfa
     @State var openMessageJoinModal = false
     @State var redirectingPostId = ""
     @State var redirectingPosOwnerId = ""
@@ -22,18 +27,27 @@ struct HomeView: View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             //Tabbar
             ZStack{
-                PostView(tabSelection: $selectedTab,openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle, openNewPostView: $openNewPostView)
-                    .opacity(selectedTab == "Anasayfa" ? 1 : 0)
-                MessagesPagesView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
-                    .opacity(selectedTab == "Mesajlar" ? 1 : 0)
-                ProfileView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
-                    .opacity(selectedTab == "Profil" ? 1 : 0)
+                PostView(tabSelection: $selectedTab,openMessageJoinModal: $openMessageJoinModal,
+                         redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId,
+                         redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle,
+                         openNewPostView: $openNewPostView)
+                    .opacity(selectedTab == .Anasayfa ? 1 : 0)
+                
+                MessagesPagesView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal,
+                                  redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId,
+                                  redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
+                    .opacity(selectedTab == .Mesajlar ? 1 : 0)
+                
+                ProfileView(tabSelection: $selectedTab, openMessageJoinModal: $openMessageJoinModal,
+                            redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId,
+                            redirectingJoinCode: $redirectingJoinCode, redirectingNewRoomTitle: $redirectingNewRoomTitle)
+                    .opacity(selectedTab == .Profil ? 1 : 0)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             HStack {
                 Tabbar(selectedTab: $selectedTab)
-                if selectedTab == "Anasayfa" {
+                if selectedTab == .Anasayfa {
                     Button {
                         self.openNewPostView = true
                     } label: {
@@ -50,9 +64,3 @@ struct HomeView: View {
         .ignoresSafeArea(.all, edges: .top)
     }
 }
-
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}

@@ -11,7 +11,7 @@ import ExytePopupView
 import SDWebImageSwiftUI
 
 struct OtherProfileView: View {
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var openMessageJoinModal: Bool
     @Binding var redirectingPostId: String
     @Binding var redirectingPosOwnerId: String
@@ -115,7 +115,15 @@ struct OtherProfileView: View {
                             }
                             
                             if profileData.userInfo.userReasonForApp != "" {
-                                OtherProfileInfoCell(title: "Bulunduğu oda sayısı", info: String(profileData.userInfo.numberOfRooms))
+                                HStack {
+                                    Image(systemName: "star.circle")
+                                        .font(.caption)
+                                        .opacity(profileData.userInfo.numberOfRooms >= 2 ? 1 : 0)
+                                    OtherProfileInfoCell(title: "Bulunduğu oda sayısı", info: String(profileData.userInfo.numberOfRooms))
+                                    Image(systemName: "star.circle")
+                                        .font(.caption)
+                                        .opacity(profileData.userInfo.numberOfRooms >= 2 ? 1 : 0)
+                                }
                             }
                         }
                         Spacer(minLength: 0)

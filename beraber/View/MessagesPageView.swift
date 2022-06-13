@@ -11,7 +11,7 @@ import ExytePopupView
 import Firebase
 
 struct MessagesPagesView: View {
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var openMessageJoinModal: Bool
     @Binding var redirectingPostId: String
     @Binding var redirectingPosOwnerId: String
@@ -157,6 +157,17 @@ struct MessagesPagesView: View {
         .padding(18)
         .partialSheet(isPresented: $openMessageJoinModal, content: {
             JoinChatroomModal(isOpen: self.$openMessageJoinModal, isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: self.$redirectingJoinCode, redirectingNewRoomTitle: self.$redirectingNewRoomTitle)
+                .onAppear(perform: {
+                        if openMessageJoinModal {
+                            for chatroom in self.chatroomsData.chatrooms {
+                                if chatroom.joinCode == Int(self.redirectingJoinCode) {
+                                    self.openMessageJoinModal = false
+                                        self.selectedChatRoom = chatroom
+                                        self.openChatPage = true
+                                }
+                            }
+                        }
+                    })
         })
         .partialSheet(isPresented: $openMessageJoinModalFromThisPage, content: {
             JoinChatroomModal(isOpen: self.$openMessageJoinModalFromThisPage,isOpenFromMessagesPage: self.$openMessageJoinModalFromThisPage, redirectingPostId: $redirectingPostId,redirectingPosOwnerId: $redirectingPosOwnerId, redirectingJoinCode: self.$redirectingJoinCode, redirectingNewRoomTitle: self.$redirectingNewRoomTitle)

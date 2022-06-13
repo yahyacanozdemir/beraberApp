@@ -13,7 +13,7 @@ import Firebase
 
 struct PostRow: View {
     
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var openMessageJoinModal: Bool
     @Binding var redirectingPostId: String
     @Binding var redirectingPosOwnerId: String
@@ -61,7 +61,7 @@ struct PostRow: View {
                     }).alert("Gönderiye ait mesaj odasına gidiyorsun", isPresented: $showDeletePostAlert) {
                         Button("Beni oraya götür") {
                             present.wrappedValue.dismiss()
-                            tabSelection = "Mesajlar"
+                            tabSelection = .Mesajlar
                             if post.hasChatroom{
                                 redirectingJoinCode = post.chatRoomCode
                             } else {
@@ -79,7 +79,7 @@ struct PostRow: View {
                 }
             }
             HStack(spacing: 10){
-                if openOtherUserProfile || tabSelection == "Profil" {
+                if openOtherUserProfile || tabSelection == .Profil {
                     WebImage(url: URL(string: post.user.userProfilePic)!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -99,7 +99,7 @@ struct PostRow: View {
                 } else {
                     Button {
                         if currentUserUid == post.user.uid {
-                            self.tabSelection = "Profil"
+                            self.tabSelection = .Profil
                         } else {
                             openOtherUserProfile = true
                             postUserUid = post.user.uid

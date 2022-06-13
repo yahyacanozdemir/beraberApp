@@ -12,7 +12,7 @@ import ImageViewerRemote
 import PartialSheet
 
 struct ProfileView: View {
-    @Binding var tabSelection: String
+    @Binding var tabSelection: HomeView.MainTabs
     @Binding var openMessageJoinModal: Bool
     @Binding var redirectingPostId: String
     @Binding var redirectingPosOwnerId: String
