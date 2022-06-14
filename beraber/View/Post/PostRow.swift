@@ -19,7 +19,7 @@ struct PostRow: View {
     @Binding var redirectingPosOwnerId: String
     @Binding var redirectingJoinCode: String
     @Binding var redirectingNewRoomTitle: String
-
+    
     @ObservedObject var postData = PostViewModel()
     @Binding var openOtherUserProfile: Bool
     @Binding var postUserUid: String
@@ -85,7 +85,7 @@ struct PostRow: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 50, height: 50)
                         .clipShape(Circle())
-                        
+                    
                     VStack (alignment: .leading, spacing: 3) {
                         Text(post.user.userName)
                             .foregroundColor(.white)
@@ -110,7 +110,7 @@ struct PostRow: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
-                            
+                        
                         VStack (alignment: .leading, spacing: 3) {
                             Text(post.user.userName)
                                 .foregroundColor(.white)
@@ -139,9 +139,9 @@ struct PostRow: View {
             }
             .padding(.leading, 5)
             
-                Divider()
-                    .background(.white)
-                    .padding(.vertical, 5)
+            Divider()
+                .background(.white)
+                .padding(.vertical, 5)
             
             if post.pic != "" {
                 Button {
@@ -165,14 +165,46 @@ struct PostRow: View {
             .padding(.top,5)
             .padding(.leading, 5)
             
-            HStack {
-                Spacer(minLength: 0)
-                Text("".getCreationDateAsString(date: post.time))
-                    .font(.caption2)
-                    .foregroundColor(.white)
-                Text(post.time, style: .time)
-                    .font(.caption2)
-                    .foregroundColor(.white)
+            VStack {
+                if post.user.uid == currentUserUid {
+                    HStack {
+                        Spacer(minLength: 0)
+                        Button(action: {
+                            present.wrappedValue.dismiss()
+                            tabSelection = .Mesajlar
+                            if post.hasChatroom{
+                                redirectingJoinCode = post.chatRoomCode
+                            } else {
+                                redirectingPostId = post.id
+                                redirectingPosOwnerId = post.user.uid
+                                redirectingJoinCode = post.chatRoomCode
+                                redirectingNewRoomTitle = post.title
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                openMessageJoinModal.toggle()
+                            }
+                        }, label: {
+                            Text(post.hasChatroom ? "Mesaj odasına git" : "Mesaj odası oluştur")
+                                .font(.caption2)
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .padding(.vertical)
+                                .padding(.horizontal)
+                                .frame(width: (UIScreen.screenWidth-40) / 2.3, height: 20)
+                                .background(Color(hex: 0x55ABA5))
+                                .clipShape(Capsule())
+                        })
+                    }
+                }
+                HStack {
+                    Spacer(minLength: 0)
+                    Text("".getCreationDateAsString(date: post.time))
+                        .font(.caption2)
+                        .foregroundColor(.white)
+                    Text(post.time, style: .time)
+                        .font(.caption2)
+                        .foregroundColor(.white)
+                }
             }
         }
         .padding()

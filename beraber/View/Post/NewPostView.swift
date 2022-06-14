@@ -55,8 +55,8 @@ struct NewPostView: View {
                         .background(.blue)
                         .clipShape(Capsule())
                 }
-                .opacity(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1)
-                .disabled(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? true : false)
+                .opacity(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || (newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty || newPostData.postTitle.count < 5) ? 0.5 : 1)
+                .disabled((newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postText.count < 10) || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? true : false)
                 
                 
             }
@@ -66,7 +66,7 @@ struct NewPostView: View {
             
             TextField("", text: $newPostData.postTitle)
                 .placeholder(when: newPostData.postTitle.isEmpty) {
-                    Text("Gönderi başlığı").foregroundColor(.white.opacity(0.4))
+                    Text("Gönderi başlığı (En az 5 karakter)").foregroundColor(.white.opacity(0.4))
                 }
                 .padding()
                 .background(.white.opacity(0.6))
@@ -99,7 +99,7 @@ struct NewPostView: View {
             
             TextEditor(text: $newPostData.postText)
                 .placeholder(when: newPostData.postText == "", alignment: .topLeading, placeholder: {
-                    Text("Bir şeyler yaz...")
+                    Text("Bir şeyler yaz... (En az 10 karakter)")
                         .padding(9)
                 })
                 .cornerRadius(15)

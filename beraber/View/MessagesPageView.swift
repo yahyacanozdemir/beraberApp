@@ -119,7 +119,7 @@ struct MessagesPagesView: View {
                                         Button {
                                             self.showComplainChatroomAlert = true
                                         } label: {
-                                            Text("Mesaj odasını şkayet et")
+                                            Text("Mesaj odasını şikayet et")
                                         }
                                     }.onAppear {
                                         self.selectedChatRoom = room
