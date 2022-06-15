@@ -55,8 +55,8 @@ struct NewPostView: View {
                         .background(.blue)
                         .clipShape(Capsule())
                 }
-                .opacity(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || (newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty || newPostData.postTitle.count < 5) ? 0.5 : 1)
-                .disabled((newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postText.count < 10) || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty ? true : false)
+                .opacity(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postText.count < 10 || (newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty || newPostData.postTitle.count < 5) ? 0.5 : 1)
+                .disabled((newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || newPostData.postText.count < 10) || newPostData.postTitle.trimmingCharacters(in: .whitespaces).isEmpty || newPostData.postTitle.count < 5 ? true : false)
                 
                 
             }
@@ -75,6 +75,7 @@ struct NewPostView: View {
                 .keyboardType(.alphabet)
                 .disableAutocorrection(true)
                 .lineLimit(1)
+                .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(newPostData.postTitle.count == 0 || newPostData.postTitle.count >= 5 ? .gray.opacity(0.4) : Color.red, style: StrokeStyle(lineWidth: 1)))
                 .onChange(of: newPostData.postTitle) {
                     if $0 == "0" {}
                     if newPostData.postTitle.count == 40 {
@@ -108,6 +109,7 @@ struct NewPostView: View {
                 .background(Color.blue)
                 .opacity(newPostData.isPosting ? 0.2 : 0.5)
                 .foregroundColor(.white)
+                .overlay(RoundedRectangle(cornerRadius: 15).strokeBorder(newPostData.postText.count == 0 || (newPostData.postText.count >= 10 && !(newPostData.postText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty))  ? .gray.opacity(0.4) : Color.red, style: StrokeStyle(lineWidth: 1)).padding())
                 .disabled(newPostData.isPosting ? true : false)
             
             if(newPostData.img_data.count != 0) {
