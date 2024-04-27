@@ -13,20 +13,21 @@ Beraber is a project to provide social assistance, solidarity and unity. The aim
 
 SwiftUI, MVVM, Firebase Auth, Firebase Phone Verification, Firebase Storage, Local Storage.
 
-## Geliştirrmeler & Features
+##
+
+## Geliştirrmeler & Özellikler
 
      Onboarding, Sign In & Sign Up, Phone Verification
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/562ce169-9f5e-4c11-90b4-6f08ecac3d0b)
 
      Home Page, Post Share
-![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/f63b1cc0-f0ed-4a4c-ac2b-169ea49e7237)
+![Mesaj Odalarına katıl, sorumluluk al-5](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/207d0651-5964-4e35-9884-c3349d280de8)
 
      Live Messaging
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/928084b8-c310-4def-bee6-69c34054af16)
 
      My Profile, Profiles
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/5b521abe-679b-4051-a602-b3b2c2d00eb9)
-
 
      Settings
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/a5bbb7cf-2c81-419d-9d1e-d6df9a82d80f)
