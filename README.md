@@ -1,4 +1,4 @@
-![image](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/43f567ec-d3ee-4f68-8a40-bfb3bce89c8d)# BERABER iOS App
+# BERABER iOS App
     Bir sosyal yardımlaşma ve dayanışma hareketi...
 ![entery](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/ae20b71a-4d00-4332-85dc-a91ae0d162cf)
 
@@ -17,8 +17,12 @@ Beraber is a project to provide social assistance, solidarity and unity. The aim
      Home Page, Post Share
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/f63b1cc0-f0ed-4a4c-ac2b-169ea49e7237)
 
-     Live Messaging, Profile
+     Live Messaging
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/928084b8-c310-4def-bee6-69c34054af16)
+
+     My Profile, Profiles
+![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/5b521abe-679b-4051-a602-b3b2c2d00eb9)
+
 
      Settings
 ![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/3c7ab7a5-b6c3-452b-8182-a30f9919c701)
