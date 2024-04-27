@@ -9,6 +9,10 @@ Beraber; bir sosyal yardımlaşma, dayanışma ve birliktelik sağlama projesidi
 ## Summary (EN)
 Beraber is a project to provide social assistance, solidarity and unity. The aim of the project is determined as the title of the project, and the idea is intended to be inoculated to the users. Beraber, the project highlights the unity and solidarity of the Turkish nation, and the spread of good currents starting from the neighbor's aid to the neighbor throughout the country, which is intended to further increase the level of prosperity of society by society. The mobile app Beraber, which will serve these purposes mentioned, has been envied to be presented with many examples in our lives and a very similar structure to social media applications with users. like all social media projects, which are relevant to many societies today, have large audiences, and have gained this power through the mobile ecosystem, Beraber is also a mobile ecosystem project.
 
+## Projede Kullanılan Teknolojiler
+
+SwiftUI, MVVM, Firebase Auth, Firebase Phone Verification, Firebase Storage, Local Storage.
+
 ## Geliştirrmeler & Features
 
      Onboarding, Sign In & Sign Up, Phone Verification
@@ -25,8 +29,7 @@ Beraber is a project to provide social assistance, solidarity and unity. The aim
 
 
      Settings
-![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/3c7ab7a5-b6c3-452b-8182-a30f9919c701)
-
+![](https://github.com/yahyacanozdemir/beraberApp/assets/43846778/a5bbb7cf-2c81-419d-9d1e-d6df9a82d80f)
     
 ##
 
@@ -35,7 +38,10 @@ Uygulama ismi, ara yüz tasarımı, kullanıcı deneyimi ve sunum görsellerinin
 
 ##
 
-### Dikkat
-Bu uygulama  INVIO Genç Yetenek Staj Programı başvurusu kapsamında flutter back-end'de katmanlı mimari ve state yönetimi üzerine çalışmak, mobil programlama alanında kendimi geliştirmek için tümüyle tarafımca kodlanmış bir haftalık projedir. 
+### Hedeflenen Başarı
+Toplumda bulunan bazı bireylere iyilik yapılma ihtiyaçlarının doğduğu ve diğer bireylerin de iyilik yapma duygularının kabardığı durumlarda farklı amaçlar uğruna geliştirilmiş olan diğer sosyal medya uygulamalarının yerini Berber’in alması hedeflenmektedir. Hedeflenen bir diğer başarı ise toplumda iyilik duygusunu ve bilincini arttırabilmek, iyilik akımlarına dahil olan her bir bireyi uygulama kullanıcısı haline getirebilmektir. Uygulama kullanıcısı ne kadar artarsa proje hedeflediği başarılara o kadar hızlı ulaşabilir; misyonunu ve vizyonunu çok daha hızlı şekilde gerçekleştirme şansı yakalayabilir duruma gelecektir.  
+
+Toplumlar ve sosyal gruplar gittikçe bir arada yaşamak zorunda kalmakta aynı zamanda birlikte yasamanın zorunlu kıldığı ortak ekonomik, sosyal ve siyasal düzenlemelere de ihtiyaç̧ duyulmaktadır. (KESGİN, 2016) Böyle bir ortamda devletlerin özellikle ekonomik anlamlarda düzenlemelerinin yetersiz kalabilmesi oldukça normaldir. Artan nüfus, bir araya gelmek ve beraber yaşamak zorunda kalan toplumlar herhangi bir olumsuzluk durumunda çözüm fikirlerini de kendileri geliştirmektedir. Tam olarak bu noktada ortaya çıkan ve geliştirilmesi tamamlanan Beraber ile hedeflenen başarıların sonuncusu ve en önemlisi toplumun kalkınmasını toplumu kullanarak gerçekleştirebilmektir. 
+
 
 
